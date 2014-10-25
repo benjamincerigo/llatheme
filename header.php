@@ -8,7 +8,7 @@
  */
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> ng-app='lla-app'>
+<html <?php language_attributes(); ?> ng-app='llaapp'>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">

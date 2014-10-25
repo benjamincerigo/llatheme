@@ -1,0 +1,882 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"angu",
+				"angular_resourcejs"
+			],
+			[
+				"im",
+				"important"
+			],
+			[
+				"mi",
+				"min-height"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"se",
+				"sec_table"
+			],
+			[
+				"f",
+				"font-size"
+			],
+			[
+				"p",
+				"padding"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"t",
+				"text-transform"
+			],
+			[
+				"colo",
+				"color"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"te",
+				"text-transform"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"bac",
+				"background-image"
+			],
+			[
+				"top",
+				"top_bottom"
+			],
+			[
+				"title",
+				"title"
+			],
+			[
+				"post",
+				"post_content"
+			],
+			[
+				"this",
+				"this_wp_query"
+			],
+			[
+				"j",
+				"jQuery"
+			],
+			[
+				"res",
+				"res_process"
+			],
+			[
+				"js",
+				"json_response"
+			],
+			[
+				"pro",
+				"process_error"
+			],
+			[
+				"json",
+				"json_respons"
+			],
+			[
+				"lla_",
+				"lla_contact_email"
+			],
+			[
+				"m",
+				"meta_value"
+			],
+			[
+				"hc_",
+				"hc_meta"
+			],
+			[
+				"parent",
+				"parentTerm"
+			],
+			[
+				"ll",
+				"lla_sections_object"
+			],
+			[
+				"lla",
+				"lla_sections"
+			],
+			[
+				"mar",
+				"margin-left"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"o",
+				"otherUl"
+			],
+			[
+				"Parent",
+				"parentUl"
+			],
+			[
+				"a",
+				"attr"
+			],
+			[
+				"s",
+				"script	Tag"
+			],
+			[
+				"ba",
+				"background-image"
+			],
+			[
+				"vis",
+				"visable"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"border",
+				"border-top"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"mail",
+				"mailchimp_footer"
+			],
+			[
+				"color",
+				"background-color"
+			],
+			[
+				"ma",
+				"max-width"
+			],
+			[
+				"bo",
+				"border-bottom"
+			],
+			[
+				"magin",
+				"margin-left"
+			],
+			[
+				"bor",
+				"border"
+			],
+			[
+				"paddi",
+				"padding"
+			],
+			[
+				"margin-",
+				"margin-left"
+			],
+			[
+				"c",
+				"color"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"txt",
+				"text-decoration"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"block",
+				"inline-block"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"leng",
+				"lengthOfListHere"
+			],
+			[
+				"length",
+				"lengthOfList"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"listOf",
+				"listOfliSub"
+			],
+			[
+				"mixma",
+				"mixmatch"
+			],
+			[
+				"ch",
+				"childNodes"
+			],
+			[
+				"myshp_cont",
+				"myshp_content"
+			],
+			[
+				"list",
+				"list-style-type"
+			],
+			[
+				"pad",
+				"padding-left"
+			],
+			[
+				"padding-",
+				"padding-top"
+			],
+			[
+				"po",
+				"position"
+			],
+			[
+				"ffff",
+				"ffffff"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.php",
+			"settings":
+			{
+				"buffer_size": 263,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "header.php",
+			"settings":
+			{
+				"buffer_size": 979,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "footer.php",
+			"settings":
+			{
+				"buffer_size": 227,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "inc/lla_add_scripts.inc",
+			"settings":
+			{
+				"buffer_size": 1521,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/lla_app.js",
+			"settings":
+			{
+				"buffer_size": 203,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/lla_services.js",
+			"settings":
+			{
+				"buffer_size": 106,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/front-page.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/home.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/lla_mail.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/js/lla_contact_script.js",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/js/lla_admin_js.js",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/classes/lla_term_object.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/classes/lla_sections_object.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/functions.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/header.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/footer.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/style.css",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/llaClasses/Singleton.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/llaClasses/Request.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/llaClasses/sections/SectionsManager.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/classes/LLAPage.php",
+		"/Users/Benjamin/Documents/2014/Webdevelopment Intern/TwitterCounter/lla_contact_script.js",
+		"/Users/Benjamin/Documents/2014/Webdevelopment Intern/TwitterCounter/lla_mail.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/inc/lla_add_scripts.inc",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/js/lla_ajax.js",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/inc/add_scripts.inc",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/inc/cal_custom_fields.inc",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/inc/lla_contact_form.inc",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/classes/lla_create_contact_form.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/inc/quo_custom_fields.inc",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/inc/hc_custom_fields.inc",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/inc/con_custom_fields.inc",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-config.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/lla_section.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/notes.txt",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/copyofhome.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/lla_sections_object.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/inc/lla_sections_object.php",
+		"/Users/Benjamin/Sites/lifelinearts/wordpress/wp-content/themes/lla/index.php",
+		"/Users/Benjamin/Sites/lifelinearts/draft/v2/index.html",
+		"/Users/Benjamin/Sites/lifelinearts/draft/concept/index.html",
+		"/Users/Benjamin/Sites/lifelinearts/draft/v2/contentshow.js",
+		"/Users/Benjamin/Sites/lifelinearts/draft/v3/contentshow.js",
+		"/Users/Benjamin/Sites/lifelinearts/draft/v3/style.css",
+		"/Users/Benjamin/Sites/lifelinearts/draft/v3/index.html",
+		"/Users/Benjamin/Sites/lifelinearts/draft/v2/style.css",
+		"/Users/Benjamin/Sites/lifelinearts/draft/v1/index.html",
+		"/Users/Benjamin/Sites/lifelinearts/draft/v1/style.css",
+		"/Users/Benjamin/Sites/lifelinearts/draft/v2/conentshow.js",
+		"/Users/Benjamin/Sites/lifelinearts/draft/v2/otherFunctions.js",
+		"/Users/Benjamin/Documents/2014/Lifelinearts.com/Email/content.html",
+		"/Users/Benjamin/Sites/lifelinearts/draft/index.html",
+		"/Users/Benjamin/Sites/lifelinearts/draft/style.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/Extra/newsletter.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ProductSkin/skin.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ShoppingCart/skin.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/HomeSkin/index.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ProductLayout/htmlForDesInProductlist.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ProductSkin/base.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ShoppingCart/base.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/Extra/saleJava.js",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/Extra/Sale.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/Extra/vandemaand.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ProductLayout/moreinfo_oudecollectie.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ProductLayout/oudecollectie_base_compact.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ProductLayout/oudecollectie_moreinfo_base.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/HomeSkin/base.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/HomeSkin/skin.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ProductSkin/scriptForSkin.js",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ProductLayout/productlist_base_compact.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ProductLayout/productlist.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/Extra/color codesComplete.rtf",
+		"/Users/Benjamin/Downloads/base.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/OrderCustom/basket_inc_vat.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/Extra/ExtraHtmlForPages.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ProductLayout/moreinfo_base.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ProductLayout/moreinfo.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/ProductSkin/theme.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/Extra/macroOfExcelForMakeList",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/OrderCustom/address.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/OrderCustom/approval_inc_vat.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/OrderCustom/payment_inc_vat.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/OrderCustom/confirmation_mail_inc_vat.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/OrderCustom/shipping_inc_vat.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/OrderCustom/ordercontinue_0.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/OrderCustom/orderpage_inc_vat.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/OrderCustom/basket_inc_vat_order.html",
+		"/Users/Benjamin/Downloads/ordercontinue_0.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/OrderCustom/shopping_cart.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/plugins/responisveSlider/ResponsiveSlides.js/responsiveslides.js",
+		"/Users/Benjamin/Downloads/popup-div-with-jquery/index.html",
+		"/Users/Benjamin/Downloads/popup-div-with-jquery/style/style.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/HomeSkin/popScript.js",
+		"/Users/Benjamin/Downloads/popup-div-with-jquery/img/loading.gif",
+		"/Users/Benjamin/Downloads/popup-div-with-jquery/img/closebox.png",
+		"/Users/Benjamin/Documents/2013/Funables/Designs/Logo/Gif/Funables.gif",
+		"/Users/Benjamin/Downloads/confirmation_mail1/confirmation_mail_inc_vat.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/OldGlovablesWeb/OldBaket/basket_1Example/basket_inc_vat.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/OldGlovablesWeb/OldBaket/basket_1Example/Backet_inc_Vat Soucce.html",
+		"/Users/Benjamin/Downloads/basket1.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/Extra/basket_1.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/FunablesWebsiteRepo/HomeSkin/theme.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductSkin/scriptForSkin.js",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Mix&Match/ExtraHtmlForPages.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductSkin/skin.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Test/WorkingFolder/skin.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductLayout/ProductLayoutWorking/moreinfo.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductLayout/ProductLayoutWorking/moreinfo_base.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductLayout/ProductLayoutWorking/macroOfExcelForMakeList",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductSkin/theme.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductSkin/base.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Test/WorkingFolder/theme.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductLayout/ProductLayoutWorking/htmlForDesInProductlist.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/plugins/lightbox2/js/lightbox-2.6.min.js",
+		"/Users/Benjamin/Documents/2013/Funables/Website/plugins/lightbox2/css/lightbox.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductLayout/ProductLayoutWorking/product_des.xml",
+		"/Users/Benjamin/Downloads/8_compact_line_border 3/moreinfo_base.html",
+		"/Users/Benjamin/Documents/2013/Funables/Prduct/ProductListForTest/Productenlijst2-20-11-2013.xls",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductLayout/ProductLayoutWorking/test.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/color codesComplete.rtf",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductLayout/Original/8_compact_line_border/productlist_base_compact.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductLayout/ProductLayoutWorking/productlist_base_compact.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/MoreInfoLayout/8_compact_line_border 3/moreinfo_base.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/MoreInfoLayout/8_compact_line_border 3/moreinfo.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Test/Original/skin.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/Source of the MainMenu.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductLayout/ProductLayoutWorking/productlist.css",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/ProductLayout/Original/8_compact_line_border/productlist.css",
+		"/Users/Benjamin/Documents/2013/Funables/Css/color codes.rtf",
+		"/Users/Benjamin/Documents/2013/Funables/Css/Test/WorkingFolder/base.css",
+		"/Users/Benjamin/Documents/2013/Funables/Css/Test/WorkingFolder/theme.css",
+		"/Users/Benjamin/Documents/2013/Funables/Css/Test/WorkingFolder/skin.html",
+		"/Users/Benjamin/Documents/2013/Funables/Website/Products/Downloaded/4_stacked_no_border/productlist_base_stacked.html",
+		"/Users/Benjamin/Documents/2013/Funables/Css/Test/Experiments/baseWithCorrect.css"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"$the_url",
+			"LLA",
+			"	\n",
+			"table",
+			"	\n",
+			"lla_create_contact_form",
+			"exculde",
+			"(); ",
+			"$",
+			"section_bottom",
+			" \n",
+			"echo",
+			"\").",
+			"        \n",
+			"footer",
+			"footer_table",
+			"myshp_product_sale_img",
+			">\n",
+			"content_table",
+			"myshp_basket_product",
+			"myshp_basket_info_link",
+			"myshp_checkout a:link",
+			".myshp_checkout_basket_empty p:first-child",
+			"myshp_block",
+			"myshp_checkout_products",
+			"}\n",
+			"myshp_checout_customerdata_options",
+			"myshp_box",
+			"myshp_checkout_customerdata_table",
+			"myshp_box",
+			"myshp_checkout",
+			"myshp_checkout_container",
+			"myshp_basket_product_name",
+			"myshp_button_delete",
+			"myshp_checkout_products_table",
+			"myshp_basket_shipping_selector select",
+			"myshp_checkout_products_table",
+			"myshp_basket_products_header",
+			"myshp_checkout_products",
+			"mysmyshp_checkout_products",
+			"myshp_checkout_basket",
+			".right",
+			"btn_bg_left",
+			"myshp_button_icon",
+			"align",
+			"ui-btn-active",
+			"myshp_checkout_breadcrumb",
+			"myshp_checkout_header",
+			"myshp_checkout",
+			"myshp_inc_vat",
+			"myshp_inc_va",
+			"myshp_checkout_basket",
+			"myshp_checkout_info",
+			"SaleHeart",
+			"myButton",
+			"myshp_control_buttons",
+			"myshp_checkout_container",
+			"myshp_checkout_breadcrumb",
+			"myshp_menu_top_link",
+			"myshp_menu_side_basket_content",
+			"myshp_menu_side_basket",
+			"myshp_menu_side_basket\"",
+			"myshp_box_title",
+			"myshp_sale_product_value_price",
+			"myshp_list_product_space_top",
+			"myshp_list_product_value_price",
+			"myshp_content_div",
+			"h4",
+			"rslides",
+			"callbacks_container",
+			"<ul",
+			"myshp_three_columns",
+			"myshp_menu_side_right",
+			"clearfix",
+			"myshp_menu_side",
+			"display",
+			"myshp_list_navigation_button_prev",
+			"myshp_list_pagination",
+			"myshp_checkout_breadcrumb_bullet_postactive",
+			"verticalalign",
+			"myshp_menu_side_basket_content",
+			"myshp_checkout",
+			"myshp_basket_products_header",
+			"myshp_basket_products_container",
+			"myshp_bas",
+			"myshp_basket",
+			"myshp_menu_side_basket_content",
+			"myshp_menu_side_basket",
+			"myshp_menu_side_basket_content",
+			"\"",
+			"myshp_info_features",
+			"a img",
+			"media=",
+			"a img",
+			"myshp_content ",
+			"myshp_content img",
+			"#myshp_content img",
+			"myshp_content img",
+			"myshp_product_title",
+			"myshp_product_i",
+			"item",
+			"text",
+			".clear",
+			"clear",
+			"myshp_info_row",
+			"myshp_info_label",
+			"myshp_info_label ",
+			".myshp_info_label",
+			"myshp_info_quantity_label",
+			"btn_text",
+			"btn_icon",
+			"myshp_menu_side_categories",
+			"zoek",
+			"myshp_footer_text",
+			"myshp_menu_side_search",
+			"myshp_quicksearch",
+			"myshp_box_title",
+			"myshp_searchfield",
+			"myshp_menu_side_link",
+			"swapTab",
+			"#myshp_content_frame ",
+			"myshp_content_frame ",
+			"font",
+			"953622",
+			"DC7863",
+			"border",
+			"myshop_content",
+			"font-family"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"jQuery",
+			"sale-small",
+			"myshp_sale_product_value_price_strike",
+			"'",
+			"li",
+			"span",
+			"0f0433",
+			"8587bd"
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.php",
+					"settings":
+					{
+						"buffer_size": 263,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								230,
+								230
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "header.php",
+					"settings":
+					{
+						"buffer_size": 979,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								469,
+								469
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "footer.php",
+					"settings":
+					{
+						"buffer_size": 227,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								210,
+								210
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "inc/lla_add_scripts.inc",
+					"settings":
+					{
+						"buffer_size": 1521,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								603,
+								603
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 150.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/lla_app.js",
+					"settings":
+					{
+						"buffer_size": 203,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								122,
+								96
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "js/lla_services.js",
+					"settings":
+					{
+						"buffer_size": 106,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22,
+								22
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 291.0,
+	"status_bar_visible": true
+}

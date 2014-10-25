@@ -1,0 +1,309 @@
+/*
+Theme Name: lla
+Theme URI: www.lifelinearts.com
+Author: benjamin.cerigo@gmail.com
+Author URI: benjamin.cerigo.wordpresss.com 
+Description: Horizontial Theme Developed for Lifeline Arts
+Version: 1.0-wpcom
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: lifelinearts
+Domain Path: /languages/
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+
+
+Color Codes 
+Brown Text: #43352f;
+Green Text: #44544e;
+*/
+
+/* Inital css for the index.html for lifeline arts */
+
+/**********************************************************************/
+
+						/* General*/
+		/**********************************************/
+
+body,h1,h2,h3,h4,p,a{
+	font-family: ‘Muli’, ‘Lucida Grande’, sans-serif;
+	font-weight: 300;
+	color: #43352f;
+}
+h1{
+
+	font-size: 2.5em;
+	color: #44544e;
+}
+h2{
+	font-size: 1.5em;
+}
+
+h2,h3,h4{
+	text-transform: lowercase;
+}
+html{
+	height: 100%;
+}
+body{
+	height: 100%;
+	text-align: center;
+}
+p{
+	font-size: 12px;
+}
+
+a{
+	text-decoration: none;
+	color: #43352f;
+}
+
+a:hover{
+	color: #44544e;
+}
+
+a:visited{
+	color: #43352f;
+}
+a:active{
+	color: #44544e;
+}
+
+#wrapper_table {
+	width: 380%;
+	height: 100%;
+	
+}
+#container {
+	height: 100%;
+}
+
+#wrapper_table tbody{
+	
+	height: 100%;
+	
+}
+
+.hidden{
+	visibility: hidden;
+	display: none;
+}
+
+
+/****** Sections ******/
+
+.section{
+	
+	width:25% !important;
+	height: 45%;
+	
+	
+}
+.section table{
+	position: relative;
+}
+.sec_table{
+
+	width:100%;
+	
+	
+}
+
+.sec_table .section table{
+	
+	right: 30%;
+}
+
+.sec_table tr td:first-child table{
+	right: 0;
+}
+/********    Top Navigation ****/
+
+#top_nav{
+	position: fixed;
+	width: 100%;
+	text-transform: lowercase;
+	
+	
+}
+
+#top_nav_rel{
+	position: absolute;
+	margin-left: 0;
+	margin-right: 0;
+	margin:0 0 0 0;
+	left: 0;
+	right:0;
+	width:auto;
+	padding: 0 0 0 0;
+	
+
+	
+
+
+}
+#top_nav ul{
+	padding-top: 0;
+	margin: 0 0 0 0;
+	list-style-type:none;
+	position: relative;
+	right: 2em;
+	
+	
+
+	
+
+
+}
+
+#top_nav ul li{
+
+	display:inline;
+	margin-left: 2em;
+
+}
+
+
+
+/********  Line */
+
+#line_row td{
+ height:10%
+
+}
+#line_row td div{
+	
+	height: 100%;
+	position: relative;
+	overflow: visible;
+	z-index: -1;
+	
+	top: -800%;
+	
+	
+}
+#line_row td div img{
+	position: absolute;
+	left:0%;
+
+	
+	
+
+	
+}
+
+
+/**********************************************************************/
+
+						/* Section 1*/
+		/**********************************************/
+
+
+.home_td{
+	
+	padding-left: 1%;
+	vertical-align: middle;
+}
+
+#home_top{
+	width: 100%;
+}
+#home_top tr td{
+	text-align: left;
+	vertical-align: middle;
+}
+
+#home_top tr td h3{
+	margin-left: 15%;
+}
+
+#sense_nav{
+	vertical-align: middle;
+
+}
+
+
+#sense_nav ul{
+	list-style-type:none;
+	display: none;
+	visibility: hidden;
+}
+
+
+#quotes{
+	visibility: hidden;
+	display: none;
+}
+
+
+
+
+
+
+
+/**********************************************************************/
+
+						/* Section 2*/
+		/**********************************************/
+
+#about_top{
+	width: 100%;
+	
+
+
+}
+
+
+#about_top{
+	vertical-align: top;
+	
+
+}
+
+#about_bottom{
+	width: 100%;
+}
+
+
+/**********************************************************************/
+
+						/* Section 2*/
+		/**********************************************/
+
+
+
+#calender_top{
+	width: 100%;
+	
+}
+
+#calender_top tr td{
+	vertical-align: middle;
+}
+
+#calender_bottom{
+	width: 50%;
+}
+
+#calender_bottom:nth-child(2) td{
+	padding-right: 30px;
+	padding-left: 30px;
+
+}
+
+
+
+
+
+/**********************************************************************/
+
+						/* Section 2*/
+		/**********************************************/
+
+#contact_top{
+	width: 100%;
+	
+}
+
+

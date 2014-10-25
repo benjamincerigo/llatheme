@@ -1,0 +1,112 @@
+notes
+
+Query for meta key 
+
+SELECT post_type, post_title, meta_key, meta_value 
+FROM wp_posts INNER JOIN wp_postmeta 
+ON wp_posts.ID = wp_postmeta.post_id 
+WHERE post_type = 'lla_calender' 
+AND meta_key = 'lla_date' 
+ORDER BY meta_value;
+
+
+SELECT * 
+FROM wp_posts INNER JOIN wp_postmeta 
+ON wp_posts.ID = wp_postmeta.post_id 
+WHERE post_type = 'lla_calender' 
+AND meta_key = 'lla_date' 
+ORDER BY meta_value;
+
+SELECT post_type, post_title, meta_key, meta_value 
+FROM wp_posts INNER JOIN wp_postmeta 
+ON wp_posts.ID = wp_postmeta.post_id 
+WHERE post_type = 'lla_calender' 
+AND meta_key = 'lla_date' 
+AND meta_key = 'lla_start_time'
+AND meta_key = 'lla_end_time'
+AND meta_key = 'lla_address'
+GROUP BY wp_posts.ID
+ORDER BY meta_value;
+
+
+SELECT post_type, post_title, meta_key, meta_value 
+FROM wp_posts INNER JOIN wp_postmeta 
+ON wp_posts.ID = wp_postmeta.post_id 
+WHERE post_type = 'lla_calender' 
+AND meta_key = 'lla_date' 
+AND meta_key = 'lla_start_time'
+AND meta_key = 'lla_end_time'
+AND meta_key = 'lla_address'
+ORDER BY meta_value;
+
+SELECT wp_posts.*
+FROM wp_posts INNER JOIN wp_postmeta 
+ON wp_posts.ID = wp_postmeta.post_id 
+WHERE post_type = 'lla_calender' 
+AND meta_key = 'lla_date' 
+AND meta_key = 'lla_start_time'
+AND meta_key = 'lla_end_time'
+AND meta_key = 'lla_address'
+ORDER BY meta_value;
+
+SELECT 
+post_type, 
+post_title, 
+event_date.meta_value AS date_key_value, 
+start_time.meta_value AS start_time_value
+FROM wp_posts 
+LEFT JOIN wp_postmeta event_date ON wp_posts.ID = event_date.post_id AND event_date.meta_key = 'lla_date'
+LEFT JOIN wp_postmeta start_time ON wp_posts.ID = start_time.post_id AND start_time.meta_key = 'lla_start_time'
+WHERE post_type = 'lla_calender';
+
+
+SELECT 
+post_type, 
+post_title, 
+event_date.meta_value AS date_value, 
+start_time.meta_value AS start_time_value,
+end_time.meta_value AS end_time_value, 
+address.meta_value AS address_value
+FROM wp_posts 
+LEFT JOIN wp_postmeta event_date ON wp_posts.ID = event_date.post_id AND event_date.meta_key = 'lla_date'
+LEFT JOIN wp_postmeta start_time ON wp_posts.ID = start_time.post_id AND start_time.meta_key = 'lla_start_time'
+LEFT JOIN wp_postmeta end_time ON wp_posts.ID = end_time.post_id AND end_time.meta_key = 'lla_end_time'
+LEFT JOIN wp_postmeta address ON wp_posts.ID = address.post_id AND address.meta_key = 'lla_address'
+WHERE post_type = 'lla_calender';
+
+SELECT 
+post_type, 
+post_title, 
+event_date.meta_value AS date_value, 
+start_time.meta_value AS start_time_value,
+end_time.meta_value AS end_time_value, 
+address.meta_value AS address_value
+FROM wp_posts 
+LEFT JOIN wp_postmeta event_date ON wp_posts.ID = event_date.post_id AND event_date.meta_key = 'lla_date'
+LEFT JOIN wp_postmeta start_time ON wp_posts.ID = start_time.post_id AND start_time.meta_key = 'lla_start_time'
+LEFT JOIN wp_postmeta end_time ON wp_posts.ID = end_time.post_id AND end_time.meta_key = 'lla_end_time'
+LEFT JOIN wp_postmeta address ON wp_posts.ID = address.post_id AND address.meta_key = 'lla_address'
+WHERE post_type = 'lla_calender'
+AND (wp_posts.post_status = 'publish');
+
+
+//This is the working Query for the CAlender
+SELECT 
+post_type, 
+post_title, 
+event_date.meta_value AS date_value, 
+start_time.meta_value AS start_time_value,
+end_time.meta_value AS end_time_value, 
+address.meta_value AS address_value
+FROM wp_posts 
+LEFT JOIN wp_postmeta event_date ON wp_posts.ID = event_date.post_id AND event_date.meta_key = 'lla_date'
+LEFT JOIN wp_postmeta start_time ON wp_posts.ID = start_time.post_id AND start_time.meta_key = 'lla_start_time'
+LEFT JOIN wp_postmeta end_time ON wp_posts.ID = end_time.post_id AND end_time.meta_key = 'lla_end_time'
+LEFT JOIN wp_postmeta address ON wp_posts.ID = address.post_id AND address.meta_key = 'lla_address'
+WHERE post_type = 'lla_calender'
+AND (wp_posts.post_status = 'publish')
+ORDER BY date_value;
+
+
+
+

@@ -2,7 +2,7 @@
 angular.module('llaapp', [
   'ngRoute',
   'ngResource',
-  //'restangular'
+  'restangular'
  
 ])
 .config(['$routeProvider', function($routeProvider) {

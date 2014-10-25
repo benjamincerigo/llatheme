@@ -22,7 +22,7 @@ function lla_add_java_scripts(){
   wp_enqueue_style('bootstrapcss', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css');
   wp_register_script('bootstrapjs', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js', array('jquery'));
   
-
+	
   wp_register_script('angular_routejs', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular-route.min.js', '1.3.0');
   wp_register_script('angular_resourcejs', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular-resource.min.js', '1.3.0');
   wp_register_script('restangularjs', 'http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.min.js', '1.3.1');
@@ -30,8 +30,9 @@ function lla_add_java_scripts(){
 
 
 
-  wp_register_script('lla_services',  $template_url . '/js/lla_services.js');;
-
+  wp_register_script('lla_services',  $template_url . '/js/lla_services.js');
+ // wp_register_script('lla_app', $template_url . 'js/lla_app.js');
+  wp_enqueue_script('angularjs', $template_url . 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.min.js');
   wp_enqueue_script('lla_app', $template_url . '/js/lla_app.js', array('angularjs', 'angular_routejs', 'angular_resourcejs', 'restangularjs'));
 
  

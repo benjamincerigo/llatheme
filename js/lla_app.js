@@ -1,3 +1,6 @@
+(function (){
+	'use strict'
+
 // Declare app level module which depends on views, and components
 angular.module('llaapp', [
   'ngRoute',
@@ -8,3 +11,4 @@ angular.module('llaapp', [
 .config(['$routeProvider', function($routeProvider) {
 
 }]);
+})();

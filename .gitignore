@@ -1,0 +1,8 @@
+Gruntfile
+package.json
+grunt/
+node_modules/
+*.swp
+*.log
+bower_components
+

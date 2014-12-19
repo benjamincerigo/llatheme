@@ -16,8 +16,8 @@ get_header(); ?>
 
 
 	<hello></hello>
-	<input ng-model="hellomodel" type='text'></input>
-	<p>Hello {{hellomodel}}<p>
+	<input ng-model="shellomodel" type='text'></input>
+	<p>Hello {{shellomodel}}</p>
 
 
 <?php get_footer(); ?>

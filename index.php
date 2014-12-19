@@ -15,10 +15,17 @@ get_header(); ?>
 
 
 
-	<hello></hello>
-	<input ng-model="shellomodel" type='text'></input>
-	<p>Hello {{shellomodel}}</p>
 
+<script>
+/*angular.module('llaApp.services', ['ngRoute'])
+.factory("model", function() {
+	model = [];
+    return model;
+})
+.factory("page", function(model) {
+	model
+    return model;
+})*/
 
 <?php get_footer(); ?>
 

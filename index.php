@@ -11,7 +11,13 @@
  * @package lla
  */
 
-get_header(); ?>
+get_header(); 
+
+
+$section = new lla_sections_object('home_page');
+print_r($section->array_of_sections);
+
+?>
 
 
 

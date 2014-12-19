@@ -49,7 +49,7 @@ class lla_sections_object
 {
 
 	public static $current_term_id;
-	private $array_of_sections = array();
+	public $array_of_sections = array();
 
 
 

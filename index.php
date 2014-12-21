@@ -25,7 +25,13 @@ $model = new lla\lla_sections_object('home_page');
 <script>
 var lla ={};
 
-lla.model = <?php echo json_encode($modelSingleton =  lla\Model::getInstance() );?>;
+angular.module('llaapp.services', ['ngRoute'])
+.factory("InitalModel", function() {
+	var InitiaModel =  <?php echo json_encode($modelSingleton =  lla\Model::getInstance() );?>;
+    return InitiaModel;
+});
+
+lla.model = angular.module('llaapp.services')._invokeQueue[0][2][1](); //This is how to find it in the current factory
 console.log(lla.model);
 
 

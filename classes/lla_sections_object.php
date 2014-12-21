@@ -38,6 +38,12 @@ class lla_sections_object
 			echo "found not given lla_sections Term";
 
 		}
+
+		$this->page->lla_nouce = wp_create_nonce( 'lla_nouce' );
+		$this->page->wp_json_nouce = wp_create_nonce( 'wp_json' );
+		$this->page->blog_info = get_bloginfo('template_directory');
+
+
 		
 	}
 
@@ -99,104 +105,17 @@ class lla_sections_object
 
 	 	$this->page->content = $this->array_of_sections;
 
-	 	print_r($this->page);
-	 	print_r('<br\>New<br\>');
+	 	
 	 	$model = Model::getInstance();
 	 	$model->set($this->page);
 
 	 	
 	}
 
-	public function make_nav(){
-		echo '<div id="top_nav"><div id="top_nav_rel"><ul>';
-		
-		$array = $this->array_of_sections;
-		
-
-		foreach ( $array as $i ) {
-
-			echo "<li><a  href='." . $i->s_top_link . "'>" . $i->t_name . "</a></li>";
-
-
-		}
-		echo "</ul></div></div><!-- ./top_nav -->";
-
-	}
-
-
-	public function make_top(){
-
-		echo '<table id="wrapper_table">';
-		echo '<tr id="top_row">';
-		echo '<td>';
-		echo '<table class="sec_table"> 	<!-- Top Table -->';
-		echo '<tr>';
-
-
-		$array = $this->array_of_sections;
-		lla_term_object::$section_count = 0;
-
-		
-
-		foreach ( $array as $i ) {
-
-			$i->section_make('Top');
-
-		}
-
-		echo '</tr></table></td></tr>';
-
-
-	}
-
-
-	public function make_line(){
-		$image_string = get_bloginfo('template_directory') . "/img/LLA_LineFull4000.jpg";
 	
-		echo '<tr id="line_row">';
-		for($i=0;$i<1;$i++){
-
-
-		echo <<<_END
-		<td >
-					<div>
-				<!-- row with the line in -->
-_END;
-		echo '<img src="' . $image_string .'"/>';
-		echo '</div> </td>';
-		}
-		echo '</tr>';
-
-
-
 		
-
-
-	}
-
-	public function make_bottom(){
-
-		echo '<tr id="bottom_row">';
-		echo '<td >';
-		echo '<table class="sec_table"> 	<!-- Top Table -->';
-		echo '<tr>';
-
-
-		$array = $this->array_of_sections;
-		lla_term_object::$section_count = 0;
-
-		
-
-		foreach ( $array as $i ) {
-
-			$i->section_make('Bottom');
-
-		}
-
-		echo '</tr></table></td></tr></table>';
-
-
-	}
+	
+	
 
 
 	

@@ -15,8 +15,7 @@ use lifelinearts as lla;
 get_header(); 
 
 
-$section = new lla\lla_sections_object('home_page');
-print_r($model = lla\Model::getInstance());
+$model = new lla\lla_sections_object('home_page');
 
 ?>
 
@@ -24,15 +23,14 @@ print_r($model = lla\Model::getInstance());
 
 
 <script>
-/*angular.module('llaApp.services', ['ngRoute'])
-.factory("model", function() {
-	model = [];
-    return model;
-})
-.factory("page", function(model) {
-	model
-    return model;
-})*/
+var lla ={};
+
+lla.model = <?php echo json_encode($modelSingleton =  lla\Model::getInstance() );?>;
+console.log(lla.model);
+
+
+
+</script>
 
 <?php get_footer(); ?>
 

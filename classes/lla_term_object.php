@@ -3,6 +3,7 @@ namespace lifelinearts;
 class lla_term_object
 {	
 	public static $section_count = 0;
+	public $content = array();
 
 
 	function __construct($term){
@@ -17,6 +18,7 @@ class lla_term_object
 		$this->s_top_link = '#'. $term->slug . "_top";
 
 		$this->s_bot_id = $term->slug . "_bottom";
+		$this->lla_get_contents('top');
 
 
 	}
@@ -63,24 +65,24 @@ class lla_term_object
 
 //-------------------Find correct Privat funciton -------------//
 
-	private function lla_get_contents($top_bottom){
+	private function lla_get_contents(){
 
 
 
 		switch ($this->t_slug) {
 			case 'home':
-				$this->get_home($top_bottom);
+				$this->get_home();
 				break;
 			case 'about':
-				$this->get_about($top_bottom);
+				$this->get_about();
 				break;
 
 			case 'calender':
-				$this->get_calender($top_bottom);
+				$this->get_calender();
 				break;
 
 			case 'contact':
-				$this->get_contact($top_bottom);
+				$this->get_contact();
 			
 			default:
 				# code...
@@ -91,10 +93,10 @@ class lla_term_object
 
 /////////---------------------------------------------- Get the Content ----------------//
 //-----------------Get home------------------//
-	private function get_home($top_bottom){
+	private function get_home(){
 		
 
-		if($top_bottom == 'Top'){
+		
 
 		$title = get_bloginfo( 'title');
 		$description = get_bloginfo('description');
@@ -113,36 +115,29 @@ class lla_term_object
 								),
 							
 			);
-			$this_wp_query = new WP_Query( $args );
+			$this_wp_query = new \WP_Query( $args );
 
 
-			echo "<td class='title'><h1>$title</h1>"
-				. "<h3>$description</h3></td></tr>"
-				. "<tr><td><ul id='quotes'>";
-			//echo $this_wp_query->post_count;
+			
 			while ( $this_wp_query->have_posts() ) : $this_wp_query->the_post();
-			global $post;
-			$quotes = explode("\n", $post->post_content);
+				global $post;
+				$quotes = explode("\n", $post->post_content);
 
-			if(is_array($quotes)){
-				
-				foreach($quotes as $quote){
-					if($quote != ""){
-					echo "<li class='quote'>$quote</li>";
+
+				if(is_array($quotes)){
+					$this->content['quotes'] = array();
+					foreach($quotes as $quote){
+						if($quote != ""){
+						array_push($this->content['quotes'], $quote);
+					}
+					}
 				}
-				}
-			}
 
 
 			endwhile;
 
-			echo "</ul><!-- ./quotes --></td>";
-		}
-		elseif($top_bottom == "Bottom"){
-
-			echo "<td id='sense_nav'><h2>Sense</h2>"
-				. "<ul class='hidden'>";
-				$taxonomies = 'lla_sections';
+			
+		$taxonomies = 'lla_sections';
 		$exclude = lla_sections_object::$current_term_id ? lla_sections_object::$current_term_id : array() ;
 
 		$tax_args = array(
@@ -171,28 +166,29 @@ class lla_term_object
 		$terms = get_terms( $taxonomies, $tax_args );
 		usort($terms, 'sort_terms_by_section_id');
 
+		$this->content['sense_nav'] = array();
 
 		foreach($terms as $term)
 		{
-			$link = get_term_link($term, 'lla_sections');
-			echo "<li><a href='$link'> $term->name</a></li>";
+			array_push($this->content['sense_nav'], $term);
+		
 		}
-		echo "</ul></td>";
+		
 
 
 
 
-		}
+		
 			
 
 	}
 
 
 //-----------------Get about------------------//
-	private function get_about($top_bottom){
+	private function get_about(){
 
 		$args = array( 'post_type' => 'any',
-							'meta_value'=> $top_bottom,
+							//'meta_value'=> $top_bottom,
 							'tax_query' => 
 							array(
 								array(
@@ -205,38 +201,31 @@ class lla_term_object
 								),
 							
 			);
-			$this_wp_query = new WP_Query( $args );
+			$this_wp_query = new \WP_Query( $args );
 			
 			//echo $this_wp_query->post_count;
-			
+
+
+			$this->content['posts'] = array();
+
 			while ($this_wp_query->have_posts() ) : $this_wp_query->the_post();
 
-				echo '<td>';
-				the_title();
-				echo '<div class="entry-content">';
-				the_content();
-				echo '</div>';
-				echo '</td>';
+				array_push($this->content['posts'], $this_wp_query->post);
 
 			endwhile;
 
 	}
 
 //-----------------Get Calender------------------//
-	private function get_calender($top_bottom){
+	private function get_calender(){
 
 		
 
-		// Set limit for the top or bottom
-		if($top_bottom == 'Top') {
-			$limit = 1;
-			$offset_query = 0;
-		}
-		elseif ($top_bottom == 'Bottom')
-		{
-			$limit = 3;
+		
+		
+			$limit = 4;
 			$offset_query = 1;
-		}
+		
 
 
 		global $wpdb;
@@ -264,70 +253,27 @@ class lla_term_object
 
 							);
 			
+		$this->content['events'] = array();
 			
-			//echo count($cal_content);
+		
+		foreach($cal_content as $item){
 
-			//If top and the limit is one
-			if($limit ==1) {
+			array_push($this->content['events'],  $item);
 
-				//Title
-				echo "<td><h3>". $cal_content[0]->post_title ."</h3>";
-				//List of start time and address
-				echo '<table><tr><td><ul>';
-				echo <<<_END
-				
-				<li>
-				<h4>Start: {$cal_content[0]->date_value} {$cal_content[0]->start_time_value} </h4>
-				</li>
-				<li>
-				<h4>End: {$cal_content[0]->end_time_value} </h4>
-				</li>
-				<li>
-				<h4>Where: {$cal_content[0]->address_value} </h4>
-				</li>
-				</ul>
-_END;
-				echo "</td>";
-				echo '<td>';
-				echo $cal_content[0]->post_content;
-				echo '</td></tr></table>';
-
-
-
-			}
-			else
-			{//Is the bottom
-			
-
-			
-			for($i = 0;$i < $limit; $i++)
-
-			{//Table cell for each calender post
-				echo '<td>';
-				
-				echo '<h4>'.$cal_content[$i]->post_title. '</h4>';
-				
-				
-				echo '<p>'. $cal_content[$i]->date_value.  '</p>';
-				echo '</td>';
-				
-
-			}
 		}
+		
 
 			
 
 	}
 	
 //-----------------Get contact------------------//
-	private function get_contact($top_bottom){
+	private function get_contact(){
 		global $wpdb;
 		$arrayToFind = array('Email', 'Telephone', 'Post');
 		
-		// Set limit for the top or bottom
-		if($top_bottom == 'Top') {
-			//If top get the contact info from the lla_contact
-			$content = $wpdb->get_results(  "SELECT 
+		
+		$content = $wpdb->get_results(  "SELECT 
 									post_content,
 									email_val.meta_value AS Email, 
 									tel_val.meta_value AS Telephone,
@@ -340,67 +286,35 @@ _END;
 									AND wp_posts.post_status = 'publish'
 									LIMIT 1;
 							"
-							
-							
-
-							
-
 							);
+							
+							
+
+							
+
+		$this->content['contact'] = array();
 			
-			echo '<td><ul>';
-			//echo count($content);
-			foreach($arrayToFind as $name){
-				echo '<li>';
-				
-				if($name == 'Email') {
-
-
-				$email_string = $content[0]->Email;
-				
-				$email_split = explode("@", $email_string);
-				
-					
-				echo '<h4>Email: </h4>';
-				echo '<h4>'. $email_split[0].'</h4>';
-				echo '<h4>&#64;</h4>';
-				echo '<h4>'. $email_split[1] .'</h4>';
-
-				
-				}
-				else
-				{
-					echo '<h4>';
-					echo $name . ': ';
-					echo $content[0]->$name;
-					echo '</h4>';
-
-				}
-				echo '</li>';
-
-			}
-			echo "</ul></td>";
-
-
-
-
-
-
-
-
-			
-
-		}
-		elseif ($top_bottom == 'Bottom')
-		{
-
-			echo "<td>";
-
-			
-			lla_create_contact_form();
 		
-			echo "</td>";
+		foreach($content as $item){
+			array_push($this->content['contact'], $item);
+
+			
 
 		}
+
+
+
+
+
+
+
+
+
+
+
+			
+
+		
 
 		
 

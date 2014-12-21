@@ -36,7 +36,7 @@ include('inc/lla_add_scripts.inc');
 */
 include('classes/lla_sections_object.php');
 include('classes/lla_term_object.php');
-
+include('classes/Model.php');
 
 
 /* -------------------- File for the Contact form and mail. -------------- */

@@ -1,55 +1,11 @@
 <?php
-/*
-* This is the class which creates a lla_sections_object
-*
-*The object is given a name,or slug, of lla_section. 
-* it then finds and orders the children by there given order value. 
-* clo
-
-
-///////
-functions:
-
-public
-	- __construct
-		Processes and find the parent term
-
-	- make_nav
-		Outputs the naviation bar
-
-	- make_top
-		Gives begging of the wrapper table and call section_make('Top') on each lla_term_object
-
-	- make_line
-		give the html for the 3rd row of the wrapper table. And finds the img in imf folder of the theme. 
-
-	- make_bottom
-		calls sections_make('Bottom') for each lla_term_object and finish the wrapper table.
-
-
-
-
-private
-	- find_order_array_of_sections
-		finds cildren taxonomies and orders them. Then produces ann array of lla_term_object in the propoty 
-		array_of_sections
-
-//////
-Propotey:
-	- parentTerm
-		id of parent term
-
-	- array_of_sections
-		array containing a lla_term_object for each child taxonomy
-
-
-*
-*/
+namespace lifelinearts;
 class lla_sections_object 
 {
 
 	public static $current_term_id;
 	public $array_of_sections = array();
+	public $page;
 
 
 
@@ -68,6 +24,7 @@ class lla_sections_object
 
 			//Found parent Term
 			//echo "found Term ". $parentTerm->term_id . "</br>";
+			$this->page = $parentTerm;
 			$this->parentTerm = $parentTerm->term_id;
 
 			self::$current_term_id = $parentTerm->term_id;
@@ -138,6 +95,14 @@ class lla_sections_object
 		     }
 		     
 	 	}
+
+
+	 	$this->page->content = $this->array_of_sections;
+
+	 	print_r($this->page);
+	 	print_r('<br\>New<br\>');
+	 	$model = Model::getInstance();
+	 	$model->set($this->page);
 
 	 	
 	}

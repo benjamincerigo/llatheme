@@ -1,4 +1,5 @@
 <?php
+use lifelinearts as lla;
 /**
  * The main template file.
  * This the first verions of the lla Theme
@@ -14,8 +15,8 @@
 get_header(); 
 
 
-$section = new lla_sections_object('home_page');
-print_r($section->array_of_sections);
+$section = new lla\lla_sections_object('home_page');
+print_r($model = lla\Model::getInstance());
 
 ?>
 

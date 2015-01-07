@@ -17,9 +17,10 @@ get_header();
 
 $model = new lla\lla_sections_object('home_page');
 
+
 ?>
 
-
+<div ui-view></div>
 
 
 <script>

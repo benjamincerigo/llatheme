@@ -1,20 +1,23 @@
-
-// Declare app level module which depends on views, and components
 var llaapp = angular.module('llaapp', [
 	//'ui.router',
-	'ngRoute',
+	'ui.router',
 	'ngResource',
 	'restangular',
 	'llaapp.services'
  
 ]);
 
-llaapp.config(function(/*$urlRouterProvide,$rootScope*/) {
+llaapp.config( function( $urlRouterProvider , $stateProvider ) {
 	"use strict";
 
 	// Default State
-	//$urlRouterProvider.otherwise("section");
+	$urlRouterProvider.otherwise("/");
 	
+	$stateProvider
+		.state('home', {
+			url: "/",
+			template: '<p>hello</p>'
+		});
 	// Global catching of uiRouter errors (for development)
 	/*$rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams,
 			error){ 

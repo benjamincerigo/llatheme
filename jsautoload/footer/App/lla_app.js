@@ -7,17 +7,40 @@ var llaapp = angular.module('llaapp', [
  
 ]);
 
-llaapp.config( function( $urlRouterProvider , $stateProvider ) {
+llaapp.config( function( $urlRouterProvider , $stateProvider) {
 	"use strict";
 
 	// Default State
 	$urlRouterProvider.otherwise("/");
 	
 	$stateProvider
-		.state('home', {
+		.state('homepage', {
 			url: "/",
-			template: '<p>hello</p>'
+			
+			resolve: {
+				intialmodel: function( InitialModel ){
+					console.log(InitialModel);
+					return InitialModel.InitialModel;
+				}
+			},
+			
+
+			views: {
+				'home': {
+					templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/home.html', 
+					controller: function( $scope , intialmodel ){
+						console.log(intialmodel);
+						$scope.home = intialmodel.content[0];
+						console.log($scope);
+					}
+				},
+				'about':{ template: '<p>ABout</p>'},
+				'calender': {template: '<p>calender</p>'},
+				'contact':{ template: '<p>contacts</p>'}
+			}
+
 		});
+		
 	// Global catching of uiRouter errors (for development)
 	/*$rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams,
 			error){ 

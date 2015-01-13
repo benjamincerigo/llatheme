@@ -20,11 +20,11 @@ $model = new lla\lla_sections_object('home_page');
 
 ?>
 
-<div ui-view>
-	<div ui-view='home'></div>
-	<div ui-view='about'></div>
-	<div ui-view='calender'></div>
-	<div ui-view='contact'></div>
+<div  class='main' ui-view>
+	<div class='section' ui-view='home'></div>
+	<div class='section' ui-view='about'></div>
+	<div class='section' ui-view='calender'></div>
+	<div class='section' ui-view='contact'></div>
 </div>
 
 

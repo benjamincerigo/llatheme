@@ -7,6 +7,7 @@ var llaapp = angular.module('llaapp', [
  
 ]);
 
+// Provider for the template directory. 
 llaapp.config( function( $urlRouterProvider , $stateProvider) {
 	"use strict";
 
@@ -34,9 +35,24 @@ llaapp.config( function( $urlRouterProvider , $stateProvider) {
 						console.log($scope);
 					}
 				},
-				'about':{ template: '<p>ABout</p>'},
-				'calender': {template: '<p>calender</p>'},
-				'contact':{ template: '<p>contacts</p>'}
+				'about':{ templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/about.html', 
+					controller: function( $scope , intialmodel ){
+						console.log(intialmodel);
+						$scope.home = intialmodel.content[1];
+						console.log($scope);
+					}},
+				'calender': {templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/calender.html', 
+					controller: function( $scope , intialmodel ){
+						console.log(intialmodel);
+						$scope.home = intialmodel.content[2];
+						console.log($scope);
+					}},
+				'contact':{ templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/contact.html', 
+					controller: function( $scope , intialmodel ){
+						console.log(intialmodel);
+						$scope.home = intialmodel.content[3];
+						console.log($scope);
+					}}
 			}
 
 		});

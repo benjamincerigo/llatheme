@@ -1,2 +1,16 @@
-<h1>Calender Url</h1>
+<div class='part'>
+	<!-- Viewed event -->
+	<h3>{{model.content.events[0].post_title}}</h3>
+	<ul>
+		<li>{{model.content.events[0].date_value}}</li>
+		<li>{{model.content.events[0].start_time_value}}</li>
+		<li>{{model.content.events[0].end_time_value}}</li>
+		<li>{{model.content.events[0].address_value}}</li>
+	</ul>
+</div>
+<div class='part'>
+	<p>{{model.content.events[0].post_content}}</p>
+</div>
+
+
 

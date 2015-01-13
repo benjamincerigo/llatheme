@@ -1,10 +1,10 @@
 <div  class='part'>
-	<h1 class='website-title'>{{home.title}}</h1>
+	<h1 class='website-title'>{{model.title}}</h1>
 </div>
 <div class='part'>
 	<ul class='quotes'>
 		<!-- start of repeat in quotes -->
-		<li ng-repeat='quote in home.content.quotes'>
+		<li ng-repeat='quote in model.content.quotes'>
 			<h3>{{quote}}</h3>
 		</li>
 	</ul>
@@ -13,7 +13,7 @@
 	<h2>Sense</h2>
 	<ul>
 		<!-- start of repeat in sense_nave -->
-		<li ng-repeat='nav in home.content.sense_nav'>
+		<li ng-repeat='nav in model.content.sense_nav'>
 			<a ng-href="/{{nav.slug}}"> {{nav.name}}</a>
 		</li>
 	</ul>

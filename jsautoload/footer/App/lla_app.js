@@ -31,27 +31,26 @@ llaapp.config( function( $urlRouterProvider , $stateProvider) {
 					templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/home.html', 
 					controller: function( $scope , intialmodel ){
 						console.log(intialmodel);
-						$scope.home = intialmodel.content[0];
+						$scope.model = intialmodel.content[0];
 						console.log($scope);
 					}
 				},
 				'about':{ templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/about.html', 
 					controller: function( $scope , intialmodel ){
-						console.log(intialmodel);
-						$scope.home = intialmodel.content[1];
-						console.log($scope);
+						
+						$scope.model = intialmodel.content[1];
+						
 					}},
 				'calender': {templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/calender.html', 
 					controller: function( $scope , intialmodel ){
-						console.log(intialmodel);
-						$scope.home = intialmodel.content[2];
-						console.log($scope);
+						
+						$scope.model = intialmodel.content[2];
+						
 					}},
 				'contact':{ templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/contact.html', 
 					controller: function( $scope , intialmodel ){
-						console.log(intialmodel);
-						$scope.home = intialmodel.content[3];
-						console.log($scope);
+						$scope.model = intialmodel.content[3];
+						
 					}}
 			}
 

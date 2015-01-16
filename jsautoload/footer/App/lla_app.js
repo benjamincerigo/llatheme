@@ -31,7 +31,7 @@ llaapp.config( function( $urlRouterProvider , $stateProvider) {
 					templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/home.html', 
 					controller: function( $scope , intialmodel ){
 						console.log(intialmodel);
-						$scope.model = intialmodel.content[0];
+						$scope.model = intialmodel;
 						console.log($scope);
 					}
 				},

@@ -42,6 +42,7 @@ class lla_sections_object
 		$this->page->lla_nouce = wp_create_nonce( 'lla_nouce' );
 		$this->page->wp_json_nouce = wp_create_nonce( 'wp_json' );
 		$this->page->blog_info = get_bloginfo('template_directory');
+		$this->page->blog_title = get_bloginfo('name');
 
 
 		

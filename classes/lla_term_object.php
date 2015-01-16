@@ -252,14 +252,22 @@ class lla_term_object
 							)
 
 							);
-			
+
 		$this->content['events'] = array();
+		$this->content['events']['main'] = $cal_content[0];
+			
+		$this->content['events']['list'] = array();
+		$size = sizeof($cal_content);
+
+		if($size > 1){
 			
 		
-		foreach($cal_content as $item){
+			for($i = 1; $i < $size; $i++ ){
 
-			array_push($this->content['events'],  $item);
 
+				array_push($this->content['events']['list'],  $cal_content[$i]);
+
+			}
 		}
 		
 

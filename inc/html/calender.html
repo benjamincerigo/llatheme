@@ -1,16 +1,23 @@
-<div class='part'>
+<div class='part part-lg-hh'>
 	<!-- Viewed event -->
-	<h3>{{model.content.events[0].post_title}}</h3>
+	<h3>{{model.content.events.main.post_title}}</h3>
 	<ul>
-		<li>{{model.content.events[0].date_value}}</li>
-		<li>{{model.content.events[0].start_time_value}}</li>
-		<li>{{model.content.events[0].end_time_value}}</li>
-		<li>{{model.content.events[0].address_value}}</li>
+		<li>{{model.content.events.main.date_value}}</li>
+		<li>{{model.content.events.main.start_time_value}}</li>
+		<li>{{model.content.events.main.end_time_value}}</li>
+		<li>{{model.content.events.main.address_value}}</li>
 	</ul>
 </div>
-<div class='part'>
-	<p>{{model.content.events[0].post_content}}</p>
+<div class='part part-lg-hh'>
+	<p>{{model.content.events.main.post_content}}</p>
 </div>
+
+<div class='part part-lg-qh' ng-repeat='event in model.content.events.list'>
+	<h3>{{event.post_title}}</h3>
+	<p>{{event.date_value}}</p>
+</div>
+
+
 
 
 

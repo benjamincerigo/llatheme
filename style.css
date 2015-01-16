@@ -71,18 +71,31 @@ a:active{
 }
 
 .main{
-	width: inherit;
+	width: 100%;
 	height: inherit;
 }
 
-.containor{
-	width: inherit;
+#container{
+	width: 100%;
 	height: inherit;
 }
-.hidden{
+
+/****** util ******/ 
+
+.hidden-full{
 	visibility: hidden;
 	display: none;
 }
+
+.hidden-dis{
+	display: none;
+}
+
+.hidden-vis{
+	visibility: hidden;
+}
+
+
 
 
 /****** Sections ******/

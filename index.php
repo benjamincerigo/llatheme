@@ -21,6 +21,42 @@ $model = new lla\lla_sections_object('home_page');
 ?>
 
 <div  class='main' ui-view>
+	<!-- Top Nav -->
+	<div class='top_nav'>
+		<div>
+				<ul>
+					<li>
+						<a href='#home'>
+							
+								home
+							
+						</a>
+					</li>
+					<li>
+						<a href='#about'>
+							
+								about
+							
+						</a>
+					</li>
+					<li>
+						<a href='#calender'>
+							
+								calender
+						
+						</a>
+					</li>
+					<li>
+						<a href='#contact'>
+							
+								contact
+							
+						</a>
+					</li>
+				</ul>
+		</div>
+	</div>
+
 	<div class='section' ui-view='home'></div>
 	<div class='section' ui-view='about'></div>
 	<div class='section' ui-view='calender'></div>

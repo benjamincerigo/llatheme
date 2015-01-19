@@ -101,7 +101,8 @@ a:active{
 /****** Sections ******/
 
 .section{
-	height: inherit;
+	margin-top: 2%;
+	height: 98%;
 	width:25%;
 	position: relative;
 	float:left;
@@ -134,78 +135,51 @@ a:active{
 
 /********    Top Navigation   *******/
 
-#top_nav{
+.top_nav{
 	position: fixed;
 	width: 100%;
+
 	text-transform: lowercase;
 	
-	
+
+	text-align: center;
+}
+.top_nav > div{
+	max-width: 500px;
+	min-width: 200px;
+	margin:0 auto;
 }
 
-#top_nav_rel{
-	position: absolute;
-	margin-left: 0;
-	margin-right: 0;
-	margin:0 0 0 0;
-	left: 0;
-	right:0;
-	width:auto;
-	padding: 0 0 0 0;
-	
-
-	
-
-
+.top_nav > div > ul{
+	margin-top: 20px;
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+	padding-left: 0;
 }
-#top_nav ul{
-	padding-top: 0;
-	margin: 0 0 0 0;
-	list-style-type:none;
-	position: relative;
-	right: 2em;
-	
-	
 
-	
+.top_nav div > ul > li{
+	display: table-cell;
+	width: auto;
+	text-align: center;	
+}
 
+
+
+
+.nav_div {
+	
+	display: inline;
+	
 
 }
 
-#top_nav ul li{
-
-	display:inline;
-	margin-left: 2em;
-
-}
 
 
 
 /********  Line */
 
-#line_row td{
- height:10%
 
-}
-#line_row td div{
-	
-	height: 100%;
-	position: relative;
-	overflow: visible;
-	z-index: -1;
-	
-	top: -800%;
-	
-	
-}
-#line_row td div img{
-	position: absolute;
-	left:0%;
-
-	
-	
-
-	
-}
 
 
 /**********************************************************************/

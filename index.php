@@ -20,40 +20,32 @@ $model = new lla\lla_sections_object('home_page');
 
 ?>
 
-<div  class='main' ui-view>
+<div  class='main' ui-view ng-controller='MainController'>
 	<!-- Top Nav -->
 	<div class='top_nav'>
 		<div>
-				<ul>
-					<li>
-						<a href='#home'>
-							
-								home
-							
-						</a>
-					</li>
-					<li>
-						<a href='#about'>
-							
-								about
-							
-						</a>
-					</li>
-					<li>
-						<a href='#calender'>
-							
-								calender
-						
-						</a>
-					</li>
-					<li>
-						<a href='#contact'>
-							
-								contact
-							
-						</a>
-					</li>
-				</ul>
+			<ul>
+				<li>
+					<a href='#home'>
+						home
+					</a>
+				</li>
+				<li>
+					<a href='#about'>
+						about
+					</a>
+				</li>
+				<li>
+					<a href='#calender'>
+						calender
+					</a>
+				</li>
+				<li>
+					<a href='#contact'>
+						contact
+					</a>
+				</li>
+			</ul>
 		</div>
 	</div>
 
@@ -81,8 +73,21 @@ angular.module('llaapp.services', ['ngRoute'])
 	
 	
  
-});
+})
+.service('lla_wp', function(){
+	var t = '<?php echo get_template_directory_uri(); ?>',
+		a = '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+		n = '<?php echo wp_create_nonce( 'lla_angular' ); ?>';
 
+
+
+	return {
+		'template_dir':t,
+		'ajax': a,
+		'nouce': n
+
+	};
+});
 /*
 lla.model = angular.module('llaapp.services')._invokeQueue[0][2][1](); //This is how to find it in the current factory
 console.log(lla.model);*/

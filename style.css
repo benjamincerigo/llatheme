@@ -138,6 +138,19 @@ a:active{
 	height: 50%;
 }
 
+/************* LIne ******/
+
+.line{
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	height: 100%;
+}
+.line img{
+	position: relative;
+	top: 3%;
+	height: 80%;
+}
 
 
 
@@ -192,35 +205,9 @@ a:active{
 						/* Section 1*/
 		/**********************************************/
 
-
-.home_td{
-	
+.website-title{
 	padding-left: 1%;
-	vertical-align: middle;
-}
-
-#home_top{
-	width: 100%;
-}
-#home_top tr td{
-	text-align: left;
-	vertical-align: middle;
-}
-
-#home_top tr td h3{
-	margin-left: 15%;
-}
-
-#sense_nav{
-	vertical-align: middle;
-
-}
-
-
-#sense_nav ul{
-	list-style-type:none;
-	display: none;
-	visibility: hidden;
+	padding-top: 3%;
 }
 
 

@@ -29,10 +29,11 @@ llaapp.config( function( $urlRouterProvider , $stateProvider) {
 			views: {
 				'home': {
 					templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/home.html', 
-					controller: function( $scope , intialmodel ){
-						console.log(intialmodel);
+					controller: function( $scope , intialmodel , lla_wp){
+						
 						$scope.model = intialmodel;
-						console.log($scope);
+						$scope.line_img_url = $scope.template_dir + '/img/LLA_LineFull4000.jpg'
+						
 					}
 				},
 				'about':{ templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/about.html', 
@@ -62,4 +63,10 @@ llaapp.config( function( $urlRouterProvider , $stateProvider) {
 		
 		console.log( event, toState, toParams, fromState, fromParams, error );
 	});*/
-});
+})
+.controller( 'MainController', [ '$scope', 'lla_wp', function( $scope , lla_wp){
+	'use strict';
+	$scope.template_dir = lla_wp.template_dir;
+	
+	console.log($scope);
+}]);

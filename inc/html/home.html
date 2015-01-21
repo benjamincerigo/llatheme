@@ -4,9 +4,13 @@
 <div class='part part-lg-h part-lg--h'>
 	<ul class='quotes'>
 		<!-- start of repeat in quotes -->
-		<li ng-repeat='quote in model.content[0].content.quotes'>
-			<h3>{{quote}}</h3>
+		
+		<li>
+			<h3>{{model.content[0].content.quotes[1]}}</h3>
 		</li>
+		<!--<li ng-repeat='quote in model.content[0].content.quotes' ng-hide='{{show}}'>
+			<h3>{{quote}}</h3>
+		</li>-->
 	</ul>
 </div>
 <div class='part part-lg-h part-lg--h'>
@@ -17,4 +21,7 @@
 			<a ng-href="/{{nav.slug}}"> {{nav.name}}</a>
 		</li>
 	</ul>
+</div>
+<div class='line'>
+	<img ng-src='{{line_img_url}}' />
 </div>

@@ -49,6 +49,10 @@ html{
 body{
 	width: 380%;
 	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-y: hidden;
+
 }
 p{
 	font-size: 12px;
@@ -101,8 +105,8 @@ a:active{
 /****** Sections ******/
 
 .section{
-	margin-top: 2%;
-	height: 98%;
+	margin-top: 0.5%;
+	height: 99.5%;
 	width:25%;
 	position: relative;
 	float:left;
@@ -116,17 +120,21 @@ a:active{
 	
 }
 
-.part-lg-qh{
+.part-lg-q{
 	width:25%;
-	height: 50%;
+	
 }
-.part-lg-hh{
+.part-lg-h{
 	width:50%;
-	height: 50%;
 }
 
-.part-lg-fh{
+.part-lg-f{
 	width:100%;
+
+}
+
+.part-lg--h{
+	
 	height: 50%;
 }
 
@@ -138,10 +146,7 @@ a:active{
 .top_nav{
 	position: fixed;
 	width: 100%;
-
 	text-transform: lowercase;
-	
-
 	text-align: center;
 }
 .top_nav > div{

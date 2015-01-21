@@ -1,4 +1,4 @@
-<div class='part part-lg-hh'>
+<div class='part part-lg-h part-lg--h'>
 	<!-- Viewed event -->
 	<h3>{{model.content.events.main.post_title}}</h3>
 	<ul>
@@ -8,11 +8,11 @@
 		<li>{{model.content.events.main.address_value}}</li>
 	</ul>
 </div>
-<div class='part part-lg-hh'>
+<div class='part part-lg-h part-lg--h'>
 	<p>{{model.content.events.main.post_content}}</p>
 </div>
 
-<div class='part part-lg-qh' ng-repeat='event in model.content.events.list'>
+<div class='part part-lg-q part-lg--h' ng-repeat='event in model.content.events.list'>
 	<h3>{{event.post_title}}</h3>
 	<p>{{event.date_value}}</p>
 </div>

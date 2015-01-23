@@ -50,7 +50,7 @@ $model = new lla\lla_sections_object('home_page');
 	</div>
 
 	<div class='section' ui-view='home'></div>
-	<div class='section' ui-view='about'></div>
+	<div class='section' ui-view='about' ></div>
 	<div class='section' ui-view='calender'></div>
 	<div class='section' ui-view='contact'></div>
 </div>

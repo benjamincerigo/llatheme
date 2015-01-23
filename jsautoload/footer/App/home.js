@@ -5,7 +5,9 @@ angular.module('llaapp.home', [])
 
 	function link(scope, element, attrs) {
 		var i;
-		console.log(scope);
+		//console.log(scope);
+
+
 
 
 	}

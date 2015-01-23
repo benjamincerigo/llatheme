@@ -3,7 +3,9 @@ var llaapp = angular.module('llaapp', [
 	'ui.router',
 	'ngResource',
 	'restangular',
-	'llaapp.services'
+	'llaapp.services',
+	'llaapp.home',
+	'llaapp.about'
  
 ]);
 

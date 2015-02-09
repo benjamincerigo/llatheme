@@ -1,3 +1,11 @@
-<div class='part part-lg-h part-lg--h' ng-repeat="post in model.content.posts" section-select>
+<div class='part part-lg-h part-lg--h' section-select="model.content.mainbool" ng-show="model.content.mainbool">
+	<h3>{{model.content.main.post_title}}</h3>
+</div>
+
+<div class='part part-lg-h part-lg--h' section-select ng-show="model.content.mainbool">
+	<p>{{model.content.main.post_content}}</p>
+</div>
+
+<div class='part part-lg-h part-lg--h' ng-repeat="post in model.content.posts | orderBy:post.post_date:true" section-select>
 	<h3>{{post.post_title}}</h3>
-<div>
+</div>

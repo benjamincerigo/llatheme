@@ -42,6 +42,8 @@ llaapp.config( function( $urlRouterProvider , $stateProvider) {
 					controller: function( $scope , intialmodel ){
 						
 						$scope.model = intialmodel.content[1];
+						$scope.model.content.mainbool = false;
+						$scope.model.content.main = {};
 						
 					}},
 				'calender': {templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/calender.html', 

@@ -1,46 +1,27 @@
-angular.module('llaapp.about', [])
-.directive('sectionSelect', [ '$filter', function($filter){
+angular.module('llaapp.about', ['llaapp.util'])
+.directive('sectionSelect', ['$filter', 'namespace', function($filter, namespace){
 	'use strict';
 
 	function link(scope, element, attr) {
-		
-
-		
-		//scope.model.content.mainbool = false;
-		console.log(attr);
-		console.log(scope);
+		var args = attr.sectionSelect.split(',');
+			//	first = namespace(scope, args[1]), // object you wnat to move 
+				//second = namespace(scope, args[2]); // obect you want to move to
+				// third is the array you want to move it from. 
+	/*
+		scope.selectbool = false;
 		element.on('click', function(){
-			var content = scope.model.content,
-					array = content.posts;
-			
-			if(content.mainbool){
-				// put the last clicked back in array
-				scope.$apply(function() {
-					content.mainbool = false;
-					array.push(content.main);
-				});
-
+			// hide the element
+			scope.$appy(function(){
+				scope.selectbool = true;
+				$element.hide();
+				// first to second
+				// if array the push
+				console.log(s3gt
+				//second = first;
 			}
-
-			//add the clicked to the main and remove from posts array
-				
-			scope.$apply(function(){
-				content.main = scope.post;
-				content.mainbool = true;
-				element = array.map(function(x) {return x.ID; }).indexOf(scope.post.ID);
-				array.splice(element, 1);
-				$filter('orderBy')(array, array.map(function(x) {return x.post_date; }));
-			});
-
-
 		});
-
-		
-		
-
-
+		*/
 	}
-
 	return {
 		restrict: 'A',
 		link: link

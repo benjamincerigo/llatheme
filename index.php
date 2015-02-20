@@ -26,22 +26,22 @@ $model = new lla\lla_sections_object('home_page');
 		<div>
 			<ul>
 				<li>
-					<a href='#home'>
+					<a ui-sref='#/~/home'>
 						home
 					</a>
 				</li>
 				<li>
-					<a href='#about'>
+					<a ui-sref='#/~/#about'>
 						about
 					</a>
 				</li>
 				<li>
-					<a href='#calender'>
+					<a ui-sref='#/~/calender'>
 						calender
 					</a>
 				</li>
 				<li>
-					<a href='#contact'>
+					<a href='#/~/contact'>
 						contact
 					</a>
 				</li>
@@ -49,10 +49,21 @@ $model = new lla\lla_sections_object('home_page');
 		</div>
 	</div>
 
-	<div class='section' ui-view='home'></div>
-	<div class='section' ui-view='about' ></div>
-	<div class='section' ui-view='calender'></div>
-	<div class='section' ui-view='contact'></div>
+	<div id='home'class='section' ui-view='home'></div>
+	<div id='about' class='section' ui-view='about' ></div>
+	<div id='calender'class='section' ui-view='calender'></div>
+	<div id='contact'class='section' ui-view='contact'></div>
+	<ui-view/>
+	<pre>
+	<!-- Here's some values to keep an eye on in the sample in order to understand $state and $stateParams -->
+	$state = {{$state.current.name}}
+	$stateParams = {{$stateParams}}
+	$state full url = {{ $state.$current.url.source }}
+	Something = {{$ur}};
+	<!-- $state.$current is not a public api, we are using it to
+	display the full url for learning purposes-->
+	</pre>
+
 </div>
 
 

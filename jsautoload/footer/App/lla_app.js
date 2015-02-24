@@ -6,7 +6,8 @@ var llaapp = angular.module('llaapp', [
 	'llaapp.services',
 	'llaapp.home',
 	'llaapp.about',
-	'llaapp.util'
+	'llaapp.util',
+	'llaapp.modelservices'
  
 ]);
 llaapp.run([  '$rootScope', '$state', '$stateParams',
@@ -34,13 +35,16 @@ llaapp.run([  '$rootScope', '$state', '$stateParams',
 llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvider', 
 	function( $urlRouterProvider , $stateProvider, $urlMatcherFactoryProvider) {
 	"use strict";
-	var urlMatcher =  $urlMatcherFactoryProvider.compile("/~/");
-
-	var astate = { 
-    name: 'homepage.section', //mandatory. This counter-intuitive requirement addressed in issue #368
-    url: '/fdf/',
-    parent: 'homepage',
-    template: '<p></p>'
+	var topnavState  = { 
+			templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/topnav.html', 
+			controller: ['$scope', 'TopNavFactory', function($scope, TopNavFactory){
+				'use strict';
+				console.log('topnave');
+				console.log(TopNavFactory);
+				$scope.model = {};
+				$scope.model.menuItems = TopNavFactory.get('home');
+				console.log($scope);
+			}]
 		};
 	// Default State
 	
@@ -92,9 +96,11 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 			
 
 			views: {
+			'topnav': topnavState,
 				'home': {
 					templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/home.html', 
 					controller: function( $scope , intialmodel , lla_wp, $stateParams){
+						'use strict';
 						var jQ = jQuery,
 								secotion = 0;
 						// $('html, body').animate({scrollLeft:
@@ -135,7 +141,7 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 					}}
 			},
 
-		}).state(astate);
+		});
 		
 
 				

@@ -22,33 +22,7 @@ $model = new lla\lla_sections_object('home_page');
 
 <div  class='main' ui-view ng-controller='MainController'>
 	<!-- Top Nav -->
-	<div class='top_nav'>
-		<div>
-			<ul>
-				<li>
-					<a ui-sref='#/home/'>
-						home
-					</a>
-				</li>
-				<li>
-					<a ui-sref='#/about/'>
-						about
-					</a>
-				</li>
-				<li>
-					<a ui-sref='#/calender/'>
-						calender
-					</a>
-				</li>
-				<li>
-					<a href='#/contact/'>
-						contact
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-
+	<div id='topnav' ui-view='topnav'></div>
 	<div id='home'class='section' ui-view='home'></div>
 	<div id='about' class='section' ui-view='about' ></div>
 	<div id='calender'class='section' ui-view='calender'></div>

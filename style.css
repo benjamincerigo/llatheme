@@ -226,15 +226,12 @@ height: 0px;
 	width: auto;
 	text-align: center;	
 }
-
-
-
-
 .nav_div {
-	
 	display: inline;
-	
-
+}
+.navitem{
+	width: 10px;
+	height: 10px;
 }
 
 

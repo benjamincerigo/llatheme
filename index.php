@@ -26,22 +26,22 @@ $model = new lla\lla_sections_object('home_page');
 		<div>
 			<ul>
 				<li>
-					<a ui-sref='#/~/home'>
+					<a ui-sref='#/home/'>
 						home
 					</a>
 				</li>
 				<li>
-					<a ui-sref='#/~/#about'>
+					<a ui-sref='#/about/'>
 						about
 					</a>
 				</li>
 				<li>
-					<a ui-sref='#/~/calender'>
+					<a ui-sref='#/calender/'>
 						calender
 					</a>
 				</li>
 				<li>
-					<a href='#/~/contact'>
+					<a href='#/contact/'>
 						contact
 					</a>
 				</li>

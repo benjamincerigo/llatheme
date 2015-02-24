@@ -1,4 +1,42 @@
-angular.module('llaapp.util', [])
+angular.module('llaapp.util', [
+	'ui.router'])
+/*.provider('observer', ['$rootScoop', '$location', function($rootScope, $location){
+	'use strict';
+	onIt: function(){
+			$rootScope.$on('$routeChangeStart', function(){
+			console.log('from observer');
+			});
+	} 
+
+	$get: function ( $rootScope, $location){
+		return{
+			method:	this.onIt
+		}
+	}
+
+}])*/
+.provider('partOb', {
+/*
+	var urlMatcher =  $urlMatcherFactoryProvider.compile("/hello/hello");
+	$urlRouter.when(urlMatcher,  function(){
+		console.log('hi');
+
+	});
+*/subscibers: [],
+	update: function(){
+		'use strict';
+		console.log('update');
+	},
+	$get: function(){
+		'use strict';
+		return {
+			update: this.update,
+		
+		};
+	}
+
+
+})
 .factory('_', function() {
 	'use strict';
 	  return window._; // assumes underscore has already been loaded on the page

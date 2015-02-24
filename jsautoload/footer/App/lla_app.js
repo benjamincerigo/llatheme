@@ -20,11 +20,7 @@ llaapp.run([  '$rootScope', '$state', '$stateParams',
 	    $rootScope.$on('$routeChangeStart',
 		  	function(event, toState, toParams, fromState, fromParams){
 			  	event.preventDefault();
-					console.log('From run');
-			/*  	console.log(event);
-			    console.log(toState);
-			    console.log(toParams);
-			    console.log(fromState);*/
+			    
 		   });
 
 
@@ -43,42 +39,50 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 				$scope.model.menuItems = TopNavFactory.get('home');
 			}]
 		};
-	console.log(lla_wpProvider);	
 	$urlRouterProvider.otherwise("/~/");
 
 	$stateProvider
 		.state('homepage', {
 			abstract: true,
-			/*
-			onEnter: ['partOb', '$stateParams', function(partOb, $stateParams){
-				console.log($stateParams);
-				console.log(window);
+			templateUrl: lla_wpProvider.t +  '/inc/html/home_page.html',
+			controller: [ '$scope', 'lla_wp', '$rootScope',  function( $scope , lla_wp, $rootScope){
+				$scope.template_dir = lla_wp.template_dir;
+				$rootScope.homeLoaded = true;
+			}]
+		})
+		.state('homepage.stuff', {
+			url: '/{section}/{part}',
+			resolve: {
+				intialmodel: function( InitialModel ){
+					return InitialModel.InitialModel;
+				}
+			},
+			onEnter: ['partOb', '$stateParams', '$rootScope' , function(partOb, $stateParams, $rootScope){
 				var jQ = window.jQuery,
 						section =  $stateParams.section, 
-						offset = 0;
-				console.log(jQ('#'+section));
-				/*
-				if(section !== '~'){
+						offset = 0,
+						isnotthere = (jQ('#'+ section).length === 0);
+				if(isnotthere){
+					console.log('seting up');
+					$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams,  isnotthere , section){
+						console.log(event);
+						console.log(toParams);
+						console.log(fromState);
+						if(fromState.name !== 'homepage.stuff'){ 
+								offset = jQ('#'+ toParams.section).offset().left - 50; 
+
+								jQ('html').animate({scrollLeft: offset}, 800);
+								partOb.update(section, $stateParams.part);
+							}
+						}
+					);
+				}
+				if(section !== '~' && jQ('#'+ section).length !== 0 ){
 					offset = jQ('#'+ section).offset().left - 50; 
 				}
 				jQ('html').animate({scrollLeft: offset}, 800);
 				partOb.update(section, $stateParams.part);
 			}],
-			*/
-			templateUrl: lla_wpProvider.t +  '/inc/html/home_page.html',
-			controller: [ '$scope', 'lla_wp', function( $scope , lla_wp){
-				$scope.template_dir = lla_wp.template_dir;
-				console.log($scope);
-			}]
-		})
-		.state('homepage.stuff', {
-			url: '/~/',
-			resolve: {
-				intialmodel: function( InitialModel ){
-					console.log(InitialModel);
-					return InitialModel.InitialModel;
-				}
-			},
 			views: {
 			'topnav': topnavState,
 				'home': {
@@ -113,6 +117,5 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 		});
 	/*$rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams,
 			error){ 
-		console.log( event, toState, toParams, fromState, fromParams, error );
 	});*/
 }])

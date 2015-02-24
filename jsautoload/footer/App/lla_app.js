@@ -32,132 +32,87 @@ llaapp.run([  '$rootScope', '$state', '$stateParams',
 		]
 		);
 // Provider for the template directory. 
-llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvider', 
-	function( $urlRouterProvider , $stateProvider, $urlMatcherFactoryProvider) {
+llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvider', 'lla_wpProvider',
+	function( $urlRouterProvider , $stateProvider, $urlMatcherFactoryProvider, lla_wpProvider) {
 	"use strict";
-	var topnavState  = { 
-			templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/topnav.html', 
+	var topnavState = { 
+			templateUrl: lla_wpProvider.t + '/inc/html/topnav.html', 
 			controller: ['$scope', 'TopNavFactory', function($scope, TopNavFactory){
 				'use strict';
-				console.log('topnave');
-				console.log(TopNavFactory);
 				$scope.model = {};
 				$scope.model.menuItems = TopNavFactory.get('home');
-				console.log($scope);
 			}]
 		};
-	// Default State
-	
+	console.log(lla_wpProvider);	
 	$urlRouterProvider.otherwise("/~/");
 
-	/*
-	$urlRouterProvider.when(astate.url, ['$state', '$match', '$stateParams', 
-				function ($state, $match, $stateParams) {
-					var jQ = jQuery,
-							a;
-										console.log($match);
-		    console.log($stateProvider);
-		    console.log(astate);
-		    //$state.transitionTo(state, $match, false);
-		    
-		    $state.go(astate.parent);
-				$state.go(astate);
-		    jQ('html').scrollLeft(500);
-		  }
-    ]);
-	*/
 	$stateProvider
 		.state('homepage', {
-			url: "/{section}/{part}",
-
-
+			abstract: true,
+			/*
 			onEnter: ['partOb', '$stateParams', function(partOb, $stateParams){
 				console.log($stateParams);
+				console.log(window);
 				var jQ = window.jQuery,
 						section =  $stateParams.section, 
 						offset = 0;
+				console.log(jQ('#'+section));
+				/*
 				if(section !== '~'){
-					offset = jQ('#'+section).offset().left - 50; 
+					offset = jQ('#'+ section).offset().left - 50; 
 				}
 				jQ('html').animate({scrollLeft: offset}, 800);
 				partOb.update(section, $stateParams.part);
 			}],
-			
+			*/
+			templateUrl: lla_wpProvider.t +  '/inc/html/home_page.html',
+			controller: [ '$scope', 'lla_wp', function( $scope , lla_wp){
+				$scope.template_dir = lla_wp.template_dir;
+				console.log($scope);
+			}]
+		})
+		.state('homepage.stuff', {
+			url: '/~/',
 			resolve: {
 				intialmodel: function( InitialModel ){
 					console.log(InitialModel);
 					return InitialModel.InitialModel;
-				},
-				/*logIt: function(  ){
-					consol.log('here' );
-					return true;
-				}*/
+				}
 			},
-			
-
 			views: {
 			'topnav': topnavState,
 				'home': {
-					templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/home.html', 
+					templateUrl: lla_wpProvider.t + '/inc/html/home.html', 
 					controller: function( $scope , intialmodel , lla_wp, $stateParams){
 						'use strict';
 						var jQ = jQuery,
 								secotion = 0;
-						// $('html, body').animate({scrollLeft:
-						// $(currentElement).offset().left}, 800);
-					//	console.log(secotion);
-
-						//console.log($stateParams);	
 						if($stateParams.id == 'hope'){
-							console.log('found');	
-
 							jQ('html').scrollLeft(500);	
 						}
-						
 						$scope.model = intialmodel;
 						$scope.line_img_url = $scope.template_dir + '/img/LLA_LineFull4000.jpg'
-						
 					},
-					
 				},
-				'about':{ templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/about.html', 
+				'about':{ templateUrl: lla_wpProvider.t + '/inc/html/about.html', 
 					controller: function( $scope , intialmodel ){
-						
 						$scope.model = intialmodel.content[1];
 						$scope.model.content.mainbool = false;
 						$scope.model.content.main = {};
-						
 					}},
-				'calender': {templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/calender.html', 
+				'calender': {templateUrl: lla_wpProvider.t + '/inc/html/calender.html', 
 					controller: function( $scope , intialmodel ){
-						
 						$scope.model = intialmodel.content[2];
-						
 					}},
-				'contact':{ templateUrl: 'http://lifelinearts.local/wp-content/themes/lla/inc/html/contact.html', 
+				'contact':{ templateUrl: lla_wpProvider.t + '/inc/html/contact.html', 
 					controller: function( $scope , intialmodel ){
 						$scope.model = intialmodel.content[3];
-						
 					}}
 			},
-
+			
 		});
-		
-
-				
-
-	// Global catching of uiRouter errors (for development)
 	/*$rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams,
 			error){ 
-		
 		console.log( event, toState, toParams, fromState, fromParams, error );
 	});*/
 }])
-.controller( 'MainController', [ '$scope', 'lla_wp', function( $scope , lla_wp){
-	'use strict';
-
-	
-	$scope.template_dir = lla_wp.template_dir;
-	
-	console.log($scope);
-}]);

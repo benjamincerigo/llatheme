@@ -23,7 +23,7 @@ $model = new lla\lla_sections_object('home_page');
 <div  class='main' ui-view ></div>
 <script>
 var lla ={};
-angular.module('llaapp.services', ['ngRoute'])
+angular.module('llaapp.inlineservices', ['ngRoute'])
 .provider("InitialModel",  {
 	 $get: function() {
 		 	return{

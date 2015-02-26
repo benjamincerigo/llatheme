@@ -1,4 +1,4 @@
-var llaapp = angular.module('llaapp', [
+var llaapp = window.angular.module('llaapp', [
 	//'ui.router',
 	'ui.router',
 	'ngResource',
@@ -7,23 +7,21 @@ var llaapp = angular.module('llaapp', [
 	'llaapp.home',
 	'llaapp.about',
 	'llaapp.util',
-	'llaapp.modelservices'
+	'llaapp.inlineservices'
  
 ]);
 llaapp.run([  '$rootScope', '$state', '$stateParams',
 		function ($rootScope, $state, $stateParams ) {
 			"use strict";
-			//var ur = new UrlMatcher('/_home/{id}').exec($state.$current.url.source);
-			//
 			$rootScope.$state = $state;
 			$rootScope.$stateParams = $stateParams;
-	    $rootScope.$on('$routeChangeStart',
+	    $rootScope.$on('$stateChangeSuccess',
 		  	function(event, toState, toParams, fromState, fromParams){
-			  	event.preventDefault();
-			    
+			   console.log(toState);
+				 console.log(toParams);
+				 console.log(fromState);
+				 console.log(fromParams);
 		   });
-
-
 		}
 		]
 		);
@@ -34,7 +32,6 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 	var topnavState = { 
 			templateUrl: lla_wpProvider.t + '/inc/html/topnav.html', 
 			controller: ['$scope', 'TopNavFactory', function($scope, TopNavFactory){
-				'use strict';
 				$scope.model = {};
 				$scope.model.menuItems = TopNavFactory.get('home');
 			}]
@@ -57,45 +54,30 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 					return InitialModel.InitialModel;
 				}
 			},
-			onEnter: ['partOb', '$stateParams', '$rootScope' , function(partOb, $stateParams, $rootScope){
+			onEnter: ['partOb', '$stateParams', '$rootScope' , 'moveOnUrl', function(partOb, $stateParams, $rootScope, moveOnUrl){
 				var jQ = window.jQuery,
-						section =  $stateParams.section, 
-						offset = 0,
-						isnotthere = (jQ('#'+ section).length === 0);
-				if(isnotthere){
-					console.log('seting up');
-					$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams,  isnotthere , section){
-						console.log(event);
-						console.log(toParams);
-						console.log(fromState);
-						if(fromState.name !== 'homepage.stuff'){ 
-								offset = jQ('#'+ toParams.section).offset().left - 50; 
-
-								jQ('html').animate({scrollLeft: offset}, 800);
-								partOb.update(section, $stateParams.part);
+						section =  $stateParams.section; 
+				if(section === '~'){
+					section = 'home';
+				}
+				if(jQ('#' + section).length === 0){
+					$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState){
+							if(fromState.url === '^'){ 
+								moveOnUrl.execute(toParams);
 							}
 						}
 					);
+				}else{
+					moveOnUrl.execute($stateParams);
 				}
-				if(section !== '~' && jQ('#'+ section).length !== 0 ){
-					offset = jQ('#'+ section).offset().left - 50; 
-				}
-				jQ('html').animate({scrollLeft: offset}, 800);
-				partOb.update(section, $stateParams.part);
 			}],
 			views: {
 			'topnav': topnavState,
 				'home': {
 					templateUrl: lla_wpProvider.t + '/inc/html/home.html', 
-					controller: function( $scope , intialmodel , lla_wp, $stateParams){
-						'use strict';
-						var jQ = jQuery,
-								secotion = 0;
-						if($stateParams.id == 'hope'){
-							jQ('html').scrollLeft(500);	
-						}
+					controller: function( $scope , intialmodel ){
 						$scope.model = intialmodel;
-						$scope.line_img_url = $scope.template_dir + '/img/LLA_LineFull4000.jpg'
+						$scope.line_img_url = $scope.template_dir + '/img/LLA_LineFull4000.jpg';
 					},
 				},
 				'about':{ templateUrl: lla_wpProvider.t + '/inc/html/about.html', 
@@ -115,7 +97,4 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 			},
 			
 		});
-	/*$rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams,
-			error){ 
-	});*/
-}])
+}]);

@@ -35,7 +35,7 @@ angular.module('llaapp.services', [
 	};
 
 })
-.service('moveOnUrl', ['partOb', '$stateParams',  function(partOb, $stateParams ){
+.service('moveOnUrl', ['partOb', function(partOb){
 	'use strict';
 	var execute = function($stateParams){
 		var jQ = window.jQuery,
@@ -46,11 +46,10 @@ angular.module('llaapp.services', [
 		}
 		offset = jQ('#'+ section).offset().left - 50; 
 		jQ('html').animate({scrollLeft: offset}, 800);
-		partOb.update(section, $stateParams.part);
-	}
+		partOb.update( $stateParams );
+	};
 	return {
 		'execute': execute
-	
-	}
+	};
 }]);
 

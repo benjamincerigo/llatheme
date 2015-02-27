@@ -1,9 +1,22 @@
 angular.module('llaapp.about', ['llaapp.util'])
-.directive('sectionSelect', ['$filter', 'namespace', function($filter, namespace){
+.directive('sectionSelect', ['partOb', '$filter', 'namespace', function(partOb, $filter, namespace){
 	'use strict';
 
 	function link(scope, element, attr) {
-		var args = attr.sectionSelect.split(',');
+		var args = attr.sectionSelect.split(','),
+				callback = {};
+		callback.callback = function(  ){
+					console.log('called callback');
+					console.log(this.scope.post);
+					console.log(this.scope);
+					
+				this.scope.selectbool = true;
+					console.log('end of call abck');
+				};
+		callback.scope = scope;
+		callback.element = element;
+		callback.attr = attr;
+			partOb.subscribe('about', 'morag', callback);
 			//	first = namespace(scope, args[1]), // object you wnat to move 
 				//second = namespace(scope, args[2]); // obect you want to move to
 				// third is the array you want to move it from. 

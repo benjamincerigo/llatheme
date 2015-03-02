@@ -6,6 +6,6 @@
 	<p>{{model.content.main.post_content}}</p>
 </div>
 
-<div class='part part-lg-h part-lg--h' ng-hide="selectbool"ng-repeat="post in model.content.posts | orderBy:post.post_date:true" section-select="post,model.content.main,model.content.posts">
+<div class='part part-lg-h part-lg--h' ng-hide="post.selectbool"ng-repeat="post in model.content.posts | orderBy:post.post_date:true" section-select="post,model.content.main,model.content.posts">
 	<h3>{{post.post_title}}</h3>
 </div>

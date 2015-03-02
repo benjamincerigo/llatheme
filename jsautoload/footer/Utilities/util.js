@@ -17,6 +17,7 @@ window.angular.module('llaapp.util', [
 }])*/
 .provider('partOb', {
 	subscribers: {}, // Hash map of sections and part and function that will be called
+	currentState: {},
 	update: function( $stateParams ){
 		'use strict';
 		console.log('update');
@@ -24,6 +25,7 @@ window.angular.module('llaapp.util', [
 				part = this.search( $stateParams , 'part' ),
 				sub,
 				fun;
+		this.currentState = $stateParams;
 		console.log(sec);
 		console.log(part);
 		if(part === false){
@@ -35,9 +37,11 @@ window.angular.module('llaapp.util', [
 		sub = this.search( this.subscribers , sec );
 		fun = this.search( sub , part );
 		if(fun === false){
+			console.log('didnt find fun');
 			return null;
 		}
 		console.log('called fun');
+		console.log(fun);
 		fun.callback();
 	},
 	search: function(o, find){
@@ -50,7 +54,6 @@ window.angular.module('llaapp.util', [
 	},
 	subscribe: function(section, part, fun){
 		'use strict';
-	
 		var s = this.subscribers,
 				ss;
 		if(!s.hasOwnProperty(section)){
@@ -62,6 +65,13 @@ window.angular.module('llaapp.util', [
 		//	throw new Error('trying to set a part again');
 		}
 		ss[part] = fun;
+		if(!this.hasOwnProperty('currentState')){
+				return true;
+		}
+		if(!this.currentState.hasOwnProperty('section')){
+			return true;
+		}
+		this.update(this.currentState);
 		console.log(this.subscribers);
 	},
 	$get: function(){

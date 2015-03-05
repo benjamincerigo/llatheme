@@ -1,11 +1,11 @@
 angular.module('llaapp.about', ['llaapp.util'])
 .directive('sectionSelect', ['partOb', '$filter', 'namespace', function(partOb, $filter, namespace){
 	'use strict';
+	var stat = {};
 
 	function link(scope, element, attr) {
 		var args = attr.sectionSelect.split(','),
-				callback = {}, 
-				callback2 = {};
+				callback = {}; 
 		scope.selectbool = false;
 		console.log('called link');
 		console.log(scope);

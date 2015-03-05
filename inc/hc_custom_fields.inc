@@ -19,15 +19,19 @@ $hc_meta = array(
     'context' => 'normal',
     'priority' => 'high',
     'fields' => array(
-        array(
-            'name' => 'Home Position',
-            'desc' => 'Close if the post should be above or below the line',
-            'id' => $prefix . 'home_position',
-            'type' => 'select',
-            'options' => array('Top', 'Bottom')
-        )
-        
-        
+			array(
+					'name' => 'Home Position',
+					'desc' => 'Close if the post should be above or below the line',
+					'id' => $prefix . 'home_position',
+					'type' => 'select',
+					'options' => array('Top', 'Bottom')
+				),
+				array(
+					'name' => 'Part Slug',
+					'desc' => 'THe URL slug that you want to use for this part',
+					'id' => $prefix . '_part_slug',
+					'type' =>  'text'
+				)
     )
 );
 
@@ -57,16 +61,23 @@ function lla_hc_add_box() {
                 '<th style="width:20%"><label for="', $field['id'], '">', $field['name'], '</label></th>',
                 '<td>';
         
-           
+        switch ($field['type']) {
+        	//select
+				case 'select':   
                 echo '<select name="', $field['id'], '" id="', $field['id'], '">';
                 foreach ($field['options'] as $option) {
                     echo '<option ', $meta == $option ? ' selected="selected"' : '', '>', $option, '</option>';
                 }
-               
+						break;
+					//text
+				case 'text':
+								echo '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="30" />
+								<br /><span class="description">'.$field['desc'].'</span>';
+						break;
+				}
         echo     '</td><td>',
             '</td></tr>';
     }
-
     echo '</table>';
 }
 

@@ -47,16 +47,18 @@ $cal_meta = array(
             'id' => $prefix . '_end_time',
             'type' => 'text',
         ),
-
         array(
             'name' => 'Where',
             'desc' => 'Adress of the event',
             'id' => $prefix . '_address',
             'type' => 'textarea',
         ),
-
-        
-        
+        array(
+            'name' => 'Part Slug',
+            'desc' => 'Slug of the event',
+            'id' => $prefix . '_part_slug',
+            'type' => 'text',
+        )
     )
 );
 

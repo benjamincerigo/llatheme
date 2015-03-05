@@ -1,13 +1,36 @@
 <?php
 namespace lifelinearts;
+class lla_content {
+	private $from_custom = array(
+		'lla_part_slug',
+		'lla_post_order',
+	);
+	private $from_wp_object = array(
+		'post_content',
+		'post_title',
+		'post_date',
+		'post_name',
+		'post_type',
+		'ID'
+	);
+	public function fromWP($wp){
+		for($i=0;$i<count($this->from_wp_object);$i++){
+			$key = $this->from_wp_object[$i];
+			$this->$key = $wp->$key;
+		}
+	}
+	public function fromCus($a){
+		for($i=0;$i<count($this->from_custom);$i++){
+			$key = $this->from_custom[$i];
+			$this->$key = $a[$key][0];
+		}
+	}
+}
 class lla_term_object
 {	
 	public static $section_count = 0;
 	public $content = array();
-
-
 	function __construct($term){
-
 		//Taxonomy data
 		$this->t_name = $term->name;
 		$this->t_id = $term->term_id;
@@ -19,10 +42,7 @@ class lla_term_object
 
 		$this->s_bot_id = $term->slug . "_bottom";
 		$this->lla_get_contents('top');
-
-
 	}
-
 //-----------------------------------------Section Make --------------------------//
 	public function section_make($top_bottom){
 		$count = lla_term_object::$section_count;
@@ -34,9 +54,7 @@ class lla_term_object
 		switch($top_bottom){
 			case 'Top':
 					echo '<table id="' . $this->s_top_id . '">';
-
 				break;
-
 			case 'Bottom':
 					echo '<table id="' . $this->s_bot_id . '">';
 					break;
@@ -44,10 +62,6 @@ class lla_term_object
 				echo '<table>';
 				break;
 			}
-
-
-
-					
 		echo '<tr>';
 		//get contents
 		/*if($top_bottom != 'Bottom' && $this->t_name != 'Home')
@@ -56,19 +70,11 @@ class lla_term_object
 			echo '</tr><tr>';
 		}*/
 		$this->lla_get_contents($top_bottom);
-
 		//close section
 		echo '</tr></table></td>';
-
 	}
-
-
 //-------------------Find correct Privat funciton -------------//
-
 	private function lla_get_contents(){
-
-
-
 		switch ($this->t_slug) {
 			case 'home':
 				$this->get_home();
@@ -76,11 +82,9 @@ class lla_term_object
 			case 'about':
 				$this->get_about();
 				break;
-
 			case 'calender':
 				$this->get_calender();
 				break;
-
 			case 'contact':
 				$this->get_contact();
 			
@@ -88,26 +92,17 @@ class lla_term_object
 				# code...
 				break;
 		}
-
 	}
-
 /////////---------------------------------------------- Get the Content ----------------//
 //-----------------Get home------------------//
 	private function get_home(){
-		
-
-		
-
 		$title = get_bloginfo( 'title');
 		$description = get_bloginfo('description');
 		$args = array( 'post_type' => 'lla_home_content',
-					
 							'post_title'=> 'Quotes',
 							'tax_query' => 
 							array(
 								array(
-				
-			
 									'taxonomy' => 'lla_sections',
 									'field' => 'slug',
 									'terms' => $this->t_slug
@@ -116,14 +111,9 @@ class lla_term_object
 							
 			);
 			$this_wp_query = new \WP_Query( $args );
-
-
-			
 			while ( $this_wp_query->have_posts() ) : $this_wp_query->the_post();
 				global $post;
 				$quotes = explode("\n", $post->post_content);
-
-
 				if(is_array($quotes)){
 					$this->content['quotes'] = array();
 					foreach($quotes as $quote){
@@ -132,16 +122,10 @@ class lla_term_object
 					}
 					}
 				}
-
-
 			endwhile;
-
-			
 		$taxonomies = 'lla_sections';
 		$exclude = lla_sections_object::$current_term_id ? lla_sections_object::$current_term_id : array() ;
-
 		$tax_args = array(
-	
     	'orderby'       => 'none', 
     	'order'         => 'ASC',
 	    'hide_empty'    => false, 
@@ -161,73 +145,51 @@ class lla_term_object
 	    'search'        => '', 
 	    'cache_domain'  => 'core'
 		); 
-
-
 		$terms = get_terms( $taxonomies, $tax_args );
 		usort($terms, 'sort_terms_by_section_id');
-
 		$this->content['sense_nav'] = array();
-
 		foreach($terms as $term)
 		{
 			array_push($this->content['sense_nav'], $term);
-		
 		}
-		
-
-
-
-
-		
-			
-
 	}
-
-
 //-----------------Get about------------------//
 	private function get_about(){
-
 		$args = array( 'post_type' => 'any',
-							//'meta_value'=> $top_bottom,
+							'meta_key' => 'lla_part_slug',
 							'tax_query' => 
 							array(
 								array(
-				
-			
 									'taxonomy' => 'lla_sections',
 									'field' => 'slug',
 									'terms' => $this->t_slug
 									),
 								),
-							
+							'meta_query' => array(
+								array(
+								'key'=> 'lla_part_slug'
+								)
+							)
 			);
 			$this_wp_query = new \WP_Query( $args );
-			
 			//echo $this_wp_query->post_count;
-
-
 			$this->content['posts'] = array();
-
 			while ($this_wp_query->have_posts() ) : $this_wp_query->the_post();
+			
+			//$array = array('main' => $this_wp_query->post, 'custom' => get_post_custom($this_wp_query->post->ID));
+			$la = new lla_content();
+			$la->fromWP($this_wp_query->post);
+			$la->fromCus(get_post_custom( $this_wp_query->post->ID ));
 
-				array_push($this->content['posts'], $this_wp_query->post);
-
+				array_push($this->content['posts'], $la);
+				//var_dump($this_wp_query->the_meta());
+			//var_dump('<br/>');
 			endwhile;
-
 	}
-
 //-----------------Get Calender------------------//
 	private function get_calender(){
-
-		
-
-		
-		
 			$limit = 4;
 			$offset_query = 1;
-		
-
-
 		global $wpdb;
 		//Make the query for the ordered lla_calender post types
 		$cal_content = $wpdb->get_results( $wpdb->prepare(  "SELECT 
@@ -250,37 +212,21 @@ class lla_term_object
 							$offset_query,
 							$limit
 							)
-
-							);
-
+						);
 		$this->content['events'] = array();
 		$this->content['events']['main'] = $cal_content[0];
-			
 		$this->content['events']['list'] = array();
 		$size = sizeof($cal_content);
-
 		if($size > 1){
-			
-		
 			for($i = 1; $i < $size; $i++ ){
-
-
 				array_push($this->content['events']['list'],  $cal_content[$i]);
-
 			}
 		}
-		
-
-			
-
 	}
-	
 //-----------------Get contact------------------//
 	private function get_contact(){
 		global $wpdb;
 		$arrayToFind = array('Email', 'Telephone', 'Post');
-		
-		
 		$content = $wpdb->get_results(  "SELECT 
 									post_content,
 									email_val.meta_value AS Email, 
@@ -295,46 +241,9 @@ class lla_term_object
 									LIMIT 1;
 							"
 							);
-							
-							
-
-							
-
 		$this->content['contact'] = array();
-			
-		
 		foreach($content as $item){
 			array_push($this->content['contact'], $item);
-
-			
-
 		}
-
-
-
-
-
-
-
-
-
-
-
-			
-
-		
-
-		
-
-
-
 	}
-		
-
-
-
-
-
-
-
 }

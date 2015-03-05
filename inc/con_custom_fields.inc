@@ -32,12 +32,17 @@ $con_meta = array(
             'id' => $prefix . '_contact_tel',
             'type' => 'text',
         ),
-
         array(
             'name' => 'Address',
             'desc' => 'Address to be contacted on',
             'id' => $prefix . '_contact_address',
             'type' => 'textarea',
+        ),
+        array(
+            'name' => 'Part Slug',
+            'desc' => 'Slug of the event',
+            'id' => $prefix . '_part_slug',
+            'type' => 'text',
         ),
 
         

@@ -22,7 +22,11 @@ class lla_content {
 	public function fromCus($a){
 		for($i=0;$i<count($this->from_custom);$i++){
 			$key = $this->from_custom[$i];
-			$this->$key = $a[$key][0];
+			if($key ==='lla_post_order'){
+				$this->$key = (int)  $a[$key][0];
+			}else{
+				$this->$key = $a[$key][0];
+			}
 		}
 	}
 }
@@ -156,7 +160,9 @@ class lla_term_object
 //-----------------Get about------------------//
 	private function get_about(){
 		$args = array( 'post_type' => 'any',
-							'meta_key' => 'lla_part_slug',
+							'meta_key' => 'lla_post_order',
+							'orderby' => 'meta_value_num',
+							'order' => 'ASC',
 							'tax_query' => 
 							array(
 								array(
@@ -164,12 +170,7 @@ class lla_term_object
 									'field' => 'slug',
 									'terms' => $this->t_slug
 									),
-								),
-							'meta_query' => array(
-								array(
-								'key'=> 'lla_part_slug'
 								)
-							)
 			);
 			$this_wp_query = new \WP_Query( $args );
 			//echo $this_wp_query->post_count;

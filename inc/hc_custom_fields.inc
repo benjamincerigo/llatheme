@@ -19,18 +19,17 @@ $hc_meta = array(
     'context' => 'normal',
     'priority' => 'high',
     'fields' => array(
-			array(
-					'name' => 'Home Position',
-					'desc' => 'Close if the post should be above or below the line',
-					'id' => $prefix . 'home_position',
-					'type' => 'select',
-					'options' => array('Top', 'Bottom')
-				),
 				array(
 					'name' => 'Part Slug',
 					'desc' => 'THe URL slug that you want to use for this part',
 					'id' => $prefix . '_part_slug',
 					'type' =>  'text'
+				),
+				array(
+					'name' => 'In Section Order',
+					'desc' => '0 will be first in the section',
+					'id' => $prefix . '_post_order',
+					'type' => 'number'	
 				)
     )
 );
@@ -72,6 +71,10 @@ function lla_hc_add_box() {
 					//text
 				case 'text':
 								echo '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="30" />
+								<br /><span class="description">'.$field['desc'].'</span>';
+						break;
+				case 'number':
+								echo '<input type="number" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="30" />
 								<br /><span class="description">'.$field['desc'].'</span>';
 						break;
 				}

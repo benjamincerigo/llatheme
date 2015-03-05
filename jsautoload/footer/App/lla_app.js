@@ -6,6 +6,7 @@ var llaapp = window.angular.module('llaapp', [
 	'llaapp.services',
 	'llaapp.home',
 	'llaapp.about',
+	'llaapp.calender',
 	'llaapp.util',
 	'llaapp.inlineservices'
  

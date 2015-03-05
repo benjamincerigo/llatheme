@@ -43,6 +43,8 @@ angular.module('llaapp.inlineservices', ['ngRoute'])
 		}
 	}
 });
+lla.model = angular.module('llaapp.inlineservices')._invokeQueue[0][2][1].$get();
+console.log(lla.model);
 </script>
 <?php get_footer(); ?>
 

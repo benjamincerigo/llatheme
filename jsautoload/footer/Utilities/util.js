@@ -20,15 +20,14 @@ window.angular.module('llaapp.util', [
 	currentState: {},
 	update: function( $stateParams ){
 		'use strict';
-		console.log('update');
 		var sec = this.search( $stateParams , 'section'),
 				part = this.search( $stateParams , 'part' ),
 				sub,
 				fun;
 		this.currentState = $stateParams;
-		console.log(sec);
-		console.log(part);
+		console.log(this.subscribers);
 		if(part === false){
+			console.log('part not found');
 			return null;
 		}
 		if(sec === false){
@@ -37,11 +36,8 @@ window.angular.module('llaapp.util', [
 		sub = this.search( this.subscribers , sec );
 		fun = this.search( sub , part );
 		if(fun === false){
-			console.log('didnt find fun');
 			return null;
 		}
-		console.log('called fun');
-		console.log(fun);
 		fun.callback();
 	},
 	search: function(o, find){
@@ -72,7 +68,6 @@ window.angular.module('llaapp.util', [
 			return true;
 		}
 		this.update(this.currentState);
-		console.log(this.subscribers);
 	},
 	$get: function(){
 		'use strict';

@@ -1,11 +1,11 @@
 <!-- About -->
-<div class='part part-lg-h part-lg--h' ng-show="model.content.main.selected">
+<div class='part part-lg-h part-lg--h' ng-show="model.content.main.selectedbool">
 	<a ng-href='#/about/~'>
 		<h3>{{model.content.main.post.post_title}}</h3>
 	</a>
 </div>
 
-<div class='part part-lg-h part-lg--h' ng-show="model.content.main.selected">
+<div class='part part-lg-h part-lg--h' ng-show="model.content.main.selectedbool">
 	<p>{{model.content.main.post.post_content}}</p>
 </div>
 <div class='part part-lg-h part-lg--h' ng-hide="post.selectbool" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" > 

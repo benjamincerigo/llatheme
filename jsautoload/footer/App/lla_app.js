@@ -27,9 +27,10 @@ llaapp.run([  '$rootScope', '$state', '$stateParams',
 		]
 		);
 // Provider for the template directory. 
-llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvider', 'lla_wpProvider',
-	function( $urlRouterProvider , $stateProvider, $urlMatcherFactoryProvider, lla_wpProvider) {
+llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvider', 'lla_wpProvider', 'homepagemodelProvider',
+	function( $urlRouterProvider , $stateProvider, $urlMatcherFactoryProvider, lla_wpProvider, homepagemodelProvider) {
 	"use strict";
+	console.log(homepagemodelProvider);
 	var topnavState = { 
 			templateUrl: lla_wpProvider.t + '/inc/html/topnav.html', 
 			controller: ['$scope', 'TopNavFactory', function($scope, TopNavFactory){
@@ -50,14 +51,12 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 		})
 		.state('homepage.stuff', {
 			url: '/{section}/{part}',
-			resolve: {
-				intialmodel: function( InitialModel ){
-					return InitialModel.InitialModel;
-				}
-			},
-			onEnter: ['partOb', '$stateParams', '$rootScope' , 'moveOnUrl', function(partOb, $stateParams, $rootScope, moveOnUrl){
+			onEnter: ['partOb', '$stateParams', '$rootScope' , 'moveOnUrl', 'homepagemodel',function(partOb, $stateParams, $rootScope, moveOnUrl, homepagemodel){
 				var jQ = window.jQuery,
 						section =  $stateParams.section; 
+				console.log('home model');
+				console.log(homepagemodel);
+				homepagemodel.state($stateParams);
 				if(section === '~'){
 					section = 'home';
 				}
@@ -76,25 +75,30 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 			'topnav': topnavState,
 				'home': {
 					templateUrl: lla_wpProvider.t + '/inc/html/home.html', 
-					controller: function( $scope , intialmodel ){
-						$scope.model = intialmodel;
+					controller: ['$scope',  'homepagemodel', function( $scope , homepagemodel){
+						console.log(homepagemodel.getSection('home'));
+						$scope.model = homepagemodel.getSection('home');
 						$scope.line_img_url = $scope.template_dir + '/img/LLA_LineFull4000.jpg';
-					},
+					}],
 				},
 				'about':{ templateUrl: lla_wpProvider.t + '/inc/html/about.html', 
-					controller: function( $scope , intialmodel ){
-						$scope.model = intialmodel.content[1];
-						$scope.model.content.mainbool = false;
-						$scope.model.content.main = {};
-					}},
+					controller: ['$scope',  'homepagemodel', function( $scope , homepagemodel){ 
+						console.log('aboutloaded');
+						$scope.model = homepagemodel.getSection('about');
+					}],
+				},
 				'calender': {templateUrl: lla_wpProvider.t + '/inc/html/calender.html', 
-					controller: function( $scope , intialmodel ){
-						$scope.model = intialmodel.content[2];
-					}},
+					controller: ['$scope',  'homepagemodel', function( $scope , homepagemodel){ 
+						console.log('calenderLoaded');
+						$scope.model = homepagemodel.getSection('calender');
+					}],
+				},
 				'contact':{ templateUrl: lla_wpProvider.t + '/inc/html/contact.html', 
-					controller: function( $scope , intialmodel ){
-						$scope.model = intialmodel.content[3];
-					}}
+					controller: ['$scope',  'homepagemodel', function( $scope , homepagemodel){ 
+						console.log('calenderLoaded');
+						$scope.model = homepagemodel.getSection('contact');
+					}],
+				}
 			},
 			
 		});

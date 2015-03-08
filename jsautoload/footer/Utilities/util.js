@@ -25,7 +25,7 @@ window.angular.module('llaapp.util', [
 				sub,
 				fun;
 		this.currentState = $stateParams;
-		console.log(this.subscribers);
+		//console.log(this.subscribers);
 		if(part === false){
 			console.log('part not found');
 			return null;

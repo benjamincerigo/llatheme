@@ -4,6 +4,7 @@ window.angular.module('llaapp.about', ['llaapp.util'])
 	var stat = {};
 	function link(scope, element, attr) {
 		var	callback = {}; 
+		console.log('loaded it');
 		callback.scope = scope;
 		callback.element = element;
 		callback.attr = attr;

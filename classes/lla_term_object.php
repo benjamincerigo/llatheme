@@ -176,13 +176,11 @@ class lla_term_object
 			//echo $this_wp_query->post_count;
 			$this->content['posts'] = array();
 			while ($this_wp_query->have_posts() ) : $this_wp_query->the_post();
-			
 			//$array = array('main' => $this_wp_query->post, 'custom' => get_post_custom($this_wp_query->post->ID));
 			$la = new lla_content();
 			$la->fromWP($this_wp_query->post);
 			$la->fromCus(get_post_custom( $this_wp_query->post->ID ));
-
-				array_push($this->content['posts'], $la);
+				$this->content['posts'][$la->lla_part_slug] = $la;
 				//var_dump($this_wp_query->the_meta());
 			//var_dump('<br/>');
 			endwhile;

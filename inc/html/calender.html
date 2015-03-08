@@ -13,6 +13,7 @@
 </div>
 
 <div class='part part-lg-q part-lg--h' ng-hide='anevent.selectedbool' ng-repeat='anevent in model.content.events' >
+	<a ng-href='#/calender/{{anevent.lla_part_slug}}'> 
 	<h3>{{anevent.post_title}}</h3>
 	<p>{{anevent.date_value}}</p>
 </div>

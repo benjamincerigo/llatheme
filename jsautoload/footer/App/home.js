@@ -5,7 +5,6 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 
 	function link(scope, element, attrs) {
 	//	var i;
-		//console.log(scope);
 	}
 	return {
 		restrict: 'AC',
@@ -36,7 +35,6 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 		a.content.main.selectedbool = false;
 	};
 	this.initCalender = function(){
-		console.log(this.model.content.Calender);
 		var m = this.model.content.Calender,
 			k = Object.keys(m.content.events)[0] ,
 			i = m.content.events[k];
@@ -73,7 +71,6 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 		}
 	};
 	this.processState = function($stateParams){
-		console.log('called function');
 		var s = this.lla_search($stateParams, 'section'),
 			p = this.lla_search($stateParams, 'part');
 
@@ -100,7 +97,9 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			if(s === false){
 				return null;
 			}
-			console.log(s);
+			a.content.main.selectedbool = false;
+			this.deselectAll(a.content.posts);
+			s.selectedbool = true;
 			a.content.main = s;
 			a.content.main.selectedbool = true;
 		}
@@ -111,7 +110,6 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			this.initCalender();
 		}else{
 			s = this.lla_search(c.content.events, p);
-			console.log(s);
 			if(s === false){
 				return null;
 			}

@@ -4,7 +4,6 @@ window.angular.module('llaapp.util', [
 	'use strict';
 	onIt: function(){
 			$rootScope.$on('$routeChangeStart', function(){
-			console.log('from observer');
 			});
 	} 
 
@@ -25,9 +24,7 @@ window.angular.module('llaapp.util', [
 				sub,
 				fun;
 		this.currentState = $stateParams;
-		//console.log(this.subscribers);
 		if(part === false){
-			console.log('part not found');
 			return null;
 		}
 		if(sec === false){

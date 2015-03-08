@@ -221,7 +221,7 @@ class lla_term_object
 				$slug = $cal_content[$i]->lla_part_slug;
 				if( $slug === '' || $slug === null){
 					$slug = $cal_content[$i]->date_value;
-					$cal_conent[$i]->lla_part_slug = $slug;
+					$cal_content[$i]->lla_part_slug = $slug;
 				}
 				$this->content['events'][$slug] = $cal_content[$i];
 			}

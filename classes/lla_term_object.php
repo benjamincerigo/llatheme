@@ -215,13 +215,14 @@ class lla_term_object
 			)
 		);
 		$this->content['events'] = array();
-		/*$this->content['events']['main'] = $cal_content[0];
-		$this->content['events']['list'] = array();
-		 */
 		$size = sizeof($cal_content);
 		if($size > 1){
 			for($i = 0; $i < $size; $i++ ){
-				array_push($this->content['events'],  $cal_content[$i]);
+				$slug = $cal_content[$i]->lla_part_slug;
+				if( $slug === '' || $slug === null){
+					$slug = $cal_content[$i]->date_value;
+				}
+				$this->content['events'][$slug] = $cal_content[$i];
 			}
 		}
 	}

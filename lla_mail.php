@@ -174,5 +174,14 @@ function lla_submit_mail_request(){
 add_action( 'wp_ajax_lla_simple_contact_form', 'lla_submit_mail_request' );
 add_action( 'wp_ajax_nopriv_lla_simple_contact_form', 'lla_submit_mail_request' );
 
+function lla_mail_recaptcha(){
+		http_response_code(200);
+		$r = array('error' => 0, 'secertkey'=> lla_getSiteKey());
+		die(json_encode($r));
+}
+
+
+add_action( 'wp_ajax_lla_simple_mail', 'lla_mail_recaptcha' );
+add_action( 'wp_ajax_nopriv_lla_simple_mail', 'lla_mail_recaptcha' );
 
 ?>

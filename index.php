@@ -35,11 +35,13 @@ angular.module('llaapp.inlineservices', ['ngRoute'])
 	t: '<?php echo get_template_directory_uri(); ?>',
 	a: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
 	n: '<?php echo wp_create_nonce( 'lla_angular' ); ?>',
+	r: '<?php echo lla_getSiteKey(); ?>',
 	$get: function(){
 		return {
 			'template_dir': this.t,
 			'ajax': this.a,
-			'nouce': this.n
+			'nouce': this.n,
+			'recaptchakey': this.r
 		}
 	}
 });

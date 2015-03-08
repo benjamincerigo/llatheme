@@ -2,7 +2,7 @@ var llaapp = window.angular.module('llaapp', [
 	//'ui.router',
 	'ui.router',
 	'ngResource',
-	'restangular',
+	'reCAPTCHA',
 	'llaapp.services',
 	'llaapp.home',
 	'llaapp.about',
@@ -27,10 +27,16 @@ llaapp.run([  '$rootScope', '$state', '$stateParams',
 		]
 		);
 // Provider for the template directory. 
-llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvider', 'lla_wpProvider', 'homepagemodelProvider',
-	function( $urlRouterProvider , $stateProvider, $urlMatcherFactoryProvider, lla_wpProvider, homepagemodelProvider) {
+llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvider', 'lla_wpProvider', 'homepagemodelProvider', 'reCAPTCHAProvider',
+	function( $urlRouterProvider , $stateProvider, $urlMatcherFactoryProvider, lla_wpProvider, homepagemodelProvider, reCAPTCHAProvider) {
 	"use strict";
+	var re = lla_wpProvider.r;
 	homepagemodelProvider.init();
+	//reCaptcap
+	reCAPTCHAProvider.setPublicKey(re);
+	reCAPTCHAProvider.setOptions({
+			theme: 'clean'
+	});
 	var topnavState = { 
 			templateUrl: lla_wpProvider.t + '/inc/html/topnav.html', 
 			controller: ['$scope', 'TopNavFactory', function($scope, TopNavFactory){
@@ -88,8 +94,48 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 					}],
 				},
 				'contact':{ templateUrl: lla_wpProvider.t + '/inc/html/contact.html', 
-					controller: ['$scope',  'homepagemodel', function( $scope , homepagemodel){ 
+					controller: ['$scope',  'homepagemodel', 'reCAPTCHA', 'lla_wp' , '$http', function( $scope , homepagemodel, reCAPTCHA, lla_wp, $http){ 
+						var re = lla_wp.recaptchakey; 
 						$scope.model = homepagemodel.getSection('contact');
+						$scope.mail  = {};
+						reCAPTCHA.setPublicKey(re);
+
+					  $scope.submitMail= function () {
+							var formData;
+							if($scope.registerForm.$valid) {
+								console.log('Form is valid');
+								
+								console.log($scope.registerForm);
+									$http.post( lla_wp.ajax, ({'nouce':lla_wp.nouce,action:'lla_simple_mail'})).
+										success(function(data, status, headers, config) {
+											// this callback will be called asynchronously
+											// when the response is available
+											console.log('succes');
+											console.log(data);
+										}).
+										error(function(data, status, headers, config) {
+											// called asynchronously if an error occurs
+											// or server returns response with an error status.
+											console.log('error');
+											console.log(data);
+										});	
+								formData = ({action:'lla_simple_mail',nouce:lla_wp.nouce});
+								console.log(formData);
+								//Make Query
+								jQuery.ajax({
+									type: 'POST',
+									url: lla_wp.ajax,
+									data: formData,
+									dataType: 'json'
+								}).fail(function(response){
+									console.log('fail');
+									console.log(response);
+								}).done(function(response){
+									console.log('done');
+									console.log(response);
+								});
+							}
+						}
 					}],
 				}
 			},

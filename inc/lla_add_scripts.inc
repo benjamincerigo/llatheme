@@ -39,6 +39,7 @@ function lla_add_java_scripts(){
 	wp_enqueue_script('angular_routejs', $components.'/angular-route/angular-route.js', array('angularjs'), null );
 	wp_enqueue_script('angular-ui-routejs', $components.'/angular-ui-router/release/angular-ui-router.js', array('angularjs'), null );
 	wp_enqueue_script('angular_resourcejs', $components.'/angular-resource/angular-resource.js',array('angularjs'), null);
+	wp_enqueue_script('angular_recaptcha', $components. '/angular-re-captcha/angular-re-captcha.js',array('angularjs'), null);
 	wp_enqueue_script('restangularjs', $components .'/restangular/dist/restangular.js', array('angularjs', 'underscorejs'),null);
 	wp_enqueue_script('waypoints', $components .'/waypoints/lib/jquery.waypoints.min.js', array('jquery'),null);
 

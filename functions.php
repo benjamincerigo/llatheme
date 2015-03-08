@@ -1,5 +1,6 @@
 
 <?php
+require_once __DIR__ . "/classes/recaptcha/php/recaptchalib.php";
 ini_set('display_errors', 'On');
 error_reporting(E_ALL | E_STRICT);
 /**
@@ -9,6 +10,7 @@ error_reporting(E_ALL | E_STRICT);
  */
 
 $prefix = 'lla';
+
 add_theme_support( 'post-thumbnails' ); 
 
 if(!function_exists('_log')){
@@ -41,7 +43,22 @@ include('classes/Model.php');
 
 /* -------------------- File for the Contact form and mail. -------------- */
 
-
+function lla_getReCaptcha(){
+	// Register API keys at https://www.google.com/recaptcha/admin
+	$secret = "6LdTMgMTAAAAAA2KVZjsYG-09SN9ER1IeGH-3AeB";
+	// reCAPTCHA supported 40+ languages listed here: https://developers.google.com/recaptcha/docs/language
+	$lang = "en";
+	// The response from reCAPTCHA
+	$resp = null;
+	// The error code from reCAPTCHA, if any
+	$error = null;
+	$reCaptcha = new ReCaptcha($secret);
+	return $reCapatch;
+}
+function lla_getSiteKey(){
+	$sitekey = '6LdTMgMTAAAAAKSmTiiU9Q1xJ26U_PyfYFzzIIBH';
+	return $sitekey;
+}
 include('lla_mail.php');
 /*
 *  Create Custom Post types:

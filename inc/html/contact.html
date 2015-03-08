@@ -7,9 +7,29 @@
 		<li>{{model.content.contact[0].Telephone}}</li>
 	</ul>
 </div>
-<div class='part part-lg-f part-lg--h'>
 	<!-- contact form -->
 	<p> contact form </p>
+	<form name="registerForm" role="form" ng-submit="submitMail()" novalidate>
+		<div class='part part-lg-h part-lg--h'>
+			<div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
+				<label for="email">Email address*</label>
+				<input type="email" class="form-control" name="email" ng-model="mail.email" required>
+				<span ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block">Please enter your email address</span>
+			</div>
+			<div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
+				<label for="email">Message</label>
+				<input type="text" class="form-control" name="message" ng-model="mail.message" required>
+				<span ng-show="registerForm.message.$invalid && !registerForm.mail.$pristine" class="help-block">You must have a message</span>
+			</div>
+		</div>
+		<div class='part part-lg-h part-lg--h'>
+			<div class="form-group">
+				<label>Captcha*</label>
+				<div re-captcha ng-model="mail.captcha"></div>
+			</div>
+			<button type="submit" ng-disabled="registerForm.$invalid" class="btn btn-primary">Submit Mail</button>
+		</div>
+	<form>
 </div>
 
 

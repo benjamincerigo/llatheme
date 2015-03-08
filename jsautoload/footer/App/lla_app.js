@@ -30,6 +30,7 @@ llaapp.run([  '$rootScope', '$state', '$stateParams',
 llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvider', 'lla_wpProvider', 'homepagemodelProvider',
 	function( $urlRouterProvider , $stateProvider, $urlMatcherFactoryProvider, lla_wpProvider, homepagemodelProvider) {
 	"use strict";
+	homepagemodelProvider.init();
 	console.log(homepagemodelProvider);
 	var topnavState = { 
 			templateUrl: lla_wpProvider.t + '/inc/html/topnav.html', 
@@ -39,7 +40,6 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 			}]
 		};
 	$urlRouterProvider.otherwise("/~/");
-
 	$stateProvider
 		.state('homepage', {
 			abstract: true,
@@ -91,6 +91,7 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 					controller: ['$scope',  'homepagemodel', function( $scope , homepagemodel){ 
 						console.log('calenderLoaded');
 						$scope.model = homepagemodel.getSection('calender');
+						console.log($scope);
 					}],
 				},
 				'contact':{ templateUrl: lla_wpProvider.t + '/inc/html/contact.html', 

@@ -1,5 +1,5 @@
 window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
-.directive('quotes', [ '$interval', function($interval){
+/*.directive('quotes', [ '$interval', function($interval){
 	'use strict';
 	
 
@@ -11,13 +11,35 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 		restrict: 'AC',
 		link: link
 	};
-}])
+}])*/
 .provider('homepagemodel', function(InitialModelProvider){
 	'use strict';
 	if(!this.hasOwnProperty('model')){
 		var i =  InitialModelProvider.$get();
 		this.model = i.InitialModel;
 	}
+	this.init = function(){
+		this.initHome();
+		this.initAbout();
+		this.initCalender();
+		this.initContact();
+	};
+	this.initHome = function(){
+
+	};
+	this.initAbout = function(){
+	};
+	this.initCalender = function(){
+		console.log(this.model.content.Calender);
+		var m = this.model.content.Calender,
+			k = Object.keys(m.content.events)[0] ,
+			i = m.content.events[k];
+		m.content.main = i;
+		i.selectedbool = true;
+	};
+	this.initContact = function (){
+
+	};
 	this.getSection = function(section){
 		var r;
 		switch(section){
@@ -25,13 +47,13 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 				r =  this.model;
 				break;
 			case ('about'):
-				r = this.model.content['About'];
+				r = this.model.content.About;
 				break;
 			case ('calender'):
-				r = this.model.content['Calender'];
+				r = this.model.content.Calender;
 				break;
 			case ('contact'):
-				r = this.model.content['Contact'];
+				r = this.model.content.Contact;
 				break;
 		}
 		return r;

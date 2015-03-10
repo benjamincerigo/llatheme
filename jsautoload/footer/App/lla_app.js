@@ -104,22 +104,18 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 							var formData;
 							if($scope.registerForm.$valid) {
 								console.log('Form is valid');
-								
-								console.log($scope.registerForm);
-									$http.post( lla_wp.ajax, ({'nouce':lla_wp.nouce,action:'lla_simple_mail'})).
-										success(function(data, status, headers, config) {
-											// this callback will be called asynchronously
-											// when the response is available
-											console.log('succes');
-											console.log(data);
-										}).
-										error(function(data, status, headers, config) {
-											// called asynchronously if an error occurs
-											// or server returns response with an error status.
-											console.log('error');
-											console.log(data);
-										});	
-								formData = ({action:'lla_simple_mail',nouce:lla_wp.nouce});
+								$scope.mail.returnmessage = 'Your request is being process';
+								$scope.mail.showdialog = true;	
+								$scope.mail.fail = false;
+								$scope.mail.success = false;
+								formData = (
+										{	action:'lla_simple_mail',
+											nouce:lla_wp.nouce,
+											'g-recaptcha-response':$scope.mail.captcha,
+										'lla_contact_name':$scope.mail.name,
+										'lla_contact_email':$scope.mail.email,
+										'lla_contact_message':$scope.mail.message
+										});
 								console.log(formData);
 								//Make Query
 								jQuery.ajax({
@@ -129,10 +125,18 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 									dataType: 'json'
 								}).fail(function(response){
 									console.log('fail');
+									response = response.responseJSON;
 									console.log(response);
+									$scope.mail.showdialog = true;
+									$scope.mail.fail = true;
+									$scope.mail.returnmessage = response.message;
 								}).done(function(response){
 									console.log('done');
 									console.log(response);
+									response = response.responseJSON;
+									$scope.showdialog = true;
+									$scope.mail.returnmessage = response.message;
+									$scope.success = true;
 								});
 							}
 						}

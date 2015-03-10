@@ -42,6 +42,9 @@ include('classes/Model.php');
 
 
 /* -------------------- File for the Contact form and mail. -------------- */
+function lla_doReCaptcha(){
+	return false;
+}
 
 function lla_getReCaptcha(){
 	// Register API keys at https://www.google.com/recaptcha/admin
@@ -53,7 +56,7 @@ function lla_getReCaptcha(){
 	// The error code from reCAPTCHA, if any
 	$error = null;
 	$reCaptcha = new ReCaptcha($secret);
-	return $reCapatch;
+	return $reCaptcha;
 }
 function lla_getSiteKey(){
 	$sitekey = '6LdTMgMTAAAAAKSmTiiU9Q1xJ26U_PyfYFzzIIBH';

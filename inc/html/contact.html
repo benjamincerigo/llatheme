@@ -9,21 +9,34 @@
 </div>
 	<!-- contact form -->
 	<p> contact form </p>
+		<div class='part part-lg-h part-lg--h'ng-show="mail.showdialog">
+			<div class="alert alert-success" >
+					<button type="button" class="close" ng-click="mail.showdialog=false" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>{{mail.returnmessage}}</strong>
+					<p ng-show='mail.success'>Send Another Message<p>
+					<p ng-hide='mail.success'>Please Try Again<p>
+			</div>
+		</div>
 	<form name="registerForm" role="form" ng-submit="submitMail()" novalidate>
-		<div class='part part-lg-h part-lg--h'>
-			<div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
+		<div class='part part-lg-h part-lg--h' ng-hide='mail.showdialog'>
+			<div class="form-group" ng-class="{ 'has-error' : registerForm.name.$invalid && !registerForm.name.$pristine }"ng-hide='mail.showdialog'>
+				<label for="name">Your Name*</label>
+				<input type="text" class="form-control" name="name" ng-model="mail.name" required>
+				<span ng-show="registerForm.name.$invalid && !registerForm.name.$pristine" class="help-block">Please enter your name address</span>
+			</div>
+			<div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }"ng-hide='mail.showdialog'>
 				<label for="email">Email address*</label>
 				<input type="email" class="form-control" name="email" ng-model="mail.email" required>
 				<span ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block">Please enter your email address</span>
 			</div>
-			<div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
-				<label for="email">Message</label>
+			<div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }"ng-hide='mail.showdialog'>
+				<label for="email">Message*</label>
 				<input type="text" class="form-control" name="message" ng-model="mail.message" required>
 				<span ng-show="registerForm.message.$invalid && !registerForm.mail.$pristine" class="help-block">You must have a message</span>
 			</div>
 		</div>
 		<div class='part part-lg-h part-lg--h'>
-			<div class="form-group">
+			<div class="form-group" ng-hide='mail.showdialog'>
 				<label>Captcha*</label>
 				<div re-captcha ng-model="mail.captcha"></div>
 			</div>

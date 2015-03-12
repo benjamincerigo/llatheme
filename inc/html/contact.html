@@ -9,20 +9,20 @@
 </div>
 	<!-- contact form -->
 	<p> contact form </p>
-		<div class='part part-lg-f part-lg--h'ng-show="mail.showdialog">
-			<div class="alert alert-info" ng-show='mail.loading'>
-					<button type="button" class="close" ng-click="mail.showdialog=false" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<div class='part part-lg-f part-lg--h'ng-show="mailrequest.showdialog">
+			<div class="alert alert-info" ng-show='mailrequest.loading'>
+					<button type="button" class="close" ng-click="mailrequest.showdialog=false" data-dismiss="alert" aria-hidden="true">&times;</button>
 					<strong>Your Request is being Processed...</strong>
 			</div>
-			<div class="alert alert-success" ng-show='mail.success'>
-					<button type="button" class="close" ng-click="mail.showdialog=false" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<strong>{{mail.returnmessage}}</strong>
+			<div class="alert alert-success" ng-show='mailrequest.success'>
+					<button type="button" class="close" ng-click="mailrequest.showdialog=false" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>{{mailrequest.returnmessage}}</strong>
 			</div>
-			<div class="alert alert-danger" ng-show='mail.fail'>
-					<button type="button" class="close" ng-click="mail.showdialog=false" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<div class="alert alert-danger" ng-show='mailrequest.fail'>
+					<button type="button" class="close" ng-click="mailrequest.showdialog=false" data-dismiss="alert" aria-hidden="true">&times;</button>
 					<p>Sorry there was a problem</p>
 					<ul>
-						<li ng-repeat='error in mail.errors'>
+						<li ng-repeat='error in mailrequest.errors'>
 							<strong>{{error.message}}</strong>
 						</li>
 					</ul>
@@ -30,24 +30,24 @@
 			</div>
 		</div>
 	<form name="registerForm" role="form" ng-submit="submitMail()" novalidate>
-		<div class='part part-lg-h part-lg--h' ng-hide='mail.showdialog'>
-			<div class="form-group" ng-class="{ 'has-error' : registerForm.name.$invalid && !registerForm.name.$pristine }"ng-hide='mail.showdialog'>
+		<div class='part part-lg-h part-lg--h' ng-hide='mailrequest.showdialog'>
+			<div class="form-group" ng-class="{ 'has-error' : registerForm.name.$invalid && !registerForm.name.$pristine }"ng-hide='mailrequest.showdialog'>
 				<label for="name">Your Name*</label>
 				<input type="text" class="form-control" name="name" ng-model="mail.name" required>
 				<span ng-show="registerForm.name.$invalid && !registerForm.name.$pristine" class="help-block">Please enter your name address</span>
 			</div>
-			<div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }"ng-hide='mail.showdialog'>
+			<div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }"ng-hide='mailrequest.showdialog'>
 				<label for="email">Email address*</label>
 				<input type="email" class="form-control" name="email" ng-model="mail.email" required>
 				<span ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block">Please enter your email address</span>
 			</div>
-			<div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }"ng-hide='mail.showdialog'>
+			<div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }"ng-hide='mailrequest.showdialog'>
 				<label for="email">Message*</label>
 				<input type="text" class="form-control" name="message" ng-model="mail.message" required>
 				<span ng-show="registerForm.message.$invalid && !registerForm.mail.$pristine" class="help-block">You must have a message</span>
 			</div>
 		</div>
-		<div class='part part-lg-h part-lg--h'ng-hide='mail.showdialog'>
+		<div class='part part-lg-h part-lg--h'ng-hide='mailrequest.showdialog'>
 			<div class="form-group" >
 				<label>Captcha*</label>
 				<div re-captcha ng-model="mail.captcha"></div>

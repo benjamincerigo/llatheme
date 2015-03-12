@@ -99,17 +99,23 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 						$scope.model = homepagemodel.getSection('contact');
 						$scope.mail  = {};
 						reCAPTCHA.setPublicKey(re);
-						$scope.mail.errors = {};
+						$scope.mailrequest = {};
+						$scope.mailrequest.showdialog = false;
+						$scope.mailrequest.success = false;
+						$scope.mailrequest.fail = false;
+						$scope.mailrequest.loading = false;
+						$scope.mailrequest.errors = {};
 
 					  $scope.submitMail= function () {
 							var formData;
 							if($scope.registerForm.$valid) {
 								console.log('Form is valid');
-								$scope.mail.returnmessage = 'Your request is being process';
-								$scope.mail.loading = true;
-								$scope.mail.showdialog = true;	
-								$scope.mail.fail = false;
-								$scope.mail.success = false;
+								$scope.mailrequest.returnmessage = 'Your request is being process';
+								$scope.mailrequest.loading = true;
+								$scope.mailrequest.showdialog = true;	
+								$scope.mailrequest.fail = false;
+								$scope.mailrequest.success = false;
+								console.log($scope);
 								formData = (
 										{	action:'lla_simple_mail',
 											nouce:lla_wp.nouce,
@@ -120,7 +126,7 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 										});
 								console.log(formData);
 								//Make Query
-								jQuery.ajax({
+								window.jQuery.ajax({
 									type: 'POST',
 									url: lla_wp.ajax,
 									data: formData,
@@ -128,20 +134,26 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 								}).fail(function(response){
 									console.log('fail');
 									$scope.$apply(function(){
-										$scope.mail.showdialog = true;
-										$scope.mail.loading = false;
-										$scope.mail.fail = true;
+										$scope.mailrequest.showdialog = true;
+										$scope.mailrequest.loading = false;
+										$scope.mailrequest.fail = true;
 										console.log(response);
 										console.log(response.responseJSON.errors);
-										$scope.mail.errors = response.responseJSON.errors;
+										$scope.mailrequest.errors = response.responseJSON.errors;
 									});
 								}).done(function(response){
 									console.log('done');
 									$scope.$apply(function(){
-									$scope.mail.showdialog = true;
-									$scope.mail.loading = false;
-									$scope.mail.returnmessage = response.message;
-									$scope.mail.success = true;
+									$scope.mailrequest.showdialog = true;
+									$scope.mailrequest.loading = false;
+									$scope.mailrequest.returnmessage = response.message;
+									$scope.mailrequest.success = true;
+									$scope.mail.captcha = '';
+									$scope.mail.email = '';
+									$scope.mail.message = '';
+									$scope.mail.name = '';
+									reCAPTCHA.reload();
+									$scope.registerForm.$setPristine();
 									});
 								});
 							}

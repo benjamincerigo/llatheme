@@ -99,12 +99,14 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 						$scope.model = homepagemodel.getSection('contact');
 						$scope.mail  = {};
 						reCAPTCHA.setPublicKey(re);
+						$scope.mail.errors = {};
 
 					  $scope.submitMail= function () {
 							var formData;
 							if($scope.registerForm.$valid) {
 								console.log('Form is valid');
 								$scope.mail.returnmessage = 'Your request is being process';
+								$scope.mail.loading = true;
 								$scope.mail.showdialog = true;	
 								$scope.mail.fail = false;
 								$scope.mail.success = false;
@@ -125,18 +127,22 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 									dataType: 'json'
 								}).fail(function(response){
 									console.log('fail');
-									response = response.responseJSON;
-									console.log(response);
-									$scope.mail.showdialog = true;
-									$scope.mail.fail = true;
-									$scope.mail.returnmessage = response.message;
+									$scope.$apply(function(){
+										$scope.mail.showdialog = true;
+										$scope.mail.loading = false;
+										$scope.mail.fail = true;
+										console.log(response);
+										console.log(response.responseJSON.errors);
+										$scope.mail.errors = response.responseJSON.errors;
+									});
 								}).done(function(response){
 									console.log('done');
-									console.log(response);
-									response = response.responseJSON;
-									$scope.showdialog = true;
+									$scope.$apply(function(){
+									$scope.mail.showdialog = true;
+									$scope.mail.loading = false;
 									$scope.mail.returnmessage = response.message;
-									$scope.success = true;
+									$scope.mail.success = true;
+									});
 								});
 							}
 						}

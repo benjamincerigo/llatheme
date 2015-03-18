@@ -9,7 +9,8 @@ var llaapp = window.angular.module('llaapp', [
 	'llaapp.calender',
 	'llaapp.util',
 	'llaapp.inlineservices',
-	'llaapp.contact'
+	'llaapp.contact',
+	'llaapp.gallery',
 ]);
 llaapp.run([  '$rootScope', '$state', '$stateParams',
 		function ($rootScope, $state, $stateParams ) {
@@ -52,6 +53,29 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 			controller: [ '$scope', 'lla_wp', '$rootScope',  function( $scope , lla_wp, $rootScope){
 				$scope.template_dir = lla_wp.template_dir;
 				$rootScope.homeLoaded = true;
+			}]
+		})
+		.state('gallery', {
+			url: '/gallery/{part}',
+			resolve: {
+				galleryRes: ['galleryPageModel',function(galleryPageModel){
+					return galleryPageModel.promise;
+				}],
+				hi: function(){
+					console.log('resolve');
+					return 'hi';
+				}
+			},
+			onEnter: ['partOb', '$stateParams', '$rootScope' , 'moveOnUrl', 'homepagemodel',function(partOb, $stateParams, $rootScope, moveOnUrl, homepagemodel){
+				var jQ = window.jQuery,
+						section =  $stateParams.section; 
+				console.log('glalery');
+			}],
+			templateUrl: lla_wpProvider.t +  '/inc/html/gallery_page.html',
+			controller: ['$scope',  'hi', 'galleryRes',   function($scope,  hi, galleryRes){
+				console.log(hi);
+				console.log('controller');
+				console.log(galleryRes);
 			}]
 		})
 		.state('homepage.stuff', {

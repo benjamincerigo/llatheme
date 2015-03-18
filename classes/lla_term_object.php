@@ -91,6 +91,8 @@ class lla_term_object
 				break;
 			case 'contact':
 				$this->get_contact();
+			case 'gallery':
+				$this->get_gallery();
 			
 			default:
 				# code...
@@ -250,4 +252,32 @@ class lla_term_object
 			array_push($this->content['contact'], $item);
 		}
 	}
+	private function get_gallery(){
+		$args = array( 'post_type' => 'any',
+							'meta_key' => 'lla_post_order',
+							'orderby' => 'meta_value_num',
+							'order' => 'ASC',
+							'tax_query' => 
+							array(
+								array(
+									'taxonomy' => 'lla_sections',
+									'field' => 'slug',
+									'terms' => $this->t_slug
+									),
+								)
+			);
+			$this_wp_query = new \WP_Query( $args );
+			//echo $this_wp_query->post_count;
+			$this->content['posts'] = array();
+			while ($this_wp_query->have_posts() ) : $this_wp_query->the_post();
+			//$array = array('main' => $this_wp_query->post, 'custom' => get_post_custom($this_wp_query->post->ID));
+			$la = new lla_content();
+			$la->fromWP($this_wp_query->post);
+			$la->fromCus(get_post_custom( $this_wp_query->post->ID ));
+				$this->content['posts'][$la->lla_part_slug] = $la;
+				//var_dump($this_wp_query->the_meta());
+			//var_dump('<br/>');
+			endwhile;
+	}
+
 }

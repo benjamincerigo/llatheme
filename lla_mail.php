@@ -100,36 +100,12 @@ add_action( 'wp_ajax_nopriv_lla_simple_mail', 'lla_mail_recaptcha' );
 
 function lla_get_gallery(){
 	if (isset( $_POST['nouce'] ) && wp_verify_nonce($_POST['nouce'], 'lla_angular' ) ){
-	require_once __DIR__ . '/classes/lla_term_object.php';
-		$args = array( 'post_type' => 'any',
-							'meta_key' => 'lla_post_order',
-							'orderby' => 'meta_value_num',
-							'order' => 'ASC',
-							'tax_query' => 
-							array(
-								array(
-									'taxonomy' => 'lla_sections',
-									'field' => 'slug',
-									'terms' => 'galery'
-									),
-								)
-			);
-			$this_wp_query = new \WP_Query( $args );
-			//echo $this_wp_query->post_count;
-			$content = array();
-			$content['posts'] = array();
-			while ($this_wp_query->have_posts() ) : $this_wp_query->the_post();
-			//$array = array('main' => $this_wp_query->post, 'custom' => get_post_custom($this_wp_query->post->ID));
-			$la = new lla_content();
-			$la->fromWP($this_wp_query->post);
-			$la->fromCus(get_post_custom( $this_wp_query->post->ID ));
-				$content[$la->lla_part_slug] = $la;
-				//var_dump($this_wp_query->the_meta());
-			//var_dump('<br/>');
-			endwhile;
-			
-			http_reponse_cone(200);
-		$return = $content;
+		require_once __DIR__ . '/classes/lla_term_object.php';
+		$parent = isset($_POST['section']) ? $_POST['section']: 'gallery';	
+		($parentTerm = get_term_by('name', $parent, 'lla_sections')) || ($parentTerm =get_term_by('slug', $parent, 'lla_sections'));
+		$model = new \lifelinearts\lla_term_object($parentTerm);	
+		http_response_code(200);
+		$return = $model;
 		die(json_encode($return));
 	} else {
 		http_response_code(403);
@@ -141,4 +117,6 @@ function lla_get_gallery(){
 	}
 
 }	
+add_action( 'wp_ajax_lla_get_gallery', 'lla_get_gallery' );
+add_action( 'wp_ajax_nopriv_lla_get_gallery', 'lla_get_gallery' );
 ?>

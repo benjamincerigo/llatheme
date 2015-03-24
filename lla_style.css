@@ -1,0 +1,399 @@
+/*
+Theme Name: lla
+Theme URI: www.lifelinearts.com
+Author: benjamin.cerigo@gmail.com
+Author URI: benjamin.cerigo.wordpresss.com 
+Description: Horizontial Theme Developed for Lifeline Arts
+Version: 1.0-wpcom
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: lifelinearts
+Domain Path: /languages/
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+
+
+Color Codes 
+Brown Text: #43352f;
+Green Text: #44544e;
+*/
+
+/* Inital css for the index.html for lifeline arts */
+
+/**********************************************************************/
+
+						/* General*/
+		/**********************************************/
+
+* {
+	box-sizing: initial;
+}
+body,h1,h2,h3,h4,p,a, li{
+	font-family: ‘Muli’, ‘Lucida Grande’, sans-serif;
+	font-weight: 300;
+	color: #43352f;
+}
+h1{
+	font-size: 2.5em;
+	color: #44544e;
+}
+h2{
+	font-size: 1.5em;
+}
+
+h2,h3,h4{
+	text-transform: lowercase;
+}
+html{
+	height: 100%;
+}
+body{
+	width: 380%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-y: hidden;
+
+}
+p{
+	font-size: 12px;
+}
+
+a{
+	text-decoration: none;
+	color: #43352f;
+	outline: none;
+}
+
+a:hover, a:focus, a:active{
+
+	-webkit-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	-moz-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	-ms-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	-o-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	color: #765581;
+	text-decoration: none;
+	outline: none;
+}
+
+a:visited{
+	text-decoration: none;
+}
+div:focus, div:active{
+	-webkit-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	-moz-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	-ms-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	-o-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	color: #765581;
+	border: 0;
+	outline: none;
+}
+
+.main{
+	width: 100%;
+	height: inherit;
+}
+
+#container{
+	width: 100%;
+	height: inherit;
+}
+
+/****** util ******/ 
+
+.hidden-full{
+	visibility: hidden;
+	display: none;
+}
+
+.hidden-dis{
+	display: none;
+}
+
+.hidden-vis{
+	visibility: hidden;
+}
+
+.text-center{
+	text-align: center;
+}
+
+/*********************** Animations ****************/
+.animate-enter,
+.animate-leave
+{
+-webkit-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+-moz-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+-ms-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+-o-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+position: relative;
+display: block;
+}
+ 
+.animate-enter.animate-enter-active,
+.animate-leave {
+opacity: 1;
+top: 0;
+height: 30px;
+}
+ 
+.animate-leave.animate-leave-active,
+.animate-enter {
+opacity: 0;
+top: -50px;
+height: 0px;
+}
+
+
+
+
+/****** Sections ******/
+
+.section{
+	margin-top: 0.5%;
+	height: 99.5%;
+	width:25%;
+	position: relative;
+	float:left;
+	
+
+}
+/****** Part ******/
+
+.section .part{
+	padding-top: 3%;
+}
+.part{
+	float:left;
+}
+
+.part-lg-q{
+	width:25%;
+}
+
+.part-lg-h{
+	width:50%;
+}
+
+.part-lg-f{
+	width:100%;
+
+}
+
+.part-lg--h{
+	
+	height: 50%;
+}
+
+.part-spleft{
+	padding-left: 2%;
+}
+.part-mpleft{
+	padding-left: 10%;
+}
+.part-lg--t {
+	height:30%;
+}
+.part-lg--2t{
+	height: 70%
+}
+
+.part-noptop{
+	padding-top:0;
+}
+/************* LIne ******/
+
+.line{
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	height: 100%;
+}
+.line img{
+	position: relative;
+	top: 3%;
+	height: 80%;
+}
+
+
+
+/********    Top Navigation   *******/
+
+.top_nav{
+	position: fixed;
+	width: 100%;
+	text-transform: lowercase;
+	text-align: center;
+}
+.top_nav > div{
+	max-width: 500px;
+	min-width: 200px;
+	margin:0 auto;
+}
+
+.top_nav > div > ul{
+	margin-top: 20px;
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+	padding-left: 0;
+}
+
+.top_nav div > ul > li{
+	display: table-cell;
+	width: auto;
+	text-align: center;	
+	border: 0;
+}
+
+.nav_div {
+	display: inline;
+}
+.navitem{
+	height: 20px;
+	z-index: 100;
+	position: relative;
+}
+
+
+
+
+/********  Line */
+
+
+
+
+/**********************************************************************/
+
+						/* Section 1*/
+		/**********************************************/
+
+.website-title{
+	padding-left: 6%;
+	padding-top: 2%;
+}
+
+.website-title-rel{
+	position: relative;
+	left: 50%;
+	top: 30%;
+}
+
+.quotes-rel{
+	position: relative;
+	right: 60%;
+	top: 30%;
+}
+
+
+
+
+
+
+
+/**********************************************************************/
+
+						/* Section 2*/
+		/**********************************************/
+
+#about_top{
+	width: 100%;
+	
+
+
+}
+
+
+#about_top{
+	vertical-align: top;
+	
+
+}
+
+#about_bottom{
+	width: 100%;
+}
+
+
+/**********************************************************************/
+
+						/* Section 2*/
+		/**********************************************/
+
+
+
+#calender_top{
+	width: 100%;
+	
+}
+
+#calender_top tr td{
+	vertical-align: middle;
+}
+
+#calender_bottom{
+	width: 50%;
+}
+
+#calender_bottom:nth-child(2) td{
+	padding-right: 30px;
+	padding-left: 30px;
+
+}
+
+
+
+
+
+/**********************************************************************/
+
+						/* Section 2*/
+		/**********************************************/
+
+#contact_top{
+	width: 100%;
+	
+}
+.contact-info{
+	position: relative;
+	top: 30%;
+}
+.contact-info li{
+	list-style-type: none;
+	margin-top: 4px;
+}
+
+#recaptcha_table{
+	border: 0 !important;
+}
+form .form-group{
+	width: 80%;
+}
+form  .small-input {
+	width: 80%;
+}
+form .large-input{
+	height: 80%;
+}
+form .large-input > textarea{
+	min-height: 100px;
+}
+form button{
+	position: relative;
+	left: 30%;
+}
+
+.alert {
+	width: 80%;
+	position: relative;
+	top: 30%;
+	padding: 25px !important;
+	border: 0 !important;
+}
+.alert-success{
+	text-align: center;
+}

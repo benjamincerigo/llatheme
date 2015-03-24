@@ -19,8 +19,8 @@ function lla_add_java_scripts(){
 		
   	
   //jquery is automatically loaded as a dependency
-  wp_enqueue_style('bootstrapcss', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css');
-  wp_register_script('bootstrapjs', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js', array('jquery'));
+  wp_enqueue_style('bootstrapcss', $components . '/bootstrap/dist/css/bootstrap.min.css');
+  wp_enqueue_script('bootstrapjs', $components . '/bootstrap/dist/js/bootstrap.min.js', array('jquery'));
   
 	
  /*
@@ -42,6 +42,7 @@ function lla_add_java_scripts(){
 	wp_enqueue_script('angular_recaptcha', $components. '/angular-re-captcha/angular-re-captcha.js',array('angularjs'), null);
 	wp_enqueue_script('restangularjs', $components .'/restangular/dist/restangular.js', array('angularjs', 'underscorejs'),null);
 	wp_enqueue_script('waypoints', $components .'/waypoints/lib/jquery.waypoints.min.js', array('jquery'),null);
+	wp_enqueue_style('lla_style', $template_url . '/lla_style.css', array(), null);
 
 /* 	Not currently Needed
  *  wp_enqueue_script('lla_services',  $template_url . '/js/lla_services.js');

@@ -1,19 +1,5 @@
 window.angular.module('llaapp.util', [
 	'ui.router'])
-/*.provider('observer', ['$rootScoop', '$location', function($rootScope, $location){
-	'use strict';
-	onIt: function(){
-			$rootScope.$on('$routeChangeStart', function(){
-			});
-	} 
-
-	$get: function ( $rootScope, $location){
-		return{
-			method:	this.onIt
-		}
-	}
-
-}])*/
 .provider('partOb', {
 	subscribers: {}, // Hash map of sections and part and function that will be called
 	currentState: {},
@@ -100,5 +86,26 @@ window.angular.module('llaapp.util', [
     }
 		return o;
 	};
+}])
+.directive('scrollable', [function(){
+	'use strict';
+	return {
+		link: function( scope , element , attr){
+			var $ = window.jQuery,
+					nice = 	$(element).niceScroll();
+		
+			if(attr.scrollable === 'x'){
+				// hack foR no veritcal scroll
+				var _super = nice.getContentSize;
+				nice.getContentSize = function() {      
+					var page = _super.call(nice);
+					page.h = nice.win.height();
+					return page;
+				}
+			}
+
+
+		}
+	}
 }])
 ;

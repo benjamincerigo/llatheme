@@ -35,6 +35,7 @@ function lla_add_java_scripts(){
 	
 	wp_enqueue_script('underscorejs', $components.'/underscore/underscore.js');
 	wp_enqueue_script('angularjs', $components.'/angular/angular.js', array('jquery') );
+	wp_enqueue_script('nicescroll', $components.'/nicescroll/jquery.nicescroll.min.js', array('jquery') );
 	
 	wp_enqueue_script('angular_routejs', $components.'/angular-route/angular-route.js', array('angularjs'), null );
 	wp_enqueue_script('angular-ui-routejs', $components.'/angular-ui-router/release/angular-ui-router.js', array('angularjs'), null );

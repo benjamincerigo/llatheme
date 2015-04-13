@@ -1,5 +1,11 @@
 notes
 
+todo_
+- the scroll
+- animation of the paper
+- each sections text color and position
+- see if we can get a picture in the about part.
+
 Query for meta key 
 
 SELECT post_type, post_title, meta_key, meta_value 

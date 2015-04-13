@@ -4,5 +4,6 @@ grunt/
 node_modules/
 *.swp
 *.log
+*.DS_Store
 bower_components
 

@@ -66,7 +66,7 @@ a{
 	outline: none;
 }
 
-a:hover, a:focus, a:active{
+a:hover {
 
 	-webkit-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
 	-moz-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
@@ -77,7 +77,10 @@ a:hover, a:focus, a:active{
 	text-decoration: none;
 	outline: none;
 }
-
+a:focus, a:active{
+	color: #44544e;
+	outline: none;
+}
 a:visited{
 	text-decoration: none;
 }
@@ -120,6 +123,23 @@ div:focus, div:active{
 .text-center{
 	text-align: center;
 }
+/**************************************************** Paper   *********************/
+.paper-effect-background{
+	background-image: url( ./img/paper-white.png);
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+}
+.paper-effect-border{
+	border-style: solid;
+	border-width: 10px;
+	webkit-border-image:url(./img/paper-white.png) 20 20 20 20 repeat;
+	-moz-border-image:url(./img/paper-white.png) 20 20 20 20 repeat;
+	border-image:url(./img/paper-white.png) 20 20 20 20 repeat;
+	padding: 0;
+}
+.paper-inner{
+	background-color: #e9e5e2;
+}
 
 /*********************** Animations ****************/
 .animate-enter,
@@ -154,8 +174,8 @@ height: 0px;
 /****** Sections ******/
 
 .section{
-	margin-top: 0.5%;
-	height: 99.5%;
+	margin-top: 1%;
+	height: 99%;
 	width:25%;
 	position: relative;
 	float:left;
@@ -164,8 +184,8 @@ height: 0px;
 }
 /****** Part ******/
 
-.section .part{
-	padding-top: 3%;
+.section > .part{
+	margin-top: 1%;
 }
 .part{
 	float:left;
@@ -181,12 +201,19 @@ height: 0px;
 
 .part-lg-f{
 	width:100%;
-
+}
+.part-lg-a{
+	width:95%;
 }
 
 .part-lg--h{
-	
 	height: 50%;
+}
+.part-lg--f{
+	height: 100%;
+}
+.part-lg--a{
+	height: 95%;
 }
 
 .part-spleft{
@@ -397,3 +424,6 @@ form button{
 .alert-success{
 	text-align: center;
 }
+
+
+

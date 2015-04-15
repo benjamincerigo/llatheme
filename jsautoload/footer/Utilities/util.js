@@ -92,7 +92,17 @@ window.angular.module('llaapp.util', [
 	return {
 		link: function( scope , element , attr){
 			var $ = window.jQuery,
-					nice = 	$(element).niceScroll();
+					op = {},
+					nice;
+
+			op.cursorcolor = '#765581';
+			op.cursorborder = '0';
+			if(attr.scrollable === 'x'){
+				op.cursorwidth = '8px';
+				op.autohidemode = 'false';
+				op.railpadding = '{top:0;bottom:5px;}';
+			}
+			nice = 	$(element).niceScroll(op);
 		
 			if(attr.scrollable === 'x'){
 				// hack foR no veritcal scroll
@@ -101,11 +111,14 @@ window.angular.module('llaapp.util', [
 					var page = _super.call(nice);
 					page.h = nice.win.height();
 					return page;
-				}
+				};
 			}
+			$(nice.id).attr('style', '').addClass('customVertical');
+			$(nice.id + '-hr').attr('style', '').addClass('customHorizontal');	
 
-
+			console.log(nice);
+			console.log($(element).getNiceScroll());
 		}
-	}
+	};
 }])
 ;

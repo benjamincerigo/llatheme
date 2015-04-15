@@ -32,10 +32,12 @@ function lla_add_java_scripts(){
 	wp_enqueue_script('angular_resourcejs', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular-resource.min.js',array('angularjs'), '1.3.0', false);
 	wp_enqueue_script('restangularjs', 'http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.min.js', array('angularjs', 'underscorejs'),'1.3.1', false);
   */
-	
-	wp_enqueue_script('underscorejs', $components.'/underscore/underscore.js');
+	wp_deregister_script('jquery');
+	wp_register_script('jquery', $components.'/jquery/dist/jquery.js');
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('underscorejs', $components.'/underscory/underscore.js');
 	wp_enqueue_script('angularjs', $components.'/angular/angular.js', array('jquery') );
-	wp_enqueue_script('nicescroll', $components.'/nicescroll/jquery.nicescroll.min.js', array('jquery') );
+	wp_enqueue_script('nicescroll', $components.'/nicescroll/jquery.nicescroll.js', array('jquery') );
 	
 	wp_enqueue_script('angular_routejs', $components.'/angular-route/angular-route.js', array('angularjs'), null );
 	wp_enqueue_script('angular-ui-routejs', $components.'/angular-ui-router/release/angular-ui-router.js', array('angularjs'), null );

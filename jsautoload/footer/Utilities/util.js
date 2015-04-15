@@ -98,9 +98,9 @@ window.angular.module('llaapp.util', [
 			op.cursorcolor = '#765581';
 			op.cursorborder = '0';
 			if(attr.scrollable === 'x'){
-				op.cursorwidth = '8px';
+				op.cursorwidth = '4px';
+				//op.cursorminheight = '20px';
 				op.autohidemode = 'false';
-				op.railpadding = '{top:0;bottom:5px;}';
 			}
 			nice = 	$(element).niceScroll(op);
 		
@@ -112,12 +112,11 @@ window.angular.module('llaapp.util', [
 					page.h = nice.win.height();
 					return page;
 				};
-			}
-			$(nice.id).attr('style', '').addClass('customVertical');
-			$(nice.id + '-hr').attr('style', '').addClass('customHorizontal');	
+				nice.railh.addClass('lla_scrollbar_hr');
+				nice.railh.removeAttr('style');
 
-			console.log(nice);
-			console.log($(element).getNiceScroll());
+			}
+
 		}
 	};
 }])

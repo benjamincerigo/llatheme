@@ -425,5 +425,15 @@ form button{
 	text-align: center;
 }
 
-
+.lla_scrollbar_hr{
+	position: fixed;
+	height: 8px;
+	z-index:auto;
+	width: 100%;
+	left:0;
+	right: 0;
+	height: 3px;
+	border-radius: 5px;
+	bottom: 5px;
+}
 

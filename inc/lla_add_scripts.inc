@@ -46,6 +46,7 @@ function lla_add_java_scripts(){
 	wp_enqueue_script('restangularjs', $components .'/restangular/dist/restangular.js', array('angularjs', 'underscorejs'),null);
 	wp_enqueue_script('waypoints', $components .'/waypoints/lib/jquery.waypoints.min.js', array('jquery'),null);
 	wp_enqueue_style('lla_style', $template_url . '/lla_style.css', array(), null);
+	wp_enqueue_style('aminmations', $template_url . '/css/animate.css/animate.css', array(), null);
 
 /* 	Not currently Needed
  *  wp_enqueue_script('lla_services',  $template_url . '/js/lla_services.js');

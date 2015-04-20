@@ -1,16 +1,20 @@
 <!-- About top -->
-<div class = 'part part-lg-a part-lg--h paper-effect-border' ng-show="model.content.main.selectedbool">
-	<div class='part part-lg-h part-lg--f paper-inner' >
-		<a ng-href='#/about/~' n>
-			<h3>{{model.content.main.post_title}}</h3>
-		</a>
+<div class = 'part part-lg-a part-lg--h paper-effect-border stretchRight' ng-show="model.content.main.selectedbool">
+	<div class='part part-lg-h part-lg--f paper-inner ' ng-show="model.content.main.selectedbool">
+		<span class='animated fadeIn'>
+			<a ng-href='#/about/~' n>
+				<h3>{{model.content.main.post_title}}</h3>
+			</a>
+		</span>
 	</div>
 
-	<div scrollable class='part part-lg-h part-lg--f paper-inner' >
-		<p>{{model.content.main.post_content}}</p>
+	<div scrollable class='part part-lg-h part-lg--f paper-inner ' ng-show="model.content.main.selectedbool">
+		<span class='animated fadeIn'>
+			{{model.content.main.post_content}}
+		</span>
 	</div>
 </div>
-<div class='part part-lg-h part-lg--h' ng-hide="post.selectedbool" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" > 
+<div class='part part-top-padding part-lg-h part-lg--h' ng-hide="post.selectedbool" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" > 
 	<a ng-href='#/about/{{post.lla_part_slug}}'> 
 		<h3>{{post.post_title}}</h3>
 	</a>

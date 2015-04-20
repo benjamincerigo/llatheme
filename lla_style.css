@@ -123,14 +123,6 @@ a:visited{
 	width: 100%;
 	height: inherit;
 }
-/***** Animate ***/
-.slow_trans{
-	-webkit-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
-	-moz-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
-	-ms-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
-	-o-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
-	transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
-}
 
 /****** util ******/ 
 
@@ -216,6 +208,10 @@ height: 0px;
 }
 .part{
 	float:left;
+}
+
+.part-top-padding{
+	padding-top: 4%;
 }
 
 .part-lg-q{
@@ -464,3 +460,42 @@ form button{
 	bottom: 5px;
 }
 
+/***** Animate ***/
+.slow_trans{
+	-webkit-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	-moz-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	-ms-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	-o-transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+	transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+}
+
+.stretchRight{
+	animation-name: stretchRight;
+	-webkit-animation-name: stretchRight;	
+
+	animation-duration: 1s;	
+	-webkit-animation-duration: 1s;
+
+
+	transform-origin: 0% 0%;
+	-ms-transform-origin: 0% 0%;
+	-webkit-transform-origin: 0% 0%; 		
+}
+
+@keyframes stretchRight {
+	0% {
+		transform: scaleX(0.2);
+	}
+	100% {
+		transform: scaleX(1);
+	}							
+}
+
+@-webkit-keyframes stretchRight {
+	0% {
+		-webkit-transform: scaleX(0.2);
+	}
+	100% {
+		-webkit-transform: scaleX(1);
+	}		
+}

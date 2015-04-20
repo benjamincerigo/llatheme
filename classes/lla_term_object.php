@@ -182,8 +182,12 @@ class lla_term_object
 			$la = new lla_content();
 			$la->fromWP($this_wp_query->post);
 			$la->fromCus(get_post_custom( $this_wp_query->post->ID ));
-				$this->content['posts'][$la->lla_part_slug] = $la;
-				//var_dump($this_wp_query->the_meta());
+			$this->content['posts'][$la->lla_part_slug] = $la;
+			if( has_post_thumbnail() ){
+				$url = wp_get_attachment_url( get_post_thumbnail_id($this_wp_query->post->ID) );
+				$la->thumbnailset = true;
+				$la->thumbnail = $url;
+			}
 			//var_dump('<br/>');
 			endwhile;
 	}

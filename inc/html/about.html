@@ -1,10 +1,11 @@
 <!-- About top -->
-<div class = 'part part-lg-a part-lg--h paper-effect-border stretchRight' ng-show="model.content.main.selectedbool">
-	<div class='part part-lg-h part-lg--f paper-inner ' ng-show="model.content.main.selectedbool">
+<div class = 'part part-lg-a part-lg--h paper-effect-border animate stretchRight' ng-show="model.content.main.selectedbool">
+	<div class='part part-lg-h part-lg--f paper-inner text-center' ng-show="model.content.main.selectedbool">
 		<span class='animated fadeIn'>
 			<a ng-href='#/about/~' n>
 				<h3>{{model.content.main.post_title}}</h3>
 			</a>
+			<img ng-src="{{model.content.main.thumbnail}}" ng-show="{{model.content.main.thumbnailset}}" />	
 		</span>
 	</div>
 
@@ -15,7 +16,12 @@
 	</div>
 </div>
 <div class='part part-top-padding part-lg-h part-lg--h' ng-hide="post.selectedbool" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" > 
-	<a ng-href='#/about/{{post.lla_part_slug}}'> 
-		<h3>{{post.post_title}}</h3>
+	<a class='image-hover' ng-href='#/about/{{post.lla_part_slug}}'> 
+		<div class='overlay'>
+			<h3>{{post.post_title}}</h3>
+			<div class='slow_trans hover-image'>
+				<img ng-src="{{post.thumbnail}}" ng-show="{{post.thumbnailset}}" />	
+			</div>
+		</div>
 	</a>
 </div>

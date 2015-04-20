@@ -32,7 +32,7 @@ orange
 	box-sizing: initial;
 }
 body,h1,h2,h3,h4,p,a, li{
-	font-family: ‘Muli’, ‘Lucida Grande’, sans-serif;
+	font-family: 'Muli', 'Lucida Grande', sans-serif;
 	font-weight: 300;
 	color: #54372A;
 }
@@ -141,6 +141,24 @@ a:visited{
 
 .text-center{
 	text-align: center;
+}
+
+a.image-hover :hover .hover-image{
+	opacity: 0.4;
+}
+
+.hover-image{
+	opacity: 0;
+	width: 100%;
+	position: absolute;
+	top: -10%;
+	left: -10%;
+	z-index: -1;
+}
+.overlay {
+	position: relative;
+	display: block;
+	height: 100%;
 }
 /**************************************************** Paper   *********************/
 .paper-effect-background{
@@ -254,6 +272,11 @@ height: 0px;
 
 .part-noptop{
 	padding-top:0;
+}
+
+.part img{
+	width: 60%;
+	opacity: 0.9;
 }
 /************* LIne ******/
 
@@ -457,8 +480,9 @@ form button{
 	right: 0;
 	height: 3px;
 	border-radius: 5px;
-	bottom: 5px;
+	bottom: 7px;
 }
+
 
 /***** Animate ***/
 .slow_trans{
@@ -498,4 +522,7 @@ form button{
 	100% {
 		-webkit-transform: scaleX(1);
 	}		
+}
+.hover-image > img{
+	width: 80%;
 }

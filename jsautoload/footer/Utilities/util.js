@@ -10,6 +10,7 @@ window.angular.module('llaapp.util', [
 				sub,
 				fun;
 		this.currentState = $stateParams;
+		console.log(this);
 		if(part === false){
 			return null;
 		}
@@ -21,6 +22,7 @@ window.angular.module('llaapp.util', [
 		if(fun === false){
 			return null;
 		}
+		console.log(fun);
 		fun.callback();
 	},
 	search: function(o, find){

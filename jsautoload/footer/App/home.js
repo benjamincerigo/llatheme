@@ -115,8 +115,9 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			}
 			c.content.main.selectedbool = false;
 			this.deselectAll(c.content.events);
-			c.content.main.selectedbool = true;
+			console.log(c.content.events);
 			c.content.main = s;
+			c.content.main.selectedbool = true;
 		}
 	};
 	this.deselectAll = function(ob){

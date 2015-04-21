@@ -1,4 +1,4 @@
-<div class='part part-top-padding part-lg-h part-lg--h' > 
+<div class='part part-top-padding part-lg-h part-lg--h' ng-hide='model.fullbool' > 
 	<!-- Viewed event -->
 	<h3>{{model.content.main.post_title}}</h3>
 	<ul>
@@ -8,16 +8,28 @@
 		<li>{{model.content.main.address_value}}</li>
 	</ul>
 </div>
-<div class='part part-top-padding part-lg-h part-lg--h'>
-	<p>{{model.content.main.post_content}}</p>
+<div class='part part-top-padding part-lg-h part-lg--h'ng-hide='model.fullbool' >
+	<p>{{model.content.main.event_desc_value}}</p>
+	<a ng-href="#/calender/{{model.content.main.lla_part_slug}}/full">Read More</a>
 </div>
 
-<div class='part part-top-padding part-lg-q part-lg--h' ng-hide='anevent.selectedbool' ng-repeat='anevent in model.content.events' >
+<div class='part part-top-padding part-lg-q part-lg--h' ng-hide='model.fullbool' ng-repeat='anevent in model.content.events' >
 	<a ng-href='#/calender/{{anevent.lla_part_slug}}'> 
 	<h3>{{anevent.post_title}}</h3>
 	<p>{{anevent.date_value}}</p>
 </div>
 
+<div class='part part-top-padding part-lg-f part-lg--f'ng-show='model.fullbool' >
+	<a ng-href="#/calender/{{model.content.main.lla_part_slug}}">Close</a>
+	<h3>{{model.content.main.post_title}}</h3>
+	<ul>
+		<li>{{model.content.main.date_value}}</li>
+		<li>{{model.content.main.start_time_value}}</li>
+		<li>{{model.content.main.end_time_value}}</li>
+		<li>{{model.content.main.address_value}}</li>
+	</ul>
+	<p>{{model.content.main.post_content}}</p>
+</div>
 
 
 

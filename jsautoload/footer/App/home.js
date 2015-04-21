@@ -38,6 +38,7 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 		var m = this.model.content.Calender,
 			k = Object.keys(m.content.events)[0] ,
 			i = m.content.events[k];
+		m.fullbool = false;
 		this.deselectAll(m.content.events);
 		m.content.main = i;
 		i.selectedbool = true;
@@ -72,23 +73,24 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 	};
 	this.processState = function($stateParams){
 		var s = this.lla_search($stateParams, 'section'),
-			p = this.lla_search($stateParams, 'part');
+			p = this.lla_search($stateParams, 'part'),
+			f = this.lla_search($stateParams, 'extra');
 
 		if( p === false){
 			return null;
 		}
 		switch(s){
 			case 'about':
-				this.aboutState(this.getSection('about'), p);
+				this.aboutState(this.getSection('about'), p, f);
 				break;
 			case 'calender':
-				this.calenderState(this.getSection('calender'), p);
+				this.calenderState(this.getSection('calender'), p, f);
 				break;
 			default:
 				return null;
 		}
 	};
-	this.aboutState = function(a,p){
+	this.aboutState = function(a,p,f){
 		var s;
 		if( p === '~' ){
 			this.initAbout();
@@ -104,11 +106,15 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			a.content.main.selectedbool = true;
 		}
 	};
-	this.calenderState = function(c,p){
+	this.calenderState = function(c,p,f){
 		var s;
+		console.log(f);
 		if( p === '~' ){
 			this.initCalender();
+		}else if(f === 'full'){
+			c.fullbool = true;
 		}else{
+			c.fullbool = false;
 			s = this.lla_search(c.content.events, p);
 			if(s === false){
 				return null;

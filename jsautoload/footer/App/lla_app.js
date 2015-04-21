@@ -124,5 +124,12 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 				}
 			},
 			
+		})
+		.state('homepage.stuff.extra', {
+			url: '/{extra}',
+			onEnter: ['partOb', '$stateParams', '$rootScope' , 'moveOnUrl', 'homepagemodel',function(partOb, $stateParams, $rootScope, moveOnUrl, homepagemodel){
+				var jQ = window.jQuery;
+				homepagemodel.state($stateParams);
+			}],
 		});
 }]);

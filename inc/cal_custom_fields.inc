@@ -58,7 +58,13 @@ $cal_meta = array(
             'desc' => 'Slug of the event',
             'id' => $prefix . '_part_slug',
             'type' => 'text',
-        )
+		),
+        array(
+            'name' => 'Short Description',
+            'desc' => 'Shot descibtion that will be shown',
+            'id' => $prefix . '_event_desc',
+            'type' => 'textarea',
+        ),
     )
 );
 

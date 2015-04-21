@@ -198,18 +198,21 @@ class lla_term_object
 		global $wpdb;
 		//Make the query for the ordered lla_calender post types
 		$cal_content = $wpdb->get_results( $wpdb->prepare(  "SELECT 
+					ID,
 					post_title, 
 					post_content,
 					event_date.meta_value AS date_value, 
 					start_time.meta_value AS start_time_value,
 					end_time.meta_value AS end_time_value, 
 					address.meta_value AS address_value,
+					event_desc.meta_value AS event_desc_value,
 					lla_part_slug.meta_value AS lla_part_slug
 					FROM wp_posts 
 					LEFT JOIN wp_postmeta event_date ON wp_posts.ID = event_date.post_id AND event_date.meta_key = 'lla_date'
 					LEFT JOIN wp_postmeta start_time ON wp_posts.ID = start_time.post_id AND start_time.meta_key = 'lla_start_time'
 					LEFT JOIN wp_postmeta end_time ON wp_posts.ID = end_time.post_id AND end_time.meta_key = 'lla_end_time'
 					LEFT JOIN wp_postmeta address ON wp_posts.ID = address.post_id AND address.meta_key = 'lla_address'
+					LEFT JOIN wp_postmeta event_desc ON wp_posts.ID = event_desc.post_id AND event_desc.meta_key = 'lla_event_desc' 
 					LEFT JOIN wp_postmeta lla_part_slug  ON wp_posts.ID = lla_part_slug.post_id AND lla_part_slug.meta_key = 'lla_part_slug'
 					WHERE wp_posts.post_type = 'lla_calender'
 					AND wp_posts.post_status = 'publish'
@@ -230,6 +233,12 @@ class lla_term_object
 					$cal_content[$i]->lla_part_slug = $slug;
 				}
 				$this->content['events'][$slug] = $cal_content[$i];
+				$id = $cal_content[$i]->ID;
+				if( has_post_thumbnail($id) ){
+					$url = wp_get_attachment_url( get_post_thumbnail_id( $id ) );
+					$cal_content[$i]->thumbnailset = true;
+					$cal_content[$i]->thumbnail = $url;
+				}
 			}
 		}
 	}

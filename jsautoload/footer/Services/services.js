@@ -45,7 +45,7 @@ angular.module('llaapp.services', [
 			section = 'home';
 		}
 		offset = jQ('#'+ section).offset().left - 50; 
-		jQ('html').animate({scrollLeft: offset}, 800);
+		jQ('body').animate({scrollLeft: offset}, 800);
 		partOb.update( $stateParams );
 	};
 	return {

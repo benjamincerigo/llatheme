@@ -108,7 +108,6 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 	};
 	this.calenderState = function(c,p,f){
 		var s;
-		console.log(c);
 		if( p === '~' ){
 			this.initCalender();
 		}else if(f === 'full'){
@@ -121,9 +120,8 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			}
 			c.content.main.selectedbool = false;
 			this.deselectAll(c.content.events);
-			console.log(c.content.events);
+			s.selectedbool = true;
 			c.content.main = s;
-			c.content.main.selectedbool = true;
 		}
 	};
 	this.deselectAll = function(ob){

@@ -45,19 +45,20 @@ window.angular.module('llaapp.contact', [
 								$scope.mailrequest.loading = false;
 								$scope.mailrequest.fail = true;
 								$scope.mailrequest.errors = response.responseJSON.errors;
+								reCAPTCHA.reload();
 							});
 						}).done(function(response){
 							$scope.$apply(function(){
-							$scope.mailrequest.showdialog = true;
-							$scope.mailrequest.loading = false;
-							$scope.mailrequest.returnmessage = response.message;
-							$scope.mailrequest.success = true;
-							$scope.mail.captcha = '';
-							$scope.mail.email = '';
-							$scope.mail.message = '';
-							$scope.mail.name = '';
-							reCAPTCHA.reload();
-							$scope.registerForm.$setPristine();
+								$scope.mailrequest.showdialog = true;
+								$scope.mailrequest.loading = false;
+								$scope.mailrequest.returnmessage = response.message;
+								$scope.mailrequest.success = true;
+								$scope.mail.captcha = '';
+								$scope.mail.email = '';
+								$scope.mail.message = '';
+								$scope.mail.name = '';
+								reCAPTCHA.reload();
+								$scope.registerForm.$setPristine();
 							});
 						});
 					}

@@ -42,20 +42,20 @@ include('classes/Model.php');
 
 /* -------------------- File for the Contact form and mail. -------------- */
 function lla_doReCaptcha(){
-	return false;
+	return true;
 }
 
 function lla_getReCaptcha(){
+	include_once('classes/recaptcha-php-1.11/recaptchalib.php');
 	// Register API keys at https://www.google.com/recaptcha/admin
-	$secret = "6LdTMgMTAAAAAA2KVZjsYG-09SN9ER1IeGH-3AeB";
+	$privatekey = "6LdTMgMTAAAAAA2KVZjsYG-09SN9ER1IeGH-3AeB";
 	// reCAPTCHA supported 40+ languages listed here: https://developers.google.com/recaptcha/docs/language
 	$lang = "en";
 	// The response from reCAPTCHA
 	$resp = null;
 	// The error code from reCAPTCHA, if any
 	$error = null;
-	$reCaptcha = new ReCaptcha($secret);
-	return $reCaptcha;
+	return $privatekey;
 }
 function lla_getSiteKey(){
 	$sitekey = '6LdTMgMTAAAAAKSmTiiU9Q1xJ26U_PyfYFzzIIBH';

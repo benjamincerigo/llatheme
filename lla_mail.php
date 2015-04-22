@@ -16,16 +16,19 @@ function lla_mail_recaptcha(){
 		$email = filter_var(trim($_POST["lla_contact_email"]), FILTER_SANITIZE_EMAIL);
 		$message = wp_kses_data(trim($_POST["lla_contact_message"]));
 		$toCap = lla_doReCaptcha();
-		$reCaptcha = lla_getReCaptcha();
-		if ( $toCap &&  $_POST["g-recaptcha-response"]) {
-			$resp = $reCaptcha->verifyResponse(
-        $_SERVER["REMOTE_ADDR"],
-					$_POST["g-recaptcha-response"]
-			);
+		$privatekey = lla_getReCaptcha();
+		if ( $toCap &&  isset($_POST["g-recaptcha-response"]) && isset($_POST["g-recaptcha-response"]['challenge']) && isset($_POST["g-recaptcha-response"]['response']) ) {
+			$recap = $_POST["g-recaptcha-response"];
+
+			$resp = recaptcha_check_answer ($privatekey,
+                                        $_SERVER["REMOTE_ADDR"],
+                                        $recap["challenge"],
+                                        $recap["response"]);
 		}
-		if($toCap && !$resp->success){
-			$r = array('error' => 2, 'message'=> 'You did not give you right value you the Captcha'); 
-			die(json_encode($r));
+        if ($toCap && (!isset( $resp ) || !$resp->is_valid)) {
+			$e = (isset($resp)) ? $resp->error : 'not exist';
+			array_push($errors, array('name'=>'captcha_error',
+			'message'=> 'You did not give the right value for the Captcha', 'rep'=> $e)); 
 		}
 		if (strlen($name) < 3) {
 			// name too short, add error
@@ -64,7 +67,7 @@ function lla_mail_recaptcha(){
 			// Build the email headers.
 			$email_headers = "From: $name <$email> \r\nReply-To: {$email}\r\nContent-type: text/html; charset=ISO-8859-1\r\nMIME-Version: 1.0";
 			// Send the email.
-			if (mail($recipient, $subject, $email_content, $email_headers)) {
+			if (wp_mail($email, $subject, $email_content, $email_headers)) {
 				// Set a 200 (okay) response code.
 				http_response_code(200);
 				$return = array('error' => 0, 'message' => 'Your Message was sent. Thankyou, we will reply shortly.');
@@ -80,7 +83,7 @@ function lla_mail_recaptcha(){
 		} else {
 				//Errors found
 				//Bad$return request
-				 http_response_code(400);
+			 http_response_code(400);
 			$return = array('error' => count($errors), 'errors' => $errors);
 				die(json_encode($return));
 		}

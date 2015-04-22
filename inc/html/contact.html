@@ -12,15 +12,15 @@
 	<!-- contact form -->
 		<div class='part part-top-padding part-lg-f part-lg--2t'ng-show="mailrequest.showdialog">
 			<div class="alert alert-info" ng-show='mailrequest.loading'>
-					<button type="button" class="close" ng-click="mailrequest.showdialog=false" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<button type="button" class="close" ng-click="mailrequest.showdialog=false" aria-hidden="true">&times;</button>
 					<strong>Your Request is being Processed...</strong>
 			</div>
 			<div class="alert alert-success" ng-show='mailrequest.success'>
-					<button type="button" class="close" ng-click="mailrequest.showdialog=false" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<button type="button" class="close" ng-click="mailrequest.showdialog=false" aria-hidden="true">&times;</button>
 					<strong>{{mailrequest.returnmessage}}</strong>
 			</div>
 			<div class="alert alert-danger" ng-show='mailrequest.fail'>
-					<button type="button" class="close" ng-click="mailrequest.showdialog=false" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<button type="button" class="close" ng-click="mailrequest.showdialog=false" aria-hidden="true">&times;</button>
 					<p>Sorry there was a problem</p>
 					<ul>
 						<li ng-repeat='error in mailrequest.errors'>

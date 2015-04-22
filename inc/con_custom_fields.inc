@@ -66,7 +66,7 @@ function lla_con_add_box() {
     global $con_meta, $post;
 
     // Use nonce for verification
-    echo '<input type="hidden" name="lla_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
+    echo '<input type="hidden" name="lla_con_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
 
     echo '<table class="form-table">';
 
@@ -112,7 +112,7 @@ function lla_con_save_data($post_id) {
     global $con_meta;
 
     // verify nonce
-    if (!wp_verify_nonce($_POST['lla_meta_box_nonce'], basename(__FILE__))) {
+    if (!isset($_POST['lla_con_meta_box_nonce']) ||  !wp_verify_nonce($_POST['lla_con_meta_box_nonce'], basename(__FILE__))) {
         return $post_id;
     }
 

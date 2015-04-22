@@ -13,7 +13,7 @@
 */
 
 $hc_meta = array(
-    'id' => 'lla_meta_box',
+    'id' => 'lla_hc_meta_box',
     'title' => 'Custom meta box',
     'page' => 'lla_home_content',
     'context' => 'normal',
@@ -48,7 +48,7 @@ function lla_hc_add_box() {
     global $hc_meta, $post;
 
     // Use nonce for verification
-    echo '<input type="hidden" name="lla_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
+    echo '<input type="hidden" name="lla_hc_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
 
     echo '<table class="form-table">';
 
@@ -92,7 +92,7 @@ function lla_hc_save_data($post_id) {
     global $hc_meta;
 
     // verify nonce
-    if (!wp_verify_nonce($_POST['lla_meta_box_nonce'], basename(__FILE__))) {
+    if ( !isset($_POST['lla_hc_meta_box_nouce']) || !wp_verify_nonce($_POST['lla_hc_meta_box_nonce'], basename(__FILE__))) {
         return $post_id;
     }
 

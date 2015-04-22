@@ -266,7 +266,7 @@ class lla_term_object
 		}
 	}
 	private function get_gallery(){
-		$args = array( 'post_type' => 'any',
+		$args = array( 'post_type' => 'lla_home_content',
 							'meta_key' => 'lla_post_order',
 							'orderby' => 'meta_value_num',
 							'order' => 'ASC',
@@ -280,16 +280,18 @@ class lla_term_object
 								)
 			);
 			$this_wp_query = new \WP_Query( $args );
-			//echo $this_wp_query->post_count;
 			$this->content['posts'] = array();
 			while ($this_wp_query->have_posts() ) : $this_wp_query->the_post();
-			//$array = array('main' => $this_wp_query->post, 'custom' => get_post_custom($this_wp_query->post->ID));
-			$la = new lla_content();
-			$la->fromWP($this_wp_query->post);
-			$la->fromCus(get_post_custom( $this_wp_query->post->ID ));
+				$array = array('main' => $this_wp_query->post, 'custom' => get_post_custom($this_wp_query->post->ID));
+				$la = new lla_content();
+				$la->fromWP($this_wp_query->post);
+				$la->fromCus(get_post_custom( $this_wp_query->post->ID ));
 				$this->content['posts'][$la->lla_part_slug] = $la;
-				//var_dump($this_wp_query->the_meta());
-			//var_dump('<br/>');
+			if( has_post_thumbnail() ){
+				$url = wp_get_attachment_url( get_post_thumbnail_id($this_wp_query->post->ID) );
+				$la->thumbnailset = true;
+				$la->thumbnail = $url;
+			}
 			endwhile;
 	}
 

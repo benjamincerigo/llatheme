@@ -61,10 +61,6 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 				galleryRes: ['galleryPageModel',function(galleryPageModel){
 					return galleryPageModel.promise;
 				}],
-				hi: function(){
-					console.log('resolve');
-					return 'hi';
-				}
 			},
 			onEnter: ['partOb', '$stateParams', '$rootScope' , 'moveOnUrl', 'homepagemodel',function(partOb, $stateParams, $rootScope, moveOnUrl, homepagemodel){
 				var jQ = window.jQuery,
@@ -72,10 +68,10 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 				console.log('glalery');
 			}],
 			templateUrl: lla_wpProvider.t +  '/inc/html/gallery_page.html',
-			controller: ['$scope',  'hi', 'galleryRes',   function($scope,  hi, galleryRes){
-				console.log(hi);
-				console.log('controller');
+			controller: ['$scope',   'galleryRes',   function($scope,   galleryRes){
 				console.log(galleryRes);
+				$scope.model = galleryRes.getSection('main');
+				console.log($scope);
 			}]
 		})
 		.state('homepage.stuff', {

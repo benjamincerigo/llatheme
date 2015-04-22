@@ -1,3 +1,13 @@
-<div>
-<p> Hello</p>
+<div  class='section gallery' >
+	<div class='part part-top-padding part-lg-h part-lg--h' ng-hide="post.selectedbool" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" > 
+		
+		<a class='image-hover' ng-href='#/about/{{post.lla_part_slug}}'> 
+			<div class='overlay'>
+				<img ng-src="{{post.thumbnail}}" ng-show="{{post.thumbnailset}}" />	
+				<div class='inner-text'>
+					<h3>{{post.post_title}}</h3>
+				</div>
+			</div>
+		</a>
+	</div>
 </div>

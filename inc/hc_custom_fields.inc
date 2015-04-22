@@ -27,7 +27,7 @@ $hc_meta = array(
 				),
 				array(
 					'name' => 'In Section Order',
-					'desc' => '0 will be first in the section',
+					'desc' => '1 will be first in the section, dont use 0',
 					'id' => $prefix . '_post_order',
 					'type' => 'number'	
 				)
@@ -92,7 +92,7 @@ function lla_hc_save_data($post_id) {
     global $hc_meta;
 
     // verify nonce
-    if ( !isset($_POST['lla_hc_meta_box_nouce']) || !wp_verify_nonce($_POST['lla_hc_meta_box_nonce'], basename(__FILE__))) {
+    if ( !isset($_POST['lla_hc_meta_box_nonce']) || !wp_verify_nonce($_POST['lla_hc_meta_box_nonce'], basename(__FILE__))) {
         return $post_id;
     }
 

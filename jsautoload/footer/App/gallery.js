@@ -6,10 +6,37 @@ window.angular.module('llaapp.gallery', [
 	this.hi = function(){
 		return 'hi';
 	};
+	this.getSection = function(section){
+		var r;
+		switch(section){
+			default:
+				r = this.model;
+				break;
+		}
+		console.log(r);
+		return r;
+	};
+	this.processState = function($statParams){
+		var s = this.lla_search($stateParams, 'gallery'),
+			p = this.lla_search($stateParams, 'part'),
+			a = this.model;
+
+			s = this.lla_search(a.content.posts, p);
+			s.selectedBool = true;
+	};
+	this.lla_search = function(o, find){
+		if(o.hasOwnProperty(find)){
+			return o[find];	
+		}else{
+			return false;
+		}
+	};
 	this.$get = ['$q',function ($q){
 		var deferred = $q.defer(),
 			r = {
-				hi: this.hi,
+				getSection: this.getSection,
+				processState: this.processState,
+				lla_search: this.lla_search,
 			}, 
 			getData;
 

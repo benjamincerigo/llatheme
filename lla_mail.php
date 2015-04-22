@@ -9,8 +9,8 @@
 */
 
 function lla_mail_recaptcha(){
+	$errors = array();
 	if (isset( $_POST['nouce'] ) && wp_verify_nonce($_POST['nouce'], 'lla_angular' ) ){
-		$errors = array();
 		$name = strip_tags(trim($_POST["lla_contact_name"]));
 		$name = str_replace(array("\r","\n", "%0A", "%4O"),array(" "," ", " ", " "),$name);
 		$email = filter_var(trim($_POST["lla_contact_email"]), FILTER_SANITIZE_EMAIL);

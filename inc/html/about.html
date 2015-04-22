@@ -1,8 +1,8 @@
 <!-- About top -->
-<div class = 'part part-lg-a part-lg--h paper-effect-border animate stretchRight' ng-show="model.content.main.selectedbool">
+<div class = 'part part-lg-a part-lg--h paper-effect-border animated stretchRight' ng-show="model.content.main.selectedbool" llaanimateon="{{model.content.main.animate}}" llaanimate='stretchRight,fadeOut'>
 	<div class='part part-lg-h part-lg--f paper-inner text-center' ng-show="model.content.main.selectedbool">
-		<span class='animated fadeIn'>
-			<a ng-href='#/about/~' n>
+		<span class='animated fadeIn' llaanimateon="{{model.content.main.animate}}" llaanimate='fadeIn,fadeOut'>
+			<a ng-href='#/about/~' >
 				<h3>{{model.content.main.post_title}}</h3>
 			</a>
 			<img ng-src="{{model.content.main.thumbnail}}" ng-show="{{model.content.main.thumbnailset}}" />	
@@ -10,7 +10,7 @@
 	</div>
 
 	<div scrollable class='part part-lg-h part-lg--f paper-inner ' ng-show="model.content.main.selectedbool">
-		<span class='animated fadeIn'>
+		<span class='animated fadeIn' llaanimateon="{{model.content.main.animate}}" llaanimate llaanimatein='fadeIn' llaanimateout='fadeOut'>
 			{{model.content.main.post_content}}
 		</span>
 	</div>

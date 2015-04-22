@@ -108,7 +108,7 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 	};
 	this.calenderState = function(c,p,f){
 		var s;
-		console.log(f);
+		console.log(c);
 		if( p === '~' ){
 			this.initCalender();
 		}else if(f === 'full'){

@@ -10,7 +10,6 @@ window.angular.module('llaapp.util', [
 				sub,
 				fun;
 		this.currentState = $stateParams;
-		console.log(this);
 		if(part === false){
 			return null;
 		}
@@ -22,7 +21,6 @@ window.angular.module('llaapp.util', [
 		if(fun === false){
 			return null;
 		}
-		console.log(fun);
 		fun.callback();
 	},
 	search: function(o, find){
@@ -118,7 +116,23 @@ window.angular.module('llaapp.util', [
 				nice.railh.removeAttr('style');
 
 			}
-
+		}
+	};
+}])
+.directive('llaanimate', [function(){
+	'use strict';
+	return{
+		scope: {
+			llaanimateon: '=',
+			llaanimatein: '@',
+			llaanimateout: '@',
+		},
+		restrict: 'A',
+		controller: function($scope){
+			$scope.$watch('llaanimateon', function( value ){
+				console.log(value);
+				console.log('hi wathc');
+			});
 		}
 	};
 }])

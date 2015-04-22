@@ -1,7 +1,8 @@
-<div class='part part-top-padding part-lg-h part-lg--h' ng-hide='model.fullbool' > 
+
+<div class='part part-lg-h part-lg--h' ng-hide='model.fullbool' > 
 	<!-- Viewed event -->
 	<h3>{{model.content.main.post_title}}</h3>
-	<ul>
+	<ul class='no-padding'>
 		<li>{{model.content.main.date_value}}</li>
 		<li>{{model.content.main.start_time_value}}</li>
 		<li>{{model.content.main.end_time_value}}</li>
@@ -18,17 +19,19 @@
 	<h3>{{anevent.post_title}}</h3>
 	<p>{{anevent.date_value}}</p>
 </div>
-
-<div class='part part-top-padding part-lg-f part-lg--f'ng-show='model.fullbool' >
-	<a ng-href="#/calender/{{model.content.main.lla_part_slug}}">Close</a>
-	<h3>{{model.content.main.post_title}}</h3>
-	<ul>
-		<li>{{model.content.main.date_value}}</li>
-		<li>{{model.content.main.start_time_value}}</li>
-		<li>{{model.content.main.end_time_value}}</li>
-		<li>{{model.content.main.address_value}}</li>
-	</ul>
-	<p>{{model.content.main.post_content}}</p>
+<div class = 'part part-lg-a part-lg--a paper-effect-border animate fadIn' ng-show="model.fullbool">
+	<div class='part part-lg-f part-lg--f paper-inner text-center' ng-show='model.fullbool' scrollable >
+		<a ng-href="#/calender/{{model.content.main.lla_part_slug}}/~">Close</a>
+		<h3>{{model.content.main.post_title}}</h3>
+		<ul>
+			<li>{{model.content.main.date_value}}</li>
+			<li>{{model.content.main.start_time_value}}</li>
+			<li>{{model.content.main.end_time_value}}</li>
+			<li>{{model.content.main.address_value}}</li>
+		</ul>
+		<img ng-src="{{model.content.main.thumbnail}}" ng-show="model.content.main.thumbnailset" />
+		<p>{{model.content.main.post_content}}</p>
+	</div>
 </div>
 
 

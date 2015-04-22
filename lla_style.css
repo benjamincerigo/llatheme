@@ -152,6 +152,9 @@ a.image-hover :hover .hover-image{
 	display: block;
 	height: 100%;
 }
+.no-padding{
+	padding: 0;
+}
 /**************************************************** Paper   *********************/
 .paper-effect-background{
 	background-image: url( ./img/paper-white.png);
@@ -246,7 +249,7 @@ height: 0px;
 	height: 100%;
 }
 .part-lg--a{
-	height: 95%;
+	height: 85%;
 }
 
 .part-spleft{
@@ -488,11 +491,6 @@ form button{
 .stretchRight{
 	animation-name: stretchRight;
 	-webkit-animation-name: stretchRight;	
-
-	animation-duration: 1s;	
-	-webkit-animation-duration: 1s;
-
-
 	transform-origin: 0% 0%;
 	-ms-transform-origin: 0% 0%;
 	-webkit-transform-origin: 0% 0%; 		

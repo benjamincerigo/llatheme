@@ -67,7 +67,7 @@ function lla_mail_recaptcha(){
 			// Build the email headers.
 			$email_headers = "From: $name <$email> \r\nReply-To: {$email}\r\nContent-type: text/html; charset=ISO-8859-1\r\nMIME-Version: 1.0";
 			// Send the email.
-			if (wp_mail($recipent, $subject, $email_content, $email_headers)) {
+			if (wp_mail($recipient, $subject, $email_content, $email_headers)) {
 				// Set a 200 (okay) response code.
 				http_response_code(200);
 				$return = array('error' => 0, 'message' => 'Your Message was sent. Thankyou, we will reply shortly.');

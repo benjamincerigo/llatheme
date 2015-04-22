@@ -15,7 +15,7 @@
 function lla_admin_init() {
 if(is_admin()) {
     wp_enqueue_script('jquery-ui-datepicker');
-    wp_enqueue_style('jquery-ui-custom', get_template_directory_uri().'/css/jquery-ui.min.css');
+    wp_enqueue_style('jquery-ui-custom', get_template_directory_uri().'/bower_components/jquery-ui/jquery-ui.min.css');
     
 }
 }

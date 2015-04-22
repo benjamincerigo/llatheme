@@ -84,7 +84,7 @@ function lla_cal_add_box() {
     global $cal_meta, $post;
 
     // Use nonce for verification
-    echo '<input type="hidden" name="lla_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
+    echo '<input type="hidden" name="lla_cal_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
 
     echo '<table class="form-table">';
 
@@ -130,7 +130,7 @@ function lla_cal_save_data($post_id) {
     global $cal_meta;
 
     // verify nonce
-    if (!wp_verify_nonce($_POST['lla_meta_box_nonce'], basename(__FILE__))) {
+    if ( !isset($_POST['lla_cal_meta_box_nonce']) || !wp_verify_nonce($_POST['lla_cal_meta_box_nonce'], basename(__FILE__))) {
         return $post_id;
     }
 

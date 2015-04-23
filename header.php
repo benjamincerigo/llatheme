@@ -31,5 +31,5 @@
 
 <?php wp_head(); ?>
 </head>
-<body scrollable='x' <?php body_class(); ?>>
+<body scrollable='x' <?php body_class( 'homewidth' ); ?>>
 	<div  id="container">

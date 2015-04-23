@@ -12,8 +12,8 @@ var llaapp = window.angular.module('llaapp', [
 	'llaapp.contact',
 	'llaapp.gallery',
 ]);
-llaapp.run([  '$rootScope', '$state', '$stateParams',
-		function ($rootScope, $state, $stateParams ) {
+llaapp.run([  '$rootScope', '$state', '$stateParams','csscheck',
+		function ($rootScope, $state, $stateParams , csscheck) {
 			"use strict";
 			$rootScope.$state = $state;
 			$rootScope.$stateParams = $stateParams;
@@ -23,6 +23,7 @@ llaapp.run([  '$rootScope', '$state', '$stateParams',
 				 //console.log(toParams);
 				 //console.log(fromState);
 				 //console.log(fromParams);
+				csscheck.docheck('gallery');
 		   });
 		}
 		]
@@ -62,16 +63,17 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 					return galleryPageModel.promise;
 				}],
 			},
-			onEnter: ['partOb', '$stateParams', '$rootScope' , 'moveOnUrl', 'homepagemodel',function(partOb, $stateParams, $rootScope, moveOnUrl, homepagemodel){
+			onEnter: ['$stateParams', 'moveOnUrl', 'galleryPageModel', 'csscheck', function( $stateParams, moveOnUrl, galleryPageModel, csscheck){
 				var jQ = window.jQuery,
-						section =  $stateParams.section; 
-				console.log('glalery');
+					section =  $stateParams.section; 
+					csscheck.docheck('gallery');
 			}],
 			templateUrl: lla_wpProvider.t +  '/inc/html/gallery_page.html',
-			controller: ['$scope',   'galleryRes',   function($scope,   galleryRes){
+			controller: ['$scope',   'galleryRes', 'csscheck', function($scope,   galleryRes, csscheck){
 				console.log(galleryRes);
 				$scope.model = galleryRes.getSection('main');
 				console.log($scope);
+				csscheck.docheck('gallery');
 			}]
 		})
 		.state('homepage.stuff', {
@@ -100,7 +102,6 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 					templateUrl: lla_wpProvider.t + '/inc/html/home.html', 
 					controller: ['$scope',  'homepagemodel', function( $scope , homepagemodel){
 						$scope.model = homepagemodel.getSection('home');
-						$scope.line_img_url = $scope.template_dir + '/img/LLA_LineFull4000.jpg';
 					}],
 				},
 				'about':{ templateUrl: lla_wpProvider.t + '/inc/html/about.html', 

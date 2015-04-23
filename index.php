@@ -21,6 +21,9 @@ $model = new lla\lla_sections_object('home_page');
 ?>
 
 <div  class='main' ui-view ></div>
+<div class='line'>
+	<img src='<?php echo get_template_directory_uri() . "/img/LLA_LineFull4000.jpg"; ?>'
+</div>
 <script>
 var lla ={};
 angular.module('llaapp.inlineservices', ['ngRoute'])

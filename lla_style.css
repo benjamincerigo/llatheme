@@ -26,7 +26,7 @@ orange
 	box-sizing: initial;
 }
 body,h1,h2,h3,h4,p,a, li{
-	font-family: 'Muli', 'Lucida Grande', sans-serif;
+	font-family:  'Lucida Grande', sans-serif;
 	font-weight: 300;
 	color: #54372A;
 }
@@ -46,8 +46,10 @@ h2,h3,h4{
 html{
 	height: 100%;
 }
-body{
+.homewidth{
 	width: 380%;
+}
+body{
 	height: inherit;
 	margin: 0;
 	padding: 0;
@@ -495,6 +497,18 @@ form button{
 /**************** gallery *****************/
 .gallery img{
 	height: 100%;
+	width: auto;
+}
+.gallery {
+	box-sizing: border-box;
+	height: 100%;
+	white-space: nowrap;
+}
+.gallery .part{
+	box-sizing: border-box;
+	padding: 5%;
+	display: inline-block;
+	float: none;
 }
 
 

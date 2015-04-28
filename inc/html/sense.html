@@ -1,0 +1,19 @@
+<div class='part part-lg-10 part-lg--f'>
+	<div class='part part-top-padding part-lg-f part-lg--h'>
+		<a href='#/home/'>
+			<h3>Home</h3>
+		</a>
+	</div>
+	<div class='part part-top-padding part-lg-h part-lg--h part-mpleft'>
+		<a ng-click=''>
+			<h2>Sense</h2>
+		</a>
+		<ul>
+			<!-- start of repeat in sense_nave -->
+			<li ng-repeat='nav in model.sense.content'>
+				<a ng-href="#/sense/{{nav.t_slug}}">{{nav.t_name}}</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div ui-view ></div>

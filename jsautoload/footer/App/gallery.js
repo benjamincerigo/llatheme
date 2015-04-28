@@ -8,6 +8,7 @@ window.angular.module('llaapp.gallery', [
 	};
 	this.getSection = function(section){
 		var r;
+		console.log(this);
 		switch(section){
 			default:
 				r = this.model;
@@ -52,6 +53,8 @@ window.angular.module('llaapp.gallery', [
 				data: getData,
 				dataType: 'json'
 			}).fail(function(response){
+				console.log(response);
+				console.log(response.responseText);
 				r.fail = {};
 				r.fail.message = response.message;
 				deferred.resolve(r);

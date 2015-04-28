@@ -106,7 +106,7 @@ function lla_get_gallery(){
 		require_once __DIR__ . '/classes/lla_term_object.php';
 		$parent = isset($_POST['section']) ? $_POST['section']: 'gallery';	
 		($parentTerm = get_term_by('name', $parent, 'lla_sections')) || ($parentTerm =get_term_by('slug', $parent, 'lla_sections'));
-		$model = new \lifelinearts\lla_term_object($parentTerm);	
+		$model = new \lifelinearts\lla_term_object($parentTerm, true);	
 		http_response_code(200);
 		$return = $model;
 		die(json_encode($return));

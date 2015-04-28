@@ -56,7 +56,15 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 				$rootScope.homeLoaded = true;
 			}]
 		})
-		.state('gallery', {
+		.state('sense', {
+			url: '/sense',
+			templateUrl: lla_wpProvider.t +  '/inc/html/sense.html',
+			controller: ['$scope',   'lla_wp', function($scope,   lla_wp ){
+				$scope.model = {};
+				$scope.model.sense = lla_wp.sense;
+			}]
+		})
+		.state('sense.gallery', {
 			url: '/gallery/{part}',
 			resolve: {
 				galleryRes: ['galleryPageModel',function(galleryPageModel){
@@ -65,11 +73,12 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 			},
 			onEnter: ['$stateParams', 'moveOnUrl', 'galleryPageModel', 'csscheck', function( $stateParams, moveOnUrl, galleryPageModel, csscheck){
 				var jQ = window.jQuery,
+
 					section =  $stateParams.section; 
-					csscheck.docheck('gallery');
 			}],
 			templateUrl: lla_wpProvider.t +  '/inc/html/gallery_page.html',
 			controller: ['$scope',   'galleryRes', 'csscheck', function($scope,   galleryRes, csscheck){
+				console.log('gallery');
 				console.log(galleryRes);
 				$scope.model = galleryRes.getSection('main');
 				console.log($scope);

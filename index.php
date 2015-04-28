@@ -16,7 +16,7 @@ get_header();
 
 
 $model = new lla\lla_sections_object('home_page');
-
+$sense = new lla\lla_sections_object('sense', false);
 
 ?>
 
@@ -39,12 +39,16 @@ angular.module('llaapp.inlineservices', ['ngRoute'])
 	a: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
 	n: '<?php echo wp_create_nonce( 'lla_angular' ); ?>',
 	r: '<?php echo lla_getSiteKey(); ?>',
+	b: '<?php echo  get_bloginfo('name'); ?>',
+	s: <?php echo  json_encode($sense->page); ?>,
 	$get: function(){
 		return {
 			'template_dir': this.t,
 			'ajax': this.a,
 			'nouce': this.n,
-			'recaptchakey': this.r
+			'recaptchakey': this.r,
+			'blog_title': this.b,
+			'sense': this.s,
 		}
 	}
 });

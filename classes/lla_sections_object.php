@@ -6,7 +6,7 @@ class lla_sections_object
 	public $array_of_sections = array();
 	public $page;
 	//Construct
-	function __construct($parent){
+	function __construct($parent, $content = true, $toget = array() ){
 		($parentTerm = get_term_by('name', $parent, 'lla_sections')) || ($parentTerm =get_term_by('slug', $parent, 'lla_sections'));
 		//Test if parent Term Excists. 
 		if($parentTerm)
@@ -16,20 +16,16 @@ class lla_sections_object
 			$this->page = $parentTerm;
 			$this->parentTerm = $parentTerm->term_id;
 			self::$current_term_id = $parentTerm->term_id;
-			$this->find_order_array_of_sections();
+			$this->find_order_array_of_sections( $content, $toget );
 		}
 		else 
 		{
-			//Found parent Term
-			echo "found not given lla_sections Term";
+			echo "not found  given lla_sections Term";
 		}
 		$this->page->lla_nouce = wp_create_nonce( 'lla_nouce' );
-		$this->page->wp_json_nouce = wp_create_nonce( 'wp_json' );
-		$this->page->blog_info = get_bloginfo('template_directory');
-		$this->page->blog_title = get_bloginfo('name');
 	}
 	//Private Function to order array in the db
-	private function find_order_array_of_sections(){
+	private function find_order_array_of_sections( $content , $toget ){
 	//Find the Array of sections with in the parent
 		$taxonomies = 'lla_sections';
 		$tax_args = array(
@@ -57,13 +53,17 @@ class lla_sections_object
 		//Make array of Sections
 		 if ( !empty( $terms ) && !is_wp_error( $terms ) ){
 		     foreach ( $terms as $term ) {
-		     	$lla_term_object = new lla_term_object($term);
-		     	$this->array_of_sections[$lla_term_object->t_name] = $lla_term_object;
+				 if( empty($toget) || in_array($term->name, $toget)){
+					$lla_term_object = new lla_term_object($term, $content);
+					$this->array_of_sections[$lla_term_object->t_name] = $lla_term_object;
+				 }
 		     }
 	 	}
-	 	$this->page->content = $this->array_of_sections;
-	 	$model = Model::getInstance();
-	 	$model->set($this->page);
+		$this->page->content = $this->array_of_sections;
+		if($content === true ){
+			$model = Model::getInstance();
+			$model->set($this->page);
+		}
 	}
 }
 ?>

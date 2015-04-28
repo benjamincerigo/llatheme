@@ -34,7 +34,7 @@ class lla_term_object
 {	
 	public static $section_count = 0;
 	public $content = array();
-	function __construct($term){
+	function __construct($term, $content){
 		//Taxonomy data
 		$this->t_name = $term->name;
 		$this->t_id = $term->term_id;
@@ -45,37 +45,9 @@ class lla_term_object
 		$this->s_top_link = '#'. $term->slug . "_top";
 
 		$this->s_bot_id = $term->slug . "_bottom";
-		$this->lla_get_contents('top');
-	}
-//-----------------------------------------Section Make --------------------------//
-	public function section_make($top_bottom){
-		$count = lla_term_object::$section_count;
-		$count += 1;
-		lla_term_object::$section_count = $count;
-		//Open Sections
-		echo '<!-- Section ' . $count . ' '. $top_bottom .'-->';
-		echo '<td class="section ' . $this->s_top_td  . '"> ';
-		switch($top_bottom){
-			case 'Top':
-					echo '<table id="' . $this->s_top_id . '">';
-				break;
-			case 'Bottom':
-					echo '<table id="' . $this->s_bot_id . '">';
-					break;
-			default:
-				echo '<table>';
-				break;
-			}
-		echo '<tr>';
-		//get contents
-		/*if($top_bottom != 'Bottom' && $this->t_name != 'Home')
-		{
-			echo "<td class='title'>$this->t_name</td>";
-			echo '</tr><tr>';
-		}*/
-		$this->lla_get_contents($top_bottom);
-		//close section
-		echo '</tr></table></td>';
+		if($content === true){
+			$this->lla_get_contents();
+		}
 	}
 //-------------------Find correct Privat funciton -------------//
 	private function lla_get_contents(){
@@ -95,7 +67,7 @@ class lla_term_object
 				$this->get_gallery();
 			
 			default:
-				# code...
+				$this->get_default();
 				break;
 		}
 	}
@@ -129,35 +101,6 @@ class lla_term_object
 					}
 				}
 			endwhile;
-		$taxonomies = 'lla_sections';
-		$exclude = lla_sections_object::$current_term_id ? lla_sections_object::$current_term_id : array() ;
-		$tax_args = array(
-    	'orderby'       => 'none', 
-    	'order'         => 'ASC',
-	    'hide_empty'    => false, 
-	    'exclude'       => array(), 
-	    'exclude_tree'  => $exclude, 
-	    'include'       => array(),
-	    'number'        => '', 
-	    'fields'        => 'all', 
-	    'slug'          => '', 
-	    'parent'         => '',
-	    'hierarchical'  => true, 
-	    'child_of'      => '', 
-	    'get'           => '', 
-	    'name__like'    => '',
-	    'pad_counts'    => false, 
-	    'offset'        => '', 
-	    'search'        => '', 
-	    'cache_domain'  => 'core'
-		); 
-		$terms = get_terms( $taxonomies, $tax_args );
-		usort($terms, 'sort_terms_by_section_id');
-		$this->content['sense_nav'] = array();
-		foreach($terms as $term)
-		{
-			array_push($this->content['sense_nav'], $term);
-		}
 	}
 //-----------------Get about------------------//
 	private function get_about(){
@@ -266,6 +209,35 @@ class lla_term_object
 		}
 	}
 	private function get_gallery(){
+		$args = array( 'post_type' => 'lla_home_content',
+							'meta_key' => 'lla_post_order',
+							'orderby' => 'meta_value_num',
+							'order' => 'ASC',
+							'tax_query' => 
+							array(
+								array(
+									'taxonomy' => 'lla_sections',
+									'field' => 'slug',
+									'terms' => $this->t_slug
+									),
+								)
+			);
+			$this_wp_query = new \WP_Query( $args );
+			$this->content['posts'] = array();
+			while ($this_wp_query->have_posts() ) : $this_wp_query->the_post();
+				$array = array('main' => $this_wp_query->post, 'custom' => get_post_custom($this_wp_query->post->ID));
+				$la = new lla_content();
+				$la->fromWP($this_wp_query->post);
+				$la->fromCus(get_post_custom( $this_wp_query->post->ID ));
+				$this->content['posts'][$la->lla_part_slug] = $la;
+			if( has_post_thumbnail() ){
+				$url = wp_get_attachment_url( get_post_thumbnail_id($this_wp_query->post->ID) );
+				$la->thumbnailset = true;
+				$la->thumbnail = $url;
+			}
+			endwhile;
+	}
+	private function get_default(){
 		$args = array( 'post_type' => 'lla_home_content',
 							'meta_key' => 'lla_post_order',
 							'orderby' => 'meta_value_num',

@@ -100,8 +100,11 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 			'topnav': topnavState,
 				'home': {
 					templateUrl: lla_wpProvider.t + '/inc/html/home.html', 
-					controller: ['$scope',  'homepagemodel', function( $scope , homepagemodel){
+					controller: ['$scope',  'homepagemodel','lla_wp', function( $scope , homepagemodel, lla_wp){
 						$scope.model = homepagemodel.getSection('home');
+						$scope.model.blog_title = lla_wp.blog_title;
+						console.log(lla_wp.sense);
+						$scope.model.sense = lla_wp.sense;
 					}],
 				},
 				'about':{ templateUrl: lla_wpProvider.t + '/inc/html/about.html', 

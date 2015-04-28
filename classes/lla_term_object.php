@@ -15,8 +15,12 @@ class lla_content {
 	);
 	public function fromWP($wp){
 		for($i=0;$i<count($this->from_wp_object);$i++){
-			$key = $this->from_wp_object[$i];
-			$this->$key = $wp->$key;
+				$key = $this->from_wp_object[$i];
+			if($key === 'post_content'){
+				$this->$key = apply_filters('the_content', $wp->$key);
+			} else {
+				$this->$key = $wp->$key;
+			}
 		}
 	}
 	public function fromCus($a){

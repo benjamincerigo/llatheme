@@ -136,4 +136,16 @@ window.angular.module('llaapp.util', [
 		}
 	};
 }])
+.directive('scrolltonull', [function(){
+	'use strict';
+	return{
+		link: function(scope, element, attr){
+			 element.bind('click', function() {
+				var jQ = window.jQuery;
+				jQ('html,body').animate({scrollLeft: 0}, 800);
+			 });
+		 },
+		restrict: 'A',
+	};
+}])
 ;

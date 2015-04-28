@@ -10,18 +10,20 @@
 	</div>
 
 	<div scrollable class='part part-lg-h part-lg--f paper-inner ' ng-show="model.content.main.selectedbool">
-		<span class='animated fadeIn' >
-			{{model.content.main.post_content}}
-		</span>
+		<div class='outercontent'>
+			<div class='innercontent'> 
+				<div class='animated fadeIn' ng-bind-html='model.content.main.post_content'>
+
+					
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 <div class='part part-top-padding part-lg-h part-lg--h' ng-hide="post.selectedbool" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" > 
 	<a class='image-hover' ng-href='#/about/{{post.lla_part_slug}}'> 
 		<div class='overlay'>
 			<h3>{{post.post_title}}</h3>
-			<div class='slow_trans hover-image'>
-				<img class='thumbnail-lg' ng-src="{{post.thumbnail}}" ng-show="{{post.thumbnailset}}" />	
-			</div>
 		</div>
 	</a>
 </div>

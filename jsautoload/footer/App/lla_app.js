@@ -2,6 +2,7 @@ var llaapp = window.angular.module('llaapp', [
 	//'ui.router',
 	'ui.router',
 	'ngResource',
+	'ngSanitize',
 	'reCAPTCHA',
 	'llaapp.services',
 	'llaapp.home',

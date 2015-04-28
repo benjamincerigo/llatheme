@@ -113,6 +113,7 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 						$scope.model = homepagemodel.getSection('home');
 						$scope.model.blog_title = lla_wp.blog_title;
 						console.log(lla_wp.sense);
+						console.log(lla_wp.sense.content.Gallery);
 						$scope.model.sense = lla_wp.sense;
 					}],
 				},

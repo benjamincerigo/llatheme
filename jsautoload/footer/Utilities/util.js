@@ -98,7 +98,7 @@ window.angular.module('llaapp.util', [
 			op.cursorcolor = '#765581';
 			op.cursorborder = '0';
 			if(attr.scrollable === 'x'){
-				op.cursorwidth = '6px';
+				op.cursorwidth = '8px';
 				//op.cursorminheight = '20px';
 				op.autohidemode = 'false';
 			}

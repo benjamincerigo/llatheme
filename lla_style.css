@@ -169,6 +169,15 @@ a.text-hover :hover .inner-text{
 .no-padding{
 	padding: 0;
 }
+
+.hundered{
+	height: 100%;
+}
+/************************* ING SIZE **********/
+
+.thumbnail-lg{
+	width:60%;
+}
 /**************************************************** Paper   *********************/
 .paper-effect-background{
 	background-image: url( ./img/paper-white.png);
@@ -288,9 +297,9 @@ height: 0px;
 }
 
 .part img{
-	width: 60%;
 	opacity: 0.9;
 }
+
 /************* LIne ******/
 
 .line{
@@ -344,12 +353,6 @@ height: 0px;
 	z-index: 100;
 	position: relative;
 }
-
-
-
-
-/********  Line */
-
 
 
 
@@ -498,8 +501,7 @@ form button{
 
 /**************** gallery *****************/
 .gallery img{
-	height: 100%;
-	width: auto;
+	max-height: 100%;
 }
 .gallery {
 	box-sizing: border-box;

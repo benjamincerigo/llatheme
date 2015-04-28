@@ -5,7 +5,7 @@
 			<a ng-href='#/about/~' >
 				<h3>{{model.content.main.post_title}}</h3>
 			</a>
-			<img ng-src="{{model.content.main.thumbnail}}" ng-show="{{model.content.main.thumbnailset}}" />	
+			<img class='thumbnail-lg' ng-src="{{model.content.main.thumbnail}}" ng-show="{{model.content.main.thumbnailset}}" />	
 		</span>
 	</div>
 
@@ -20,7 +20,7 @@
 		<div class='overlay'>
 			<h3>{{post.post_title}}</h3>
 			<div class='slow_trans hover-image'>
-				<img ng-src="{{post.thumbnail}}" ng-show="{{post.thumbnailset}}" />	
+				<img class='thumbnail-lg' ng-src="{{post.thumbnail}}" ng-show="{{post.thumbnailset}}" />	
 			</div>
 		</div>
 	</a>

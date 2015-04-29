@@ -6,9 +6,6 @@ use lifelinearts as lla;
  * 
  *
  *
- *
- *
- *
  * @package lla
  */
 get_header(); 

@@ -13,10 +13,14 @@ Tags:
 
 This theme, like WordPress, is licensed under the GPL.
 Color Codes 
-Brown Text: #54372A;
+Brown Text: #A53300;
 Mint text: #2A4754
 orange
 	color: #BF4324;
+
+	color try outs 
+	blu: #0072A5
+	brown: #8A2B00 or #A53300
 */
 /* Inital css for the index.html for lifeline arts */
 /**********************************************************************/
@@ -26,19 +30,20 @@ orange
 	box-sizing: initial;
 }
 body,h1,h2,h3,h4,p,a, li{
-	font-family:  'Lucida Grande', sans-serif;
+	font-family: 'Muli', 'Lucida Grande', sans-serif;
 	font-weight: 300;
-	color: #54372A;
 }
 h1{
 	font-size: 3.5em;
-	color: #2A4754;
+	color: #0072A5;
 }
 h2{
 	font-size: 2.5em;
+	color: #A53300;
 }
 h3{
 	font-size: 2em;
+	color: #A53300;
 }
 h2,h3,h4{
 	text-transform: lowercase;
@@ -51,14 +56,16 @@ body{
 	margin: 0;
 	padding: 0;
 	overflow-y: hidden;
-	overflow-x: scroll;
+	overflow-x: hidden;
+	background-image: url('./img/BrownOp_pink.jpg');
 }
 p{
 	font-size: 12px;
+	color: rgb(5, 60, 84);
 }
 a{
 	text-decoration: none;
-	color: #54372A;
+	color: rgb(5, 60, 84);
 	outline: none;
 }
 div {
@@ -108,6 +115,7 @@ a:visited{
 }
 li {
 	list-style-type: none;
+	color: rgb(5, 60, 84);
 }
 .main{
 	width: 100%;
@@ -186,7 +194,7 @@ button.close {
 	vertical-align: middle; 
 	text-align: justify; 
 	white-space: normal;
-	overflow-y:scroll;
+	overflow-y:hidden;
 }
 .part .outercontent {
 	width: 95%;
@@ -389,7 +397,7 @@ height: 0px;
 
 .website-title{
 	padding-left: 6%;
-	padding-top: 2%;
+	padding-top: 5%;
 }
 
 .website-title-rel{
@@ -588,4 +596,5 @@ form button{
 	margin-left:1%;
 	margin-top: 1%;
 	font-size: 2em;
+	color: #0072A5;
 }

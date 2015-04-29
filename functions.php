@@ -304,9 +304,4 @@ function sort_terms_by_section_id($a, $b){
 }
 
 /* ---------------------- CSS Rework ------------------------- */
-$lla_css_args = array(
-	'default-color' => 'beb4b0',
-	'default-image' => '%1$s/img/BrownOp.jpg',
-);
-add_theme_support('custom-background', $lla_css_args );
 

@@ -79,10 +79,7 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 			}],
 			templateUrl: lla_wpProvider.t +  '/inc/html/gallery_page.html',
 			controller: ['$scope',   'galleryRes', 'csscheck', function($scope,   galleryRes, csscheck){
-				console.log('gallery');
-				console.log(galleryRes);
 				$scope.model = galleryRes.getSection('main');
-				console.log($scope);
 				csscheck.docheck('gallery');
 			}]
 		})
@@ -113,8 +110,6 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 					controller: ['$scope',  'homepagemodel','lla_wp', function( $scope , homepagemodel, lla_wp){
 						$scope.model = homepagemodel.getSection('home');
 						$scope.model.blog_title = lla_wp.blog_title;
-						console.log(lla_wp.sense);
-						console.log(lla_wp.sense.content.Gallery);
 						$scope.model.sense = lla_wp.sense;
 					}],
 				},

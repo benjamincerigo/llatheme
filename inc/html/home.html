@@ -1,13 +1,7 @@
 <div  class='part part-top-padding part-lg-f part-lg--h part-noptop text-center'>
-	<h1 class='website-title '>{{model.blog_title}}</h1>
 
-	<ul class='quotes' quoutes>
-		<!-- start of repeat in quotes -->
-	
-		<li ng-repeat='quote in model.content[0].content.quotes' ng-show='{{quote.show}}'>
-			<h3>{{quote}}</h3>
-		</li>
-	</ul>
+	<h1 class='website-title animated fadeIn' quotes='click' ng-hide='model.quote'>{{model.blog_title}}</h1>
+	<h1 class='website-title animated fadeIn' quotes='off' ng-show='model.quote'>{{model.quote}}</h1>
 </div>
 <div class='part part-top-padding part-lg-h part-lg--h part-mpleft'>
 		<a ng-href="#/sense/gallery/"><h2>Sense</h2></a>

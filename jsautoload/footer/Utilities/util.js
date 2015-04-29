@@ -130,8 +130,6 @@ window.angular.module('llaapp.util', [
 		restrict: 'A',
 		controller: function($scope){
 			$scope.$watch('llaanimateon', function( value ){
-				console.log(value);
-				console.log('hi wathc');
 			});
 		}
 	};
@@ -144,6 +142,42 @@ window.angular.module('llaapp.util', [
 				var jQ = window.jQuery;
 				jQ('html,body').animate({scrollLeft: 0}, 800);
 			 });
+		 },
+		restrict: 'A',
+	};
+}])
+.directive('quotes', ['homepagemodel',function(homepagemodel){
+	'use strict';
+	return{
+		link: function(scope, el, attr){
+			switch(attr.quotes){
+				case 'click':
+				 el.bind('click', function() {
+					 scope.$apply(function(){
+						 homepagemodel.selectQuote();
+					 });
+				 });
+				 break;
+				case 'off':
+				 el.bind('click', function() {
+					 scope.$apply(function(){
+						 homepagemodel.initHome();
+					 });
+				 });
+				 break;
+				case 'waypointchange':
+				var waypoint = new Waypoint({
+					  element: el,
+					  handler: function(direction) {
+							 scope.$apply(function(){
+									 homepagemodel.selectQuote();
+							 });
+						},
+					  horizontal: true
+				})
+				 break;
+			}
+
 		 },
 		restrict: 'A',
 	};

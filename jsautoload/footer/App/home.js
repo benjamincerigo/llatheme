@@ -24,6 +24,15 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 		this.initContact();
 	};
 	this.initHome = function(){
+		var h = this.getSection('home');
+		h.quote = false;
+	};
+	this.selectQuote = function(){
+		var h = this.getSection('home'),
+			quotes = h.content.Home.content.quotes,
+			len = quotes.length - 1,
+			ran = Math.floor((Math.random() * len) + 1); 
+		h.quote = quotes[ran];
 
 	};
 	this.initAbout = function(){
@@ -135,6 +144,8 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			getSection: this.getSection,
 			state: this.processState,
 			lla_search: this.lla_search,
+			initHome: this.initHome,
+			selectQuote: this.selectQuote,
 			initAbout: this.initAbout,
 			aboutState: this.aboutState,
 			initCalender: this.initCalender,

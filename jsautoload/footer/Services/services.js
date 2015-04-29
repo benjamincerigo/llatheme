@@ -61,9 +61,7 @@ angular.module('llaapp.services', [
 				jQuery('body').removeClass('homewidth');
 				jQuery('.galleryimg').each(function() {
 					totalwidth += jQuery(this).width(); 
-					console.log(totalwidth);
 				});
-				console.log(totalwidth);
 				break;
 			case 'home':
 				jQuery('body').addClass('homewidth');

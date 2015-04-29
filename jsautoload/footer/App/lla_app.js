@@ -66,22 +66,40 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 			}]
 		})
 		.state('sense.gallery', {
-			url: '/gallery/{part}',
+			url: '/gallery/{picture}',
 			resolve: {
 				galleryRes: ['galleryPageModel',function(galleryPageModel){
 					return galleryPageModel.promise;
 				}],
 			},
-			onEnter: ['$stateParams', 'moveOnUrl', 'galleryPageModel', 'csscheck', function( $stateParams, moveOnUrl, galleryPageModel, csscheck){
+			onEnter: ['$rootScope', '$stateParams', 'moveOnUrlGallery', 'galleryRes', 'csscheck', function($rootScope, $stateParams, moveOnUrl, galleryPageModel, csscheck){
 				var jQ = window.jQuery,
-
-					section =  $stateParams.section; 
+						picture =  $stateParams.picture || 'sense'; 
+				console.log('doing');
+				galleryPageModel.state($stateParams);
+				if(jQ('#' + picture).length === 0){
+					$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState){
+							if(fromState.url === '^'){ 
+								moveOnUrl.execute(toParams);
+							}
+						}
+					);
+				}else{
+					moveOnUrl.execute($stateParams);
+				}
 			}],
 			templateUrl: lla_wpProvider.t +  '/inc/html/gallery_page.html',
 			controller: ['$scope',   'galleryRes', 'csscheck', function($scope,   galleryRes, csscheck){
 				$scope.model = galleryRes.getSection('main');
+				console.log($scope);
 				csscheck.docheck('gallery');
 			}]
+		})
+		.state('sense.gallery.extra', {
+			url: '/{extra}',
+			onEnter: [ '$stateParams',  'galleryRes',function( $stateParams, gallerypageModel){
+				gallerypageModel.state($stateParams);
+			}],
 		})
 		.state('homepage.stuff', {
 			url: '/{section}/{part}',

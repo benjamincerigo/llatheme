@@ -20,8 +20,8 @@ $sense = new lla\lla_sections_object('sense', false);
 
 ?>
 
-<div  class='main' ui-view ></div>
-<div class='line'>
+<div  class='main animated fadeIn' ui-view ></div>
+<div class='line animated fadeIn'>
 	<img src='<?php echo get_template_directory_uri() . "/img/LLA_LineFull4000_2.jpg"; ?>'
 </div>
 <script>

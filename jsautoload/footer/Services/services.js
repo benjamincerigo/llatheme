@@ -35,7 +35,7 @@ angular.module('llaapp.services', [
 	};
 
 })
-.service('moveOnUrl', ['partOb', function(partOb){
+.service('moveOnUrl', [ function(){
 	'use strict';
 	var execute = function($stateParams){
 		var jQ = window.jQuery,
@@ -46,7 +46,24 @@ angular.module('llaapp.services', [
 		}
 		offset = jQ('#'+ section).offset().left - 50; 
 		jQ('html,body').animate({scrollLeft: offset}, 800);
-		partOb.update( $stateParams );
+		//partOb.update( $stateParams );
+	};
+	return {
+		'execute': execute
+	};
+}])
+.service('moveOnUrlGallery', [ function(){
+	'use strict';
+	var execute = function($stateParams){
+		var jQ = window.jQuery,
+				picture =  $stateParams.picture, 
+				offset = 0;
+		if(jQ('#'+picture).length === 0 || !(picture)){
+			offset = 0;	
+		} else {
+			offset = jQ('#'+ picture).offset().left - 50; 
+		}
+		jQ('html,body').animate({scrollLeft: offset}, 800);
 	};
 	return {
 		'execute': execute

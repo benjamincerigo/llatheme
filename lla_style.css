@@ -540,12 +540,17 @@ form button{
 .gallery img{
 	max-height: 100%;
 }
+.gallerycontainer{
+	box-sizing: border-box;
+	height: 100%;
+	white-space: nowrap;
+}
 .gallery {
 	box-sizing: border-box;
 	height: 100%;
 	white-space: nowrap;
 }
-.gallery .part{
+.gallery > .part{
 	box-sizing: border-box;
 	padding: 5%;
 	display: inline-block;

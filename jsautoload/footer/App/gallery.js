@@ -1,7 +1,7 @@
 window.angular.module('llaapp.gallery', [
 	'llaapp.inlineservices',
 ])
-.provider('galleryPageModel',['lla_wpProvider','$qProvider', function(lla_wpProvider, $q){
+.provider('galleryPageModel',['lla_wpProvider','$qProvider','$rootScopeProvider', function(lla_wpProvider, $q, $scope){
 	'use strict';
 	this.hi = function(){
 		return 'hi';
@@ -17,27 +17,70 @@ window.angular.module('llaapp.gallery', [
 		console.log(r);
 		return r;
 	};
-	this.processState = function($statParams){
-		var s = this.lla_search($stateParams, 'gallery'),
-			p = this.lla_search($stateParams, 'part'),
+	this.processState = function($stateParams){
+		var s = this.lla_search($stateParams, 'picture'),
+			p = this.lla_search($stateParams, 'extra'),
 			a = this.model;
 
-			s = this.lla_search(a.content.posts, p);
-			s.selectedBool = true;
+			console.log('gallery');
+			console.log(s);
+		if( s){
+			s = this.lla_search_slug(a.content.posts, s);
+			console.log('finanl');
+			console.log(s);
+			console.log(p);
+			if(p === 'full'){
+				s.selectedbool = true;
+			}else{
+				s.selectedbool = false;
+			}
+			console.log(s);
+
+		}
 	};
 	this.lla_search = function(o, find){
+		if(typeof o === 'undefined' || o === null ){
+			return false;
+		}
 		if(o.hasOwnProperty(find)){
 			return o[find];	
 		}else{
 			return false;
 		}
 	};
+	this.lla_search_slug = function(o, find){
+		var r = false,
+			key;
+
+		console.log(o);
+		console.log(find);
+		for (key in o) {
+			var p = o[key];
+			console.log('in for');
+			console.log(p);
+
+			r =this.lla_search(p, 'lla_part_slug');
+			console.log(r);
+			console.log(find);
+			if( r === find ){
+				console.log('found');
+				r = p;
+			} else {
+				r = false;
+			}
+			if( r !== false ){
+				break;
+			}
+		}
+		return r;
+	};
 	this.$get = ['$q',function ($q){
 		var deferred = $q.defer(),
 			r = {
 				getSection: this.getSection,
-				processState: this.processState,
+				state: this.processState,
 				lla_search: this.lla_search,
+				lla_search_slug: this.lla_search_slug,
 			}, 
 			getData;
 

@@ -1,17 +1,12 @@
 <div  class='gallery' >
-	<div id='{{post.lla_part_slug}}' class='part part-lg-f part-lg--f' ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false">
+	<div id='{{post.lla_part_slug}}' class='part part-lg-r part-lg--f text-center' ng-class="{' part-lg-f ': post.selectedbool}" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false">
 		<div class='part  part-lg-r part-lg--f' ng-hide="post.selectedbool"  ng-hide='post.selectedbool'> 
-				<div class='overlay'>
-					<a class='image-hover' ng-href='#sense/gallery/{{post.lla_part_slug}}/full'> 
+					<a class='animated fadeIn' ng-href='#sense/gallery/{{post.lla_part_slug}}/full'> 
 					<img class='galleryimg' ng-src="{{post.thumbnail}}" ng-show="{{post.thumbnailset}}" />	
-					<div class='inner-text'>
-						<h3>{{post.post_title}}</h3>
-					</div>
 					</a>
-				</div>
 		</div>
-		<div class = 'part part-lg-a part-lg--a paper-effect-border animate fadIn' ng-show="post.selectedbool">
-			<div class='part part-lg-f part-lg--f paper-inner text-center content-padding' ng-show='post.selectedbool' scrollable >
+		<div class = 'part part-lg-f part-lg--f paper-effect-border animated stretchRight' ng-show="post.selectedbool">
+			<div class='part part-lg-f part-lg--f paper-inner text-center content-padding verticalmiddle animated fadeIn' ng-show='post.selectedbool' scrollable >
 				<a ng-href="#/sense/gallery/{{post.lla_part_slug}}/~">
 					<button class='close'>x</button>
 				</a>

@@ -217,6 +217,7 @@ ul.nomargin {
 	background-image: url( ./img/paper-white.png);
 	background-repeat:no-repeat;
 	background-size: 100% 100%;
+	opacity: 0.9;
 }
 .paper-effect-border{
 	border-style: solid;
@@ -225,9 +226,11 @@ ul.nomargin {
 	-moz-border-image:url(./img/paper-white.png) 20 20 20 20 repeat;
 	border-image:url(./img/paper-white.png) 20 20 20 20 repeat;
 	padding: 0;
+	opacity: 0.9;
 }
 .paper-inner{
 	background-color: #e9e5e2;
+	opacity: 0.9;
 }
 
 /*********************** Animations ****************/
@@ -551,10 +554,15 @@ form button{
 	white-space: nowrap;
 }
 .gallery > .part{
-	box-sizing: border-box;
 	padding: 5%;
+}
+.gallery .part{
+	box-sizing: border-box;
 	display: inline-block;
 	float: none;
+}
+.verticalmiddle{
+	vertical-align: middle;
 }
 
 

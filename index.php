@@ -11,15 +11,10 @@ use lifelinearts as lla;
  *
  * @package lla
  */
-
 get_header(); 
-
-
 $model = new lla\lla_sections_object('home_page');
 $sense = new lla\lla_sections_object('sense', false);
-
 ?>
-
 <div  class='main animated fadeIn' ui-view ></div>
 <div class='line animated fadeIn'>
 	<img src='<?php echo get_template_directory_uri() . "/img/LLA_LineFull4000_2.jpg"; ?>'
@@ -56,5 +51,3 @@ lla.model = angular.module('llaapp.inlineservices')._invokeQueue[0][2][1].$get()
 console.log(lla.model);
 </script>
 <?php get_footer(); ?>
-
-

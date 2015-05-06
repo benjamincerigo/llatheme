@@ -21,21 +21,14 @@ window.angular.module('llaapp.gallery', [
 		var s = this.lla_search($stateParams, 'picture'),
 			p = this.lla_search($stateParams, 'extra'),
 			a = this.model;
-
-			console.log('gallery');
-			console.log(s);
-		if( s){
+		if(s){
 			s = this.lla_search_slug(a.content.posts, s);
-			console.log('finanl');
-			console.log(s);
-			console.log(p);
 			if(p === 'full'){
+				s.animate = 'in';
 				s.selectedbool = true;
 			}else{
 				s.selectedbool = false;
 			}
-			console.log(s);
-
 		}
 	};
 	this.lla_search = function(o, find){
@@ -51,19 +44,10 @@ window.angular.module('llaapp.gallery', [
 	this.lla_search_slug = function(o, find){
 		var r = false,
 			key;
-
-		console.log(o);
-		console.log(find);
 		for (key in o) {
 			var p = o[key];
-			console.log('in for');
-			console.log(p);
-
 			r =this.lla_search(p, 'lla_part_slug');
-			console.log(r);
-			console.log(find);
 			if( r === find ){
-				console.log('found');
 				r = p;
 			} else {
 				r = false;
@@ -83,7 +67,6 @@ window.angular.module('llaapp.gallery', [
 				lla_search_slug: this.lla_search_slug,
 			}, 
 			getData;
-
 		getData = (
 				{	action:'lla_get_gallery',
 					nouce:lla_wpProvider.n

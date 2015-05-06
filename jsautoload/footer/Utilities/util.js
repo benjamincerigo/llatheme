@@ -134,12 +134,16 @@ window.angular.module('llaapp.util', [
 			// ani is the events that the animation will end
 			ani = whichAnimationEvents.animationEvents;
 			scope.$watch('llaanimateon', function(newValue, oldValue){
-				if(newValue !==false){
+				console.log(scope);
+				console.log(newValue);
+				if(newValue !==false && newValue !== 'undefined'){
 					switch(newValue){
 						case 'in':
+							console.log(scope.llaanimatein);
 							$(element).addClass(scope.llaanimatein);
 							break;
 						case 'out':
+							console.log(scope.llaanimateout);
 							$(element).addClass(scope.llaanimateout);
 							break;
 					}

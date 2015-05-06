@@ -121,6 +121,7 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 		if( p === '~' ){
 			this.initCalender();
 		}else if(f === 'full'){
+			c.animate = 'in';
 			c.fullbool = true;
 		}else{
 			c.fullbool = false;

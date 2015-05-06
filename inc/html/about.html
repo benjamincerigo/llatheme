@@ -1,7 +1,7 @@
 <!-- About top -->
 <div class = 'part part-lg-a part-lg--h paper-effect-border' llaanimate llaanimateon='model.content.main.animate' llaanimatein='stretchRight' llaanimateout='fadeOut' ng-show="model.content.main.selectedbool" >
 	<div class='part part-lg-h part-lg--f paper-inner text-center' ng-show="model.content.main.selectedbool">
-		<span class='animated fadeIn' >
+		<span  llaanimate llaanimateon='model.content.main.animate' llaanimatein='fadeIn' llaanimateout='fadeOut' >
 			<a ng-href='#/about/~' >
 				<h3>{{model.content.main.post_title}}</h3>
 			</a>
@@ -12,7 +12,7 @@
 	<div scrollable class='part part-lg-h part-lg--f paper-inner ' ng-show="model.content.main.selectedbool">
 		<div class='outercontent'>
 			<div class='innercontent'> 
-				<div class='animated fadeIn' ng-bind-html='model.content.main.post_content'>
+				<div  llaanimate llaanimateon='model.content.main.animate' llaanimatein='fadeIn' llaanimateout='fadeOut' ng-bind-html='model.content.main.post_content'>
 
 					
 				</div>

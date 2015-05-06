@@ -95,7 +95,7 @@ window.angular.module('llaapp.util', [
 					op = {},
 					nice;
 
-			op.cursorcolor = '#765581';
+			op.cursorcolor = '#A4A4A4';
 			op.cursorborder = '0';
 			if(attr.scrollable === 'x'){
 				op.cursorwidth = '8px';
@@ -131,11 +131,9 @@ window.angular.module('llaapp.util', [
 		link: function (scope, element, attr){
 			var initialAnimate = false, 
 				ani;
-			
+			// ani is the events that the animation will end
 			ani = whichAnimationEvents.animationEvents;
 			scope.$watch('llaanimateon', function(newValue, oldValue){
-				console.log(newValue);
-				console.log(oldValue);
 				if(newValue !==false){
 					switch(newValue){
 						case 'in':
@@ -148,20 +146,29 @@ window.angular.module('llaapp.util', [
 					$(element).addClass('animated');
 				}
 			});
-
-
-
-			console.log(scope);
+			// On the end of the animate clean up
 			$(element).one(ani, function(event){
-				console.log('called');
+				var scroll = $(element).find('[scrollable]');
+				// check for the scroll inside is so then will resize of the
+				// animation complete
+				if( scroll.length !== 0){
+					scroll = $(element).find('[scrollable]');
+					scroll.each(function(i,el){
+						$(el).getNiceScroll().hide();
+					});
+				}
 				$(this).removeClass('animated');
 				$(this).removeClass(scope.llaanimatein);
 				$(this).removeClass(scope.llaanimateout);
 				scope.$apply(function(){
 					scope.llaanimateon = false;
 				});
-				console.log(event);
-				console.log(scope);
+				if(scroll.length !== 0){
+					scroll.each(function(i, el){
+						$(el).getNiceScroll().resize();
+						$(el).getNiceScroll().show();
+					});
+				}
 			});
 
 		}

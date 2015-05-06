@@ -32,7 +32,7 @@ orange
 	box-sizing: initial;
 }
 body,h1,h2,h3,h4,p,a, li{
-	font-family:  'Lucida Grande', sans-serif;
+	font-family: 'Muli',  'Lucida Grande', sans-serif;
 	font-weight: 300;
 }
 h1{
@@ -542,7 +542,7 @@ form button{
 	right: 0;
 	height: 3px;
 	border-radius: 5px;
-	bottom: 7px;
+	bottom: 10px;
 }
 
 /**************** gallery *****************/

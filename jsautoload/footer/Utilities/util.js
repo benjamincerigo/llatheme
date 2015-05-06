@@ -119,7 +119,7 @@ window.angular.module('llaapp.util', [
 		}
 	};
 }])
-.directive('llaanimate', [function(){
+.directive('llaanimate', ['whichAnimationEvents', function(whichAnimationEvents){
 	'use strict';
 	return{
 		scope: {
@@ -128,9 +128,42 @@ window.angular.module('llaapp.util', [
 			llaanimateout: '@',
 		},
 		restrict: 'A',
-		controller: function($scope){
-			$scope.$watch('llaanimateon', function( value ){
+		link: function (scope, element, attr){
+			var initialAnimate = false, 
+				ani;
+			
+			ani = whichAnimationEvents.animationEvents;
+			scope.$watch('llaanimateon', function(newValue, oldValue){
+				console.log(newValue);
+				console.log(oldValue);
+				if(newValue !==false){
+					switch(newValue){
+						case 'in':
+							$(element).addClass(scope.llaanimatein);
+							break;
+						case 'out':
+							$(element).addClass(scope.llaanimateout);
+							break;
+					}
+					$(element).addClass('animated');
+				}
 			});
+
+
+
+			console.log(scope);
+			$(element).one(ani, function(event){
+				console.log('called');
+				$(this).removeClass('animated');
+				$(this).removeClass(scope.llaanimatein);
+				$(this).removeClass(scope.llaanimateout);
+				scope.$apply(function(){
+					scope.llaanimateon = false;
+				});
+				console.log(event);
+				console.log(scope);
+			});
+
 		}
 	};
 }])

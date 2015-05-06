@@ -88,5 +88,34 @@ angular.module('llaapp.services', [
 	return {
 		'docheck':docheck
 	};
-});
+}) 
+.service('whichAnimationEvents', function(){
+	var ani,
+		reinit;
 
+		reinit = function whichAnimationEvent(){
+		  var t,
+			  el = document.createElement("fakeelement");
+
+		  var animations = {
+			"animation"      : "animationend",
+			"OAnimation"     : "oAnimationEnd",
+			"MozAnimation"   : "animationend",
+			"WebkitAnimation": "webkitAnimationEnd"
+		  }
+
+		  for (t in animations){
+			if (el.style[t] !== undefined){
+				if(typeof this.animationEvents !== undefined){
+				  this.animationEvents =  animations[t];
+				}
+				return animations[t]
+			}
+		  }
+		};
+		ani = reinit();
+	return {
+		animationEvents: ani,
+		reInit: reinit
+	};
+});

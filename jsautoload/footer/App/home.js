@@ -112,6 +112,7 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			this.deselectAll(a.content.posts);
 			s.selectedbool = true;
 			a.content.main = s;
+			a.content.main.animate = 'in';
 			a.content.main.selectedbool = true;
 		}
 	};
@@ -136,6 +137,7 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 	this.deselectAll = function(ob){
 		Object.keys(ob).forEach(function(key ) {
 			this[key].selectedbool = false;
+			this[key].animate = 'out';
 		}, ob);
 	};
 	this.$get = function (){

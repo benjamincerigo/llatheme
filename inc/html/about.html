@@ -20,7 +20,7 @@
 		</div>
 	</div>
 </div>
-<div class='part part-top-padding part-lg-h part-lg--h' ng-hide="post.selectedbool" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" > 
+<div class='part part-top-padding part-lg-h part-lg--h' ng-class="{' part-lg-33 ': model.content.main.selectedbool}"ng-hide="post.selectedbool" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" > 
 	<a class='image-hover' ng-href='#/about/{{post.lla_part_slug}}'> 
 		<div class='overlay'>
 			<h3>{{post.post_title}}</h3>

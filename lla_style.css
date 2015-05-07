@@ -613,10 +613,14 @@ form button{
 	width: auto;
 	height: 70%;
 }
-.scrolltonull{
+.movearrows{
 	position: fixed;
 	margin-left:1%;
 	margin-top: 1%;
 	font-size: 2em;
 	color: #000;
+}
+.movearrows > div{
+	display: inline-block;
+	padding-left: 2%;
 }

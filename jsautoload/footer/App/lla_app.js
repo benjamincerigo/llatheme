@@ -74,17 +74,18 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 			},
 			onEnter: ['$rootScope', '$stateParams', 'moveOnUrlGallery', 'galleryRes', 'csscheck', function($rootScope, $stateParams, moveOnUrl, galleryPageModel, csscheck){
 				var jQ = window.jQuery,
-						picture =  $stateParams.picture || 'sense'; 
-				console.log('doing');
+					picture =  $stateParams.picture || 'sense'; 
 				galleryPageModel.state($stateParams);
 				if(jQ('#' + picture).length === 0){
 					$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState){
 							if(fromState.url === '^'){ 
+								console.log('doing from ');
 								moveOnUrl.execute(toParams);
 							}
 						}
 					);
 				}else{
+					console.log('else from ');
 					moveOnUrl.execute($stateParams);
 				}
 			}],
@@ -103,7 +104,7 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 		})
 		.state('homepage.stuff', {
 			url: '/{section}/{part}',
-			onEnter: ['partOb', '$stateParams', '$rootScope' , 'moveOnUrl', 'homepagemodel',function(partOb, $stateParams, $rootScope, moveOnUrl, homepagemodel){
+			onEnter: ['$stateParams', '$rootScope' , 'moveOnUrl', 'homepagemodel',function($stateParams, $rootScope, moveOnUrl, homepagemodel){
 				var jQ = window.jQuery,
 						section =  $stateParams.section; 
 				homepagemodel.state($stateParams);
@@ -151,7 +152,7 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 		})
 		.state('homepage.stuff.extra', {
 			url: '/{extra}',
-			onEnter: ['partOb', '$stateParams', '$rootScope' , 'moveOnUrl', 'homepagemodel',function(partOb, $stateParams, $rootScope, moveOnUrl, homepagemodel){
+			onEnter: ['$stateParams', '$rootScope' , 'moveOnUrl', 'homepagemodel',function($stateParams, $rootScope, moveOnUrl, homepagemodel){
 				var jQ = window.jQuery;
 				homepagemodel.state($stateParams);
 			}],

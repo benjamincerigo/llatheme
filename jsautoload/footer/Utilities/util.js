@@ -1,70 +1,5 @@
 window.angular.module('llaapp.util', [
 	'ui.router'])
-.provider('partOb', {
-	subscribers: {}, // Hash map of sections and part and function that will be called
-	currentState: {},
-	update: function( $stateParams ){
-		'use strict';
-		var sec = this.search( $stateParams , 'section'),
-				part = this.search( $stateParams , 'part' ),
-				sub,
-				fun;
-		this.currentState = $stateParams;
-		if(part === false){
-			return null;
-		}
-		if(sec === false){
-			return null;
-		}
-		sub = this.search( this.subscribers , sec );
-		fun = this.search( sub , part );
-		if(fun === false){
-			return null;
-		}
-		fun.callback();
-	},
-	search: function(o, find){
-		'use strict';
-		if(o.hasOwnProperty(find)){
-			return o[find];	
-		}else{
-			return false;
-		}
-	},
-	subscribe: function(section, part, fun){
-		'use strict';
-		var s = this.subscribers,
-				ss;
-		if(!s.hasOwnProperty(section)){
-			s[section] = {};
-		}
-		ss = s[section];
-		if(ss.hasOwnProperty(part)){
-			ss[part] = fun;
-		//	throw new Error('trying to set a part again');
-		}
-		ss[part] = fun;
-		if(!this.hasOwnProperty('currentState')){
-				return true;
-		}
-		if(!this.currentState.hasOwnProperty('section')){
-			return true;
-		}
-		this.update(this.currentState);
-	},
-	$get: function(){
-		'use strict';
-		return {
-			update: this.update,
-			search: this.search,
-			subscribers: this.subscribers,
-			subscribe: this.subscribe
-		
-		};
-	}
-
-
-})
 .factory('_', function() {
 	'use strict';
 	  return window._; // assumes underscore has already been loaded on the page
@@ -94,7 +29,6 @@ window.angular.module('llaapp.util', [
 			var $ = window.jQuery,
 					op = {},
 					nice;
-
 			op.cursorcolor = '#A4A4A4';
 			op.cursorborder = '0';
 			if(attr.scrollable === 'x'){
@@ -114,7 +48,6 @@ window.angular.module('llaapp.util', [
 				};
 				nice.railh.addClass('lla_scrollbar_hr');
 				nice.railh.removeAttr('style');
-
 			}
 		}
 	};
@@ -134,16 +67,12 @@ window.angular.module('llaapp.util', [
 			// ani is the events that the animation will end
 			ani = whichAnimationEvents.animationEvents;
 			scope.$watch('llaanimateon', function(newValue, oldValue){
-				console.log(scope);
-				console.log(newValue);
 				if(newValue !==false && newValue !== 'undefined'){
 					switch(newValue){
 						case 'in':
-							console.log(scope.llaanimatein);
 							$(element).addClass(scope.llaanimatein);
 							break;
 						case 'out':
-							console.log(scope.llaanimateout);
 							$(element).addClass(scope.llaanimateout);
 							break;
 					}
@@ -174,20 +103,7 @@ window.angular.module('llaapp.util', [
 					});
 				}
 			});
-
 		}
-	};
-}])
-.directive('scrolltonull', [function(){
-	'use strict';
-	return{
-		link: function(scope, element, attr){
-			 element.bind('click', function() {
-				var jQ = window.jQuery;
-				jQ('html,body').animate({scrollLeft: 0}, 800);
-			 });
-		 },
-		restrict: 'A',
 	};
 }])
 .directive('quotes', ['homepagemodel',function(homepagemodel){
@@ -221,7 +137,58 @@ window.angular.module('llaapp.util', [
 				})
 				 break;
 			}
-
+		 },
+		restrict: 'A',
+	};
+}])
+.directive('galleryway', ['$state', function($state){
+	'use strict';
+	return{
+		link: function(scope, el, attr){
+			var type = attr.galleryway;
+			switch(type){
+			case ('waypoint'):
+				var waypoint = new Waypoint({
+					  element: el,
+					  handler: function(direction) {
+							 scope.$apply(function(){
+								 var id = $(el).attr('id');
+								 scope.curId = id;
+							 });
+						},
+					  horizontal: true
+				})
+				break;
+			case ('next'):
+				el.bind('click', function(){
+					if( scope.curId !== 'undefined' && scope.curId !== false){
+						var next = $('#' + scope.curId).next();
+					}else{
+						var next = $('.gallery').children()[0]; 
+					}
+					next = $(next).attr('id');
+					$state.go('sense.gallery', {picture: next});
+					scope.curId = next;
+				});
+				break;
+			case ('null'):
+				 el.bind('click', function() {
+					var jQ = window.jQuery;
+					scope.curId = false;
+					//jQ('html,body').animate({scrollLeft: 0}, 800);
+					$state.go('sense.gallery', {picture: ''});
+				 });
+				 break;
+			case ('nullwaypoint'):
+				var waypoint = new Waypoint({
+					  element: el,
+					  handler: function(direction) {
+							scope.curId = false; 
+						},
+					  horizontal: true
+				})
+				 break;
+			}
 		 },
 		restrict: 'A',
 	};

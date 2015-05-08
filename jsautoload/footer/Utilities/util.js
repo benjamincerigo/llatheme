@@ -141,40 +141,49 @@ window.angular.module('llaapp.util', [
 		restrict: 'A',
 	};
 }])
-.directive('galleryway', ['$state', function($state){
+.directive('galleryway', ['$state', 'galleryCurId', function($state, galleryCurId, galleryLoadResolve){
 	'use strict';
+	console.log(galleryCurId);
 	return{
 		link: function(scope, el, attr){
 			var type = attr.galleryway;
 			switch(type){
 			case ('waypoint'):
-				var waypoint = new Waypoint({
-					  element: el,
-					  handler: function(direction) {
-							 scope.$apply(function(){
+			scope.$on('$llagalleryLoadedImages', function(){
+					console.log('resolved');
+					var waypoint = new Waypoint({
+						  element: el,
+						  handler: function(direction) {
 								 var id = $(el).attr('id');
-								 scope.curId = id;
-							 });
-						},
-					  horizontal: true
-				})
+								 console.log(galleryCurId);
+								 if(galleryCurId.motion !== true){
+								 galleryCurId.curId = id;
+								 console.log(galleryCurId);
+								  }
+							},
+						  horizontal: true
+					})
+				});
 				break;
 			case ('next'):
+				console.log('nextbind');
 				el.bind('click', function(){
-					if( scope.curId !== 'undefined' && scope.curId !== false){
-						var next = $('#' + scope.curId).next();
+					console.log(galleryCurId);
+					if( galleryCurId.curId !== 'undefined' && galleryCurId.curId !== false){
+						var next = $('#' + galleryCurId.curId).next();
 					}else{
 						var next = $('.gallery').children()[0]; 
 					}
 					next = $(next).attr('id');
+					console.log(next);
 					$state.go('sense.gallery', {picture: next});
-					scope.curId = next;
+					galleryCurId.curId = next;
 				});
 				break;
 			case ('null'):
 				 el.bind('click', function() {
 					var jQ = window.jQuery;
-					scope.curId = false;
+					galleryCurId.curId = false;
 					//jQ('html,body').animate({scrollLeft: 0}, 800);
 					$state.go('sense.gallery', {picture: ''});
 				 });
@@ -183,7 +192,7 @@ window.angular.module('llaapp.util', [
 				var waypoint = new Waypoint({
 					  element: el,
 					  handler: function(direction) {
-							scope.curId = false; 
+							galleryCurId.curId = false; 
 						},
 					  horizontal: true
 				})
@@ -191,6 +200,37 @@ window.angular.module('llaapp.util', [
 			}
 		 },
 		restrict: 'A',
+	};
+}])
+.directive('loadedimages', ['$rootScope',  function($rootScope){
+	'use strict';
+	var imgwait = {}, 
+		addFun;
+	addFun = function( key, value ){
+		if(!key){
+			return false;
+		}
+		imgwait[key] = value;
+	}
+	return{
+		link: function(scope, el, attr){
+			addFun(attr.ngSrc, false);
+			el.bind('load', function(){
+				var complete = true;
+				addFun(attr.ngSrc, true);
+				var keys = Object.keys(imgwait);
+				for (var i = 0; i < keys.length; i++) {
+					var val = imgwait[keys[i]];
+					if( val === false){
+						complete = false;
+					}
+					// else the complete will be true
+				 }
+				if( complete === true ){
+					scope.$emit('$llagalleryLoadComplete', imgwait); 
+				}
+			});
+		}
 	};
 }])
 ;

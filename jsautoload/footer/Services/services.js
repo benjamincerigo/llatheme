@@ -51,18 +51,23 @@ angular.module('llaapp.services', [
 		'execute': execute
 	};
 }])
-.service('moveOnUrlGallery', [ function(){
+.service('moveOnUrlGallery', ['galleryCurId', function(galleryCurId){
 	'use strict';
 	var execute = function($stateParams){
 		var jQ = window.jQuery,
 				picture =  $stateParams.picture, 
 				offset = 0;
-		if(jQ('#'+picture).length === 0 || !(picture)){
+		console.log($stateParams);
+		galleryCurId.motion = true;
+		if( !(picture) || jQ('#'+picture).length === 0 ){
+			galleryCurId.curId = false;
 			offset = 0;	
 		} else {
-			offset = jQ('#'+ picture).offset().left - 50; 
+			galleryCurId.curId = picture;
+			offset = jQ('#'+ picture).offset().left; 
 		}
-		jQ('html,body').animate({scrollLeft: offset}, 800);
+		jQ('html,body').animate({scrollLeft: offset},{duration: 800, complete: function(){ console.log('finshedmove');galleryCurId.motion = false;}});
+		console.log(galleryCurId);
 	};
 	return {
 		'execute': execute
@@ -117,4 +122,30 @@ angular.module('llaapp.services', [
 		animationEvents: ani,
 		reInit: reinit
 	};
-});
+})
+.service('galleryLoadResolve',['$q','$rootScope','moveOnUrlGallery',  function($q, $rootScope, moveOnUrl){
+	return {
+		init: function(){
+			var def = $q.defer();
+					$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState){
+								if(fromState.url === '^'){ 
+									def.resolve(fromState);
+								} else {
+									def.reject(fromState);
+								}
+					});
+			return def.promise;
+		},
+		load: function( $stateParams){
+			var def = $q.defer(); 
+			this.init().then(function(fromState){
+					$rootScope.$on('$llagalleryLoadComplete', function(event){
+						def.resolve();
+					});
+			});
+			return def.promise;
+		}
+			
+	};
+}])
+;

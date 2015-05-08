@@ -8,13 +8,11 @@ window.angular.module('llaapp.gallery', [
 	};
 	this.getSection = function(section){
 		var r;
-		console.log(this);
 		switch(section){
 			default:
 				r = this.model;
 				break;
 		}
-		console.log(r);
 		return r;
 	};
 	this.processState = function($stateParams){
@@ -72,7 +70,6 @@ window.angular.module('llaapp.gallery', [
 					nouce:lla_wpProvider.n
 				}
 				);
-		console.log(getData);
 			window.jQuery.ajax({
 				type: 'POST',
 				url: lla_wpProvider.a,
@@ -92,4 +89,10 @@ window.angular.module('llaapp.gallery', [
 			});
 		return deferred;
 	}];
-}]);
+}])
+.service('galleryCurId', function(){
+	var curId = false;
+	return {
+		curId: curId
+	};
+});

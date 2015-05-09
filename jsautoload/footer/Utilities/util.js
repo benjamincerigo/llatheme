@@ -150,7 +150,6 @@ window.angular.module('llaapp.util', [
 			switch(type){
 			case ('waypoint'):
 			scope.$on('$llagalleryLoadedImages', function(){
-					console.log('resolved');
 					var waypoint = new Waypoint({
 						  element: el,
 						  handler: function(direction) {
@@ -167,18 +166,29 @@ window.angular.module('llaapp.util', [
 				break;
 			case ('next'):
 				console.log('nextbind');
+				console.log(el);
+			scope.$on('$llagalleryLoadedImages', function(){
+				console.log('nextbind');
+				console.log(el);
 				el.bind('click', function(){
+					var picturetest = false;
+					console.log('click');
 					console.log(galleryCurId);
 					if( galleryCurId.curId !== 'undefined' && galleryCurId.curId !== false){
 						var next = $('#' + galleryCurId.curId).next();
 					}else{
 						var next = $('.gallery').children()[0]; 
 					}
-					next = $(next).attr('id');
-					console.log(next);
-					$state.go('sense.gallery', {picture: next});
-					galleryCurId.curId = next;
+					picturetest = $(next).attr('galleryway');
+					console.log(picturetest);
+					if(picturetest){
+						next = $(next).attr('id');
+						console.log(next);
+						$state.go('sense.gallery', {picture: next});
+						galleryCurId.curId = next;
+					}
 				});
+			});
 				break;
 			case ('null'):
 				 el.bind('click', function() {

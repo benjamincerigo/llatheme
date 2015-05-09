@@ -128,7 +128,8 @@ angular.module('llaapp.services', [
 		init: function(){
 			var def = $q.defer();
 					$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState){
-								if(fromState.url === '^'){ 
+						console.log(fromState);
+								if(fromState.url === '^' || fromState.name === 'homepage.stuff'){ 
 									def.resolve(fromState);
 								} else {
 									def.reject(fromState);

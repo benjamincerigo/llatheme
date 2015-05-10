@@ -131,13 +131,19 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 					}],
 				},
 				'about':{ templateUrl: lla_wpProvider.t + '/inc/html/about.html', 
-					controller: ['$scope',  'homepagemodel', function( $scope , homepagemodel){ 
+					controller: ['$scope',  'homepagemodel', '$sce' ,function( $scope , homepagemodel, $sce){ 
 						$scope.model = homepagemodel.getSection('about');
+						$scope.trustAsHtml = function(string) {
+							    return $sce.trustAsHtml(string);
+						};
 					}],
 				},
 				'calender': {templateUrl: lla_wpProvider.t + '/inc/html/calender.html', 
-					controller: ['$scope',  'homepagemodel', function( $scope , homepagemodel){ 
+					controller: ['$scope',  'homepagemodel', '$sce', function( $scope , homepagemodel, $sce){ 
 						$scope.model = homepagemodel.getSection('calender');
+						$scope.trustAsHtml = function(string) {
+							    return $sce.trustAsHtml(string);
+						};
 					}],
 				},
 				'contact':{ templateUrl: lla_wpProvider.t + '/inc/html/contact.html', 

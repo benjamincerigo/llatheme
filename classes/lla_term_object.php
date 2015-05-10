@@ -150,6 +150,7 @@ class lla_term_object
 					post_content,
 					event_date.meta_value AS date_value, 
 					start_time.meta_value AS start_time_value,
+					end_date.meta_value AS end_date_value, 
 					end_time.meta_value AS end_time_value, 
 					address.meta_value AS address_value,
 					event_desc.meta_value AS event_desc_value,
@@ -157,6 +158,7 @@ class lla_term_object
 					FROM wp_posts 
 					LEFT JOIN wp_postmeta event_date ON wp_posts.ID = event_date.post_id AND event_date.meta_key = 'lla_date'
 					LEFT JOIN wp_postmeta start_time ON wp_posts.ID = start_time.post_id AND start_time.meta_key = 'lla_start_time'
+					LEFT JOIN wp_postmeta end_date ON wp_posts.ID = end_date.post_id AND end_date.meta_key = 'lla_end_date'
 					LEFT JOIN wp_postmeta end_time ON wp_posts.ID = end_time.post_id AND end_time.meta_key = 'lla_end_time'
 					LEFT JOIN wp_postmeta address ON wp_posts.ID = address.post_id AND address.meta_key = 'lla_address'
 					LEFT JOIN wp_postmeta event_desc ON wp_posts.ID = event_desc.post_id AND event_desc.meta_key = 'lla_event_desc' 

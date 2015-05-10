@@ -42,6 +42,12 @@ $cal_meta = array(
             'type' => 'text',
         ),
         array(
+            'name' => 'Event End Date',
+            'desc' => 'Date of the event',
+            'id' => $prefix . '_end_date',
+            'type' => 'date',
+        ),
+        array(
             'name' => 'End Time',
             'desc' => 'Should be in 24 hour format hh:mm',
             'id' => $prefix . '_end_time',

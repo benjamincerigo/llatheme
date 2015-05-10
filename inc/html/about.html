@@ -12,7 +12,7 @@
 	<div scrollable class='part part-lg-h part-lg--f paper-inner ' ng-show="model.content.main.selectedbool">
 		<div class='outercontent'>
 			<div class='innercontent'> 
-				<div  llaanimate llaanimateon='model.content.main.animate' llaanimatein='fadeIn' llaanimateout='fadeOut' ng-bind-html='model.content.main.post_content'>
+				<div  llaanimate llaanimateon='model.content.main.animate' llaanimatein='fadeIn' llaanimateout='fadeOut' ng-bind-html='trustAsHtml(model.content.main.post_content)'>
 
 					
 				</div>

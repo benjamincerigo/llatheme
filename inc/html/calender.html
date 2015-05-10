@@ -4,14 +4,13 @@
 	<h3>{{model.content.main.post_title}}</h3>
 	<img class='thumbnail-lg' ng-src="{{model.content.main.thumbnail}}" ng-show="{{model.content.main.thumbnailset}}" />	
 </div>
-<div scrollable class='part part-lg-h part-lg--h'ng-hide='model.fullbool' >
+<div scrollable class='part part-lg-45 part-lg--h part-top-bot-padding-sm'ng-hide='model.fullbool' >
 	<div class='outercontent'>
 		<div class='innercontent'>
 			<ul class='no-padding'>
-				<li>{{model.content.main.date_value}}</li>
-				<li>{{model.content.main.start_time_value}}</li>
-				<li>{{model.content.main.end_time_value}}</li>
-				<li>{{model.content.main.address_value}}</li>
+				<li>Start: {{model.content.main.date_value}} - {{model.content.main.start_time_value}}</li>
+				<li>End: {{model.content.main.end_date_value}} - {{model.content.main.end_time_value}}</li>
+				<li>Addres: {{model.content.main.address_value}}</li>
 			</ul>
 			<p>{{model.content.main.event_desc_value}}</p>
 			<a class='actiontext'  ng-href="#/calender/{{model.content.main.lla_part_slug}}/full">Read More</a>
@@ -31,13 +30,12 @@
 		</a>
 		<h3>{{model.content.main.post_title}}</h3>
 		<ul class='nomargin'align = "center" >
-			<li>{{model.content.main.date_value}}</li>
-			<li>{{model.content.main.start_time_value}}</li>
-			<li>{{model.content.main.end_time_value}}</li>
-			<li>{{model.content.main.address_value}}</li>
+			<li>Start: {{model.content.main.date_value}} - {{model.content.main.start_time_value}}</li>
+			<li>End: {{model.content.main.end_date_value}} - {{model.content.main.end_time_value}}</li>
+			<li>Addres: {{model.content.main.address_value}}</li>
 		</ul>
 		<img ng-src="{{model.content.main.thumbnail}}" ng-show="model.content.main.thumbnailset" />
-		<div ng-bind-html='model.content.main.post_content'></div>
+		<div class='llasetcontent '  ng-bind-html='trustAsHtml(model.content.main.post_content)'></div>
 	</div>
 </div>
 

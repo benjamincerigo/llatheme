@@ -132,6 +132,9 @@ a:visited{
 
 /****** util ******/ 
 
+.white-space-normal{
+	white-space: normal;
+}
 .hidden-full{
 	visibility: hidden;
 	display: none;
@@ -221,8 +224,15 @@ a.actiontext:focus, a.actiontext:active{
 }
 /************************* ING SIZE **********/
 .thumbnail-lg{
-	width:60%;
+	height:75%;
 }
+/*** For wordpress ****/
+img.alignright { float: right; margin: 0 0 1em 1em; }
+img.alignleft { float: left; margin: 0 1em 1em 0; }
+img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+.alignright { float: right; }
+.alignleft { float: left; }
+.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 /**************************************************** Paper   *********************/
 .paper-effect-background{
 	background-image: url( ./img/paper-white.png);
@@ -298,6 +308,14 @@ height: 0px;
 .part-top-padding{
 	padding-top: 10%;
 }
+.part-padding-sm{
+	padding: 2%;
+}
+
+.part-top-bot-padding-sm{
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
 
 .part-lg-10{
 	width:10%;
@@ -309,6 +327,9 @@ height: 0px;
 	width:25%;
 }
 
+.part-lg-45{
+	width:45%;
+}
 .part-lg-h{
 	width:50%;
 }
@@ -557,6 +578,10 @@ form button{
 }
 
 /**************** gallery *****************/
+.homeveritcalcenter{
+	position: relative;
+	top: 15%;
+}
 .gallery img{
 	max-height: 100%;
 }
@@ -648,4 +673,13 @@ form button{
 .movearrows > div{
 	display: inline-block;
 	padding-left: 2%;
+}
+.llasetcontent{
+	white-space: normal;
+	max-width: 850px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.llasetcontent  * {
+	white-space: normal;
 }

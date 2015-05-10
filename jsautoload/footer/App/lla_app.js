@@ -79,6 +79,7 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 				if(jQ('#' + picture).length === 0){
 					galleryLoadResolve.load().then(function(){
 						console.log('triple retrun');
+						$('[scrollable]').getNiceScroll().resize();
 						$rootScope.$broadcast('$llagalleryLoadedImages');
 						moveOnUrl.execute($stateParams);
 					});

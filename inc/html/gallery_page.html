@@ -1,10 +1,10 @@
 <div  class='gallery' >
 	<div id='{{post.lla_part_slug}}' class='part part-lg-r part-lg--f text-center' ng-class="{' part-lg-f ': post.selectedbool}" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" galleryway='waypoint'>
 		<div class='part  part-lg-r part-lg--f' ng-hide="post.selectedbool"  ng-hide='post.selectedbool'> 
-					<a  llaanimate llaanimateon='post.animate' llaanimatein='' llaanimateout=''ng-href='#sense/gallery/{{post.lla_part_slug}}/full'> 
-						<span class="helper"></span>
-					<img loadedimages class='galleryimg verticalmiddle' ng-src="{{post.thumbnail}}" ng-show="{{post.thumbnailset}}" />	
-					</a>
+				<a  llaanimate llaanimateon='post.animate' llaanimatein='' llaanimateout=''ng-href='#sense/gallery/{{post.lla_part_slug}}/full'> 
+					<span class="helper"></span>
+					<img loadedimages class='galleryimg verticalmiddle paper-effect-border-img' ng-src="{{post.thumbnail}}" ng-show="{{post.thumbnailset}}" />	
+				</a>
 		</div>
 		<div class = 'part part-lg-f part-lg--f paper-effect-border '  llaanimate llaanimateon='post.animate' llaanimatein='stretchRight' llaanimateout='fadeOut' ng-show="post.selectedbool">
 			<div class='part part-lg-f part-lg--f paper-inner text-center content-padding '  llaanimate llaanimateon='post.animate' llaanimatein='fadeIn' llaanimateout='fadeOut' ng-show='post.selectedbool' scrollable >

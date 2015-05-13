@@ -249,6 +249,15 @@ img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 	padding: 0;
 	opacity: 0.9;
 }
+.paper-effect-border-img{
+	border-style: solid;
+	border-width: 15px;
+	webkit-border-image:url(./img/paper-white.png) 20 20 20 20 repeat;
+	-moz-border-image:url(./img/paper-white.png) 20 20 20 20 repeat;
+	border-image:url(./img/paper-white.png) 20 20 20 20 repeat;
+	padding: 0;
+	opacity: 0.9;
+}
 .paper-inner{
 	background-color: #e9e5e2;
 	opacity: 0.9;

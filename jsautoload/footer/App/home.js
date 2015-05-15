@@ -32,9 +32,16 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			quotes = h.content.Home.content.quotes,
 			len = quotes.length - 1,
 			ran = Math.floor((Math.random() * len) + 1); 
-		h.quote = quotes[ran];
-
+			h.quote = quotes[ran];
 	};
+	this.toggleQuote = function(){
+		var h = this.getSection('home');
+		if( h.quote === false ){
+			this.selectQuote();
+		} else {
+			this.initHome();	
+		}
+	}
 	this.initAbout = function(){
 		var a = this.getSection('about'),
 				s = this.lla_search(a.content, 'main');
@@ -148,13 +155,16 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			state: this.processState,
 			lla_search: this.lla_search,
 			initHome: this.initHome,
-			selectQuote: this.selectQuote,
 			initAbout: this.initAbout,
 			aboutState: this.aboutState,
 			initCalender: this.initCalender,
 			calenderState: this.calenderState,
+				//Quotes
+			selectQuote: this.selectQuote,
+			toggleQuote: this.toggleQuote,
 				//Utils
 			deselectAll: this.deselectAll,
+
 		};
 		return r;
 	};

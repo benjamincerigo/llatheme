@@ -125,6 +125,13 @@ window.angular.module('llaapp.util', [
 					 });
 				 });
 				 break;
+				case 'toggle':
+				 el.bind('click', function() {
+					 scope.$apply(function(){
+						 homepagemodel.toggleQuote();
+					 });
+				 });
+				 break;
 				case 'waypointchange':
 				var waypoint = new Waypoint({
 					  element: el,

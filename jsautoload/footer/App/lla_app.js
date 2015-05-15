@@ -124,10 +124,17 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 			'topnav': topnavState,
 				'home': {
 					templateUrl: lla_wpProvider.t + '/inc/html/home.html', 
-					controller: ['$scope',  'homepagemodel','lla_wp', function( $scope , homepagemodel, lla_wp){
+					controller: ['$scope',  'homepagemodel','lla_wp', '$sce', function( $scope , homepagemodel, lla_wp, $sce){
 						$scope.model = homepagemodel.getSection('home');
 						$scope.model.blog_title = lla_wp.blog_title;
 						$scope.model.sense = lla_wp.sense;
+						$scope.trustAsHtml = function(string) {
+							console.log(string);
+							if(string === false){
+								string = '';
+							}
+							return $sce.trustAsHtml(string);
+						};
 					}],
 				},
 				'about':{ templateUrl: lla_wpProvider.t + '/inc/html/about.html', 

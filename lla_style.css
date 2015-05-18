@@ -614,8 +614,8 @@ form button{
 	white-space: nowrap;
 }
 .gallery > .part{
-	padding-left: 5%;
-	padding-right: 5%;
+	padding-left: 15%;
+	padding-right: 15%;
 	padding-bottom: 2.5%;
 	padding-top: 2.5%;
 }

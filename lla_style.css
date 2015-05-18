@@ -625,6 +625,9 @@ form button{
 .gallery > .part:first-child .part{
 	padding-left: 1%;
 }
+.gallery > .part:last-child{
+	margin-right: 70px;
+}
 .gallery .part{
 	box-sizing: border-box;
 	display: inline-block;

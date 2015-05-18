@@ -129,7 +129,6 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 						$scope.model.blog_title = lla_wp.blog_title;
 						$scope.model.sense = lla_wp.sense;
 						$scope.trustAsHtml = function(string) {
-							console.log(string);
 							if(string === false){
 								string = '';
 							}
@@ -154,8 +153,11 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 					}],
 				},
 				'contact':{ templateUrl: lla_wpProvider.t + '/inc/html/contact.html', 
-					controller: ['$scope',  'homepagemodel', function( $scope , homepagemodel){ 
+					controller: ['$scope',  'homepagemodel', '$sce',  function( $scope , homepagemodel, $sce){ 
 						$scope.model = homepagemodel.getSection('contact');
+						$scope.trustAsHtml = function(string) {
+							    return $sce.trustAsHtml(string);
+						};
 					}],
 				}
 			},

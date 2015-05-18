@@ -198,7 +198,6 @@ button.close {
 	height: 100%;
 	display: table-cell; 
 	vertical-align: middle; 
-	text-align: justify; 
 	white-space: normal;
 	overflow-y:hidden;
 }
@@ -353,6 +352,9 @@ height: 0px;
 	width:33%;
 }
 
+.part-lg--40{
+	height: 40%;
+}
 .part-lg--h{
 	height: 50%;
 }
@@ -618,6 +620,10 @@ form button{
 	display: inline-block;
 	float: none;
 }
+.inline-block{
+    display: inline-block;
+}
+
 .verticalmiddle{
 	vertical-align: middle;
 }

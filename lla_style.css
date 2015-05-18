@@ -221,6 +221,10 @@ a.actiontext:focus, a.actiontext:active{
 	color: #494250;
 	outline: none;
 }
+.margin-top-bot-5{
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
 /************************* ING SIZE **********/
 .thumbnail-lg{
 	height:75%;
@@ -363,6 +367,9 @@ height: 0px;
 }
 .part-lg--a{
 	height: 85%;
+}
+.part-lg--80{
+	height: 80%;
 }
 
 .part-spleft{
@@ -607,13 +614,16 @@ form button{
 	white-space: nowrap;
 }
 .gallery > .part{
-	padding: 5%;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 2.5%;
+	padding-top: 2.5%;
 }
 .gallery > .part:first-child{
-	padding-left: 0;
+	padding-left: 1%;
 }
 .gallery > .part:first-child .part{
-	padding-left: 0;
+	padding-left: 1%;
 }
 .gallery .part{
 	box-sizing: border-box;
@@ -626,6 +636,9 @@ form button{
 
 .verticalmiddle{
 	vertical-align: middle;
+}
+.verticaltop{
+	vertical-align: top;
 }
 .verticalbaseline{
 	vertical-align: baseline;

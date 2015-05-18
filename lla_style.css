@@ -602,6 +602,7 @@ form button{
 }
 .gallery img{
 	max-height: 100%;
+	opacity: 1;
 }
 .gallerycontainer{
 	box-sizing: border-box;
@@ -633,6 +634,7 @@ form button{
 	display: inline-block;
 	float: none;
 }
+
 .inline-block{
     display: inline-block;
 }

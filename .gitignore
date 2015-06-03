@@ -1,7 +1,4 @@
-Gruntfile
-package.json
-/grunt/
-/node_modules
+node_modules/*
 *.swp
 *.log
 *.DS_Store

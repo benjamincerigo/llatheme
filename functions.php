@@ -1,4 +1,3 @@
-
 <?php
 /**
  * lifelinearts functions and definitions
@@ -8,7 +7,6 @@
 
 $prefix = 'lla';
 
-add_theme_support( 'post-thumbnails' ); 
 
 if(!function_exists('_log')){
   function _log( $message ) {
@@ -42,23 +40,7 @@ include('classes/Model.php');
 function lla_doReCaptcha(){
 	return true;
 }
-
-function lla_getReCaptcha(){
-	include_once('classes/recaptcha-php-1.11/recaptchalib.php');
-	// Register API keys at https://www.google.com/recaptcha/admin
-	$privatekey = "6LdTMgMTAAAAAA2KVZjsYG-09SN9ER1IeGH-3AeB";
-	// reCAPTCHA supported 40+ languages listed here: https://developers.google.com/recaptcha/docs/language
-	$lang = "en";
-	// The response from reCAPTCHA
-	$resp = null;
-	// The error code from reCAPTCHA, if any
-	$error = null;
-	return $privatekey;
-}
-function lla_getSiteKey(){
-	$sitekey = '6LdTMgMTAAAAAKSmTiiU9Q1xJ26U_PyfYFzzIIBH';
-	return $sitekey;
-}
+include('recaptch.php');
 include('lla_mail.php');
 /*
 *  Create Custom Post types:
@@ -97,7 +79,7 @@ function create_custom_post_types() {
 	    'supports'      => array( 'title', 'editor', 'thumbnail'),
 	    'has_archive'   => true,
 	    'exclude_from_search' => false,
-	    'taxonomies' => 'lla_sections',
+	    'taxonomies' => array('lla_sections'),
 	   
 	 )
 	);
@@ -129,8 +111,7 @@ function create_custom_post_types() {
 	    'supports'      => array( 'title', 'editor', 'thumbnail'),
 	    'has_archive'   => true,
 	    'exclude_from_search' => false,
-	    'taxonomies' => 'lla_sections',
-	   
+	    'taxonomies' => array('lla_sections'),
 	 )
 	);
 	//End of Calender post type
@@ -160,7 +141,7 @@ function create_custom_post_types() {
 	    'supports'      => array( 'title', 'editor'),
 	    'has_archive'   => true,
 	    'exclude_from_search' => false,
-	    'taxonomies' => 'lla_sections',
+	    'taxonomies' => array('lla_sections'),
 	   
 	 )
 	);
@@ -289,6 +270,7 @@ include('inc/cal_custom_fields.inc');
 include('inc/con_custom_fields.inc');
 
 
+add_theme_support( 'post-thumbnails' ); 
 /* --------------- Extra function for sorting lla_sections ------- */
 
 //sort array by the given order

@@ -19,7 +19,6 @@ if(!function_exists('_log')){
 //Script to add
 add_action('wp_head', 'session_start');
 //Addition of Scripts. 
-
 include('inc/lla_add_scripts.inc');
 /**
 *Include Classes

@@ -4,10 +4,7 @@
  *
  * @package lifelinearts
  */
-
 $prefix = 'lla';
-
-
 if(!function_exists('_log')){
   function _log( $message ) {
     if( WP_DEBUG === true ){

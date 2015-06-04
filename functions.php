@@ -16,7 +16,6 @@ if(!function_exists('_log')){
     }
   }
 }
-
 //Script to add
 add_action('wp_head', 'session_start');
 //Addition of Scripts. 

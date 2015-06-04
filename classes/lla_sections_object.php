@@ -7,10 +7,7 @@ class lla_sections_object
 	public $page;
 	//Construct
 	function __construct($parent, $content = true, $toget = array() ){
-		print_r( $parent );
-		print_r( get_term_by('name', $parent, 'lla_sections') );
-		print_r( get_term_by('slug', $parent, 'lla_sections') );
-		($parentTerm = get_term_by('name', $parent, 'lla_sections')) || ($parentTerm =get_term_by('slug', $parent, 'lla_sections'));
+	($parentTerm = get_term_by('name', $parent, 'lla_sections')) || ($parentTerm =get_term_by('slug', $parent, 'lla_sections'));
 		//Test if parent Term Excists. 
 		if($parentTerm)
 		{

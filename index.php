@@ -12,6 +12,33 @@ get_header();
 $model = new lla\lla_sections_object('home_page');
 $sense = new lla\lla_sections_object('sense', false);
 ?>
+<!-- INITIAL HTML FOR GOOGLE -->
+<div id='llainitial' class='animated' style='height:100%'>
+    <div class='section' >
+        <div  class='part part-top-padding part-lg-f part-lg--h part-noptop text-center'>
+            <h1 class='website-title animated fadeIn' quotes='toggle'>Lifeline Arts</h1>
+        </div>
+        <div style='height:100%'></div> 
+            <?php
+                $aboutcontent = lla\Model::getInstance(); 
+                $aboutcontent = $aboutcontent->content['About'];
+                $posts = $aboutcontent->content['posts'];
+                foreach( $posts as $key => $value ){
+                    echo "
+                        <div class='part part-lg-f part-lg--title text-center' >
+                            <h3>{$value->post_title}</h3>
+                        </div>
+                        ";
+                    echo "
+                        <div class='part part-lg-f text-center' >
+                            {$value->post_content}
+                        </div>
+                        ";
+                }
+            ?>
+    </div>
+</div>
+<!-- JANGULAR APP -->
 <div  class='main animated fadeIn' ui-view ></div>
 <div class='line animated fadeIn'>
 	<img src='<?php echo get_template_directory_uri() . "/img/LLA_LineFull4000_2.jpg"; ?>'
@@ -45,6 +72,6 @@ angular.module('llaapp.inlineservices', ['ngRoute'])
 	}
 });
 lla.model = angular.module('llaapp.inlineservices')._invokeQueue[0][2][1].$get();
-console.log(lla.model);
+console.log( lla.model );
 </script>
 <?php get_footer(); ?>

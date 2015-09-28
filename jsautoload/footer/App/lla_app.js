@@ -34,6 +34,9 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 	function( $urlRouterProvider , $stateProvider, $urlMatcherFactoryProvider, lla_wpProvider, homepagemodelProvider, reCAPTCHAProvider) {
 	"use strict";
 	var re = lla_wpProvider.r;
+    $('body').addClass('y-overflow');
+    $('#llainitial').addClass('fadeOut');
+    $('#llainitial').addClass('hidden-full');
 	homepagemodelProvider.init();
 	//reCaptcap
 	reCAPTCHAProvider.setPublicKey(re);

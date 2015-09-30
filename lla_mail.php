@@ -1,5 +1,5 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) exit;
 /*
 *
 *
@@ -105,7 +105,7 @@ function lla_get_gallery(){
 	if (isset( $_POST['nouce'] ) && wp_verify_nonce($_POST['nouce'], 'lla_angular' ) ){
 		require_once __DIR__ . '/classes/lla_term_object.php';
 		$parent = isset($_POST['section']) ? $_POST['section']: 'gallery';	
-		($parentTerm = get_term_by('name', $parent, 'lla_sections')) || ($parentTerm =get_term_by('slug', $parent, 'lla_sections'));
+		($parentTerm = get_term_by('name', sanitize_text_field( $parent ), 'lla_sections')) || ($parentTerm =get_term_by('slug', sanitize_text_field( $parent ), 'lla_sections'));
 		$model = new \lifelinearts\lla_term_object($parentTerm, true);	
 		http_response_code(200);
 		$return = $model;

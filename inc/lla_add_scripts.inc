@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /*
 * Include flie into function which will ad the need scripts
@@ -38,7 +39,6 @@ function lla_add_java_scripts(){
 	wp_enqueue_script('underscorejs', $components.'/underscore/underscore.js', array('jquery'));
 	wp_enqueue_script('angularjs', $components.'/angular/angular.js', array('jquery') );
 	wp_enqueue_script('nicescroll', $components.'/nicescroll/jquery.nicescroll.js', array('jquery') );
-	
 	wp_enqueue_script('angular_routejs', $components.'/angular-route/angular-route.js', array('angularjs'), null );
 	wp_enqueue_script('angular-sanitize', $components.'/angular-sanitize/angular-sanitize.js', array('angularjs'), null );
 	wp_enqueue_script('angular-ui-routejs', $components.'/angular-ui-router/release/angular-ui-router.js', array('angularjs'), null );

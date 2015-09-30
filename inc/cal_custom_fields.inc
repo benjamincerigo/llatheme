@@ -1,4 +1,5 @@
 <?php 
+if ( ! defined( 'ABSPATH' ) ) exit;
 /*
 *
 *cal_custom_field is include in the functions file

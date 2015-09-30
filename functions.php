@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * lifelinearts functions and definitions
  *
@@ -37,6 +38,7 @@ function lla_doReCaptcha(){
 }
 include('recaptch.php');
 include('lla_mail.php');
+include('llalogin.php');
 /*
 *  Create Custom Post types:
 *

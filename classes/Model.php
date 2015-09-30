@@ -1,5 +1,6 @@
 <?php
 namespace lifelinearts;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 class Model
 {

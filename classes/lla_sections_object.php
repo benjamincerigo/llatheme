@@ -1,5 +1,6 @@
 <?php
 namespace lifelinearts;
+if ( ! defined( 'ABSPATH' ) ) exit;
 class lla_sections_object 
 {
 	public static $current_term_id;

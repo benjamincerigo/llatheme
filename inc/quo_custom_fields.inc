@@ -1,4 +1,5 @@
 <?php 
+if ( ! defined( 'ABSPATH' ) ) exit;
 /*
 *
 *con_custom_field is include in the functions file

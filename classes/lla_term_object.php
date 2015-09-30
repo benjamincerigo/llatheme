@@ -1,5 +1,6 @@
 <?php
 namespace lifelinearts;
+if ( ! defined( 'ABSPATH' ) ) exit;
 class lla_content {
 	private $from_custom = array(
 		'lla_part_slug',

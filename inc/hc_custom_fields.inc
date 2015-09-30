@@ -1,5 +1,5 @@
 <?php 
-
+if ( ! defined( 'ABSPATH' ) ) exit;
 /*_hccustom_field is include in the functions file
 *
 *It set up the custom fields for the home content, lla_home_content, post types. 

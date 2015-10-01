@@ -81,10 +81,10 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 				galleryPageModel.state($stateParams);
 				if(jQ('#' + picture).length === 0){
 					galleryLoadResolve.load().then(function(){
-						console.log('triple retrun');
 						$('[scrollable]').getNiceScroll().resize();
 						$rootScope.$broadcast('$llagalleryLoadedImages');
 						moveOnUrl.execute($stateParams);
+                        galleryPageModel.notLoading();
 					});
 				}else{
 					console.log('else from ');
@@ -92,9 +92,10 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 				}
 			}],
 			templateUrl: lla_wpProvider.t +  '/inc/html/gallery_page.html',
-			controller: ['$scope',   'galleryRes', 'csscheck', function($scope,   galleryRes, csscheck){
+			controller: ['$scope',   'galleryRes', 'csscheck', 'lla_wp', function($scope,   galleryRes, csscheck, lla_wp){
 				$scope.model = galleryRes.getSection('main');
 				csscheck.docheck('gallery');
+                $scope.template_dir = lla_wp.template_dir;
 			}]
 		})
 		.state('sense.gallery.extra', {

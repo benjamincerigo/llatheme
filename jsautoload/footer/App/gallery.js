@@ -56,6 +56,13 @@ window.angular.module('llaapp.gallery', [
 		}
 		return r;
 	};
+    this.notLoading = function(){
+        console.log('notloading');
+        this.model.doneload = true;
+    }
+    
+
+
 	this.$get = ['$q',function ($q){
 		var deferred = $q.defer(),
 			r = {
@@ -63,6 +70,7 @@ window.angular.module('llaapp.gallery', [
 				state: this.processState,
 				lla_search: this.lla_search,
 				lla_search_slug: this.lla_search_slug,
+				notLoading: this.notLoading,
 			}, 
 			getData;
 		getData = (

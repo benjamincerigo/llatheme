@@ -6,13 +6,13 @@ function  lla_custom_authenticate_country($username) {
     if( !lla_counttest()){
         $email_headers = "From:LLA ERROR <morag@lifelinearts.co.uk> \r\nReply-To: non\r\nContent-type: text/html; charset=ISO-8859-1\r\nMIME-Version: 1.0";
         wp_mail('benjamin.cerigo@gmail.com', 'LLA Too any attempts', 'There are too many email attempts', $email_headers);
-        header('HTTP/1.1 404 Not Found');
+        status_header( 404 );
         include __DIR__ . '/404.php';
         die();
     }
 
     $allowed = array( 'nl', 'gb');
-    $allowedIp = array( '192.168.33.1');
+    $allowedIp = array( '192.168.33.0');
     $monitor_array = array();
     $ip = lla_getClientIP( $monitor_array );
     if( $username != false ){
@@ -53,7 +53,7 @@ function  lla_custom_authenticate_country($username) {
         } 
     } 
     error_log( print_r( $monitor_array , true ));
-    header('HTTP/1.1 404 Not Found');
+    status_header( 404 );
     include __DIR__ . '/404.php';
     die();
 }

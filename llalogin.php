@@ -3,16 +3,16 @@
 add_action ('wp_authenticate' , 'lla_custom_authenticate_country' );
 
 function  lla_custom_authenticate_country($username) {
-    /*if( !lla_counttest()){
+    if( !lla_counttest()){
         $email_headers = "From:LLA ERROR <morag@lifelinearts.co.uk> \r\nReply-To: non\r\nContent-type: text/html; charset=ISO-8859-1\r\nMIME-Version: 1.0";
         wp_mail('benjamin.cerigo@gmail.com', 'LLA Too any attempts', 'There are too many email attempts', $email_headers);
         status_header( 404 );
         include __DIR__ . '/404.php';
         die();
-}*/
+    }
 
     $allowed = array( 'nl', 'gb');
-    $allowedIp = array( '192.168.33.0', '84.241.199.16');
+    $allowedIp = array( '192.168.33.0');
     $monitor_array = array();
     $ip = lla_getClientIP( $monitor_array );
     echo( $ip );

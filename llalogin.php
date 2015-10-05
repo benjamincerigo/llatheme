@@ -12,7 +12,7 @@ function  lla_custom_authenticate_country($username) {
     }
 
     $allowed = array( 'nl', 'gb');
-    $allowedIp = array( '192.168.33.0');
+    $allowedIp = array( '192.168.33.0', '84.241.199.16');
     $monitor_array = array();
     $ip = lla_getClientIP( $monitor_array );
     if( $username != false ){

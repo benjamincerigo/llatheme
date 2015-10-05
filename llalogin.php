@@ -15,7 +15,7 @@ function  lla_custom_authenticate_country($username) {
     $allowedIp = array( '192.168.33.0', '84.241.199.16');
     $monitor_array = array();
     $ip = lla_getClientIP( $monitor_array );
-    var_dump( $ip );
+    echo( $ip );
     if( $username != false ){
         lla_addcount( $username , $ip);
     }

@@ -8,7 +8,6 @@ function  lla_custom_authenticate_country($username) {
         //include __DIR__ . '/404.php';
         die();
     }
-
     $allowed = array( 'nl', 'gb');
     $allowedIp = array( '192.168.33.1', '84.241.193.112');
     $monitor_array = array();
@@ -17,7 +16,7 @@ function  lla_custom_authenticate_country($username) {
         lla_addcount( $username , $ip);
     }
     if( in_array($ip,$allowedIp )){
-        error_log( print_r( $monitor_array , true ));
+     //   error_log( print_r( $monitor_array , true ));
         return;
     }
     if (strlen($ip) !== 2) {
@@ -44,7 +43,7 @@ function  lla_custom_authenticate_country($username) {
         } else {
             $countryFound = 'xx';
         }
-        error_log( print_r( $monitor_array , true ));
+    //    error_log( print_r( $monitor_array , true ));
         if (in_array( $countryFound,  $allowed) ) {
             // This means that it is not found so dont use dutch
             return;

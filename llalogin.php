@@ -1,13 +1,11 @@
 <?php
-
 add_action ('wp_authenticate' , 'lla_custom_authenticate_country' );
-
 function  lla_custom_authenticate_country($username) {
     if( !lla_counttest()){
         $email_headers = "From:LLA ERROR <morag@lifelinearts.co.uk> \r\nReply-To: non\r\nContent-type: text/html; charset=ISO-8859-1\r\nMIME-Version: 1.0";
         wp_mail('benjamin.cerigo@gmail.com', 'LLA Too any attempts', 'There are too many email attempts', $email_headers);
-        status_header( 404 );
-        include __DIR__ . '/404.php';
+        //status_header( 404 );
+        //include __DIR__ . '/404.php';
         die();
     }
 
@@ -52,9 +50,9 @@ function  lla_custom_authenticate_country($username) {
             return;
         } 
     } 
-    error_log( print_r( $monitor_array , true ));
-    status_header( 404 );
-    include __DIR__ . '/404.php';
+    //error_log( print_r( $monitor_array , true ));
+    //status_header( 404 );
+    //include __DIR__ . '/404.php';
     die();
 }
 function lla_counttest(){
@@ -117,7 +115,6 @@ function lla_theme_activation_function_countlogin(){
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta( $sql );
 }
-
 add_action('wp_login', 'lla_login_notify', 10, 2);
 function lla_login_notify( $user_login, $user ){
     $time = time();
@@ -129,9 +126,7 @@ function lla_login_notify( $user_login, $user ){
     $email_headers = "From:LLA ERROR <morag@lifelinearts.co.uk> \r\nReply-To: non\r\nContent-type: text/html; charset=ISO-8859-1\r\nMIME-Version: 1.0";
     error_log( 'LOGGED IN USER: '. $user->ID );
     if(!wp_mail('benjamin.cerigo@gmail.com', 'LLA Login', $email_headers, $email_headers)){
-        error_log( 'unsuccessful email');
+        //error_log( 'unsuccessful email');
     }
 }
 ?>
-
-

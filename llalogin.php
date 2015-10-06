@@ -8,7 +8,7 @@ function  lla_custom_authenticate_country($username) {
         include __DIR__ . '/404.php';
         die();
     }
-    $allowed = array( 'nl', 'gb');
+    $allowed = array(  'gb');
     $allowedIp = array( '192.168.33.1', '84.241.193.112');
     $monitor_array = array();
     $ip = lla_getClientIP( $monitor_array );

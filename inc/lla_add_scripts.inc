@@ -49,7 +49,7 @@ function lla_add_java_scripts(){
 	wp_enqueue_style('lla_style', $template_url . '/lla_style.css', array(), null);
 	wp_enqueue_style('aminmations', $template_url . '/css/animate.css/animate.css', array(), null);
 
-  wp_enqueue_script('lla_app', $template_url .'/js/build/LifelineArts.min.js', array('jquery', 'angularjs'), '0.1.0', true);
+    wp_enqueue_script('lla_app', $template_url .'/js/build/LifelineArts.min.js', array('jquery', 'angularjs'), '0.1.1', true);
 
 /* 	Not currently Needed
  *  wp_enqueue_script('lla_services',  $template_url . '/js/lla_services.js');

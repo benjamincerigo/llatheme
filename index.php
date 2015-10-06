@@ -42,7 +42,7 @@ $sense = new lla\lla_sections_object('sense', false);
 <!-- JANGULAR APP -->
 <div  class='main animated fadeIn' ui-view ></div>
 <div class='line animated fadeIn'>
-	<img src='<?php echo get_template_directory_uri() . "/img/LLA_LineFull4000_2.jpg"; ?>'
+	<img src='<?php echo get_template_directory_uri() . "/img/LLA_LineFull4000_2.jpg"; ?>'/>
 </div>
 <script>
 var lla ={};

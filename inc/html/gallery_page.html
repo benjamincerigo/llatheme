@@ -1,4 +1,12 @@
 <div  class='gallery nullfont' >
+    <div id='galleryLoad' class='part part-lg-r part-lg--80 text-center paper-inner margin-top-bot-5 verticaltop normalfont'ng-hide="model.doneload" >
+		<div class='part  part-lg-r part-lg--f' ng-hide='model.doneload'> 
+				<a  llaanimate llaanimateon='post.animate' llaanimatein='' llaanimateout=''ng-href='#sense/gallery/{{post.lla_part_slug}}/full'> 
+					<span class="helper"></span>
+					<img class='verticalmiddle ' ng-src="{{template_dir}}/img/loading.gif" loop='-1' />	
+				</a>
+		</div>
+	</div>
 	<div id='{{post.lla_part_slug}}' class='part part-lg-r part-lg--80 text-center paper-inner margin-top-bot-5 verticaltop normalfont' ng-class="{' part-lg-f ': post.selectedbool}" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" galleryway='waypoint'>
 		<div class='part  part-lg-r part-lg--f' ng-hide="post.selectedbool"  ng-hide='post.selectedbool'> 
 				<a  llaanimate llaanimateon='post.animate' llaanimatein='' llaanimateout=''ng-href='#sense/gallery/{{post.lla_part_slug}}/full'> 
@@ -14,14 +22,6 @@
 				<h3>{{post.post_title}}</h3>
 				<div ng-bind-html='post.post_content'></div>
 			</div>
-		</div>
-	</div>
-    <div id='galleryLoad' class='part part-lg-r part-lg--80 text-center paper-inner margin-top-bot-5 verticaltop normalfont'ng-class="{' part-lg-so ': model.doneload}" >
-		<div class='part  part-lg-r part-lg--f' ng-hide='model.doneload'> 
-				<a  llaanimate llaanimateon='post.animate' llaanimatein='' llaanimateout=''ng-href='#sense/gallery/{{post.lla_part_slug}}/full'> 
-					<span class="helper"></span>
-					<img class='verticalmiddle ' ng-src="{{template_dir}}/img/loading.gif" loop='-1' />	
-				</a>
 		</div>
 	</div>
 </div>

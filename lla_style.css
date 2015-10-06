@@ -610,6 +610,16 @@ form button{
 }
 
 /**************** gallery *****************/
+#galleryLoad{
+    padding-left: 10%;
+}
+#galleryLoad.ng-hide-add, #galleryLoad.ng-hide-remove {
+  transition: 1s linear all;
+}
+
+#galleryLoad > .part.ng-hide-add, #galleryLoad >.part.ng-hide-remove {
+  transition: 1s linear all;
+}
 .homeveritcalcenter{
 	position: relative;
 	top: 15%;

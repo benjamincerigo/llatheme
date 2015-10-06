@@ -17,8 +17,6 @@ if(!function_exists('_log')){
     }
   }
 }
-//Script to add
-add_action('wp_head', 'session_start');
 //Addition of Scripts. 
 include('inc/lla_add_scripts.inc');
 /**
@@ -37,8 +35,8 @@ function lla_doReCaptcha(){
 	return true;
 }
 include('recaptch.php');
-include('lla_mail.php');
-include('llalogin.php');
+include('lla_mail.php'); //is the ajax calls
+include('llalogin.php'); // Is the loging protection
 /*
 *  Create Custom Post types:
 *

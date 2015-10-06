@@ -3,9 +3,9 @@ add_action ('wp_authenticate' , 'lla_custom_authenticate_country' );
 function  lla_custom_authenticate_country($username) {
     if( !lla_counttest()){
         $email_headers = "From:LLA ERROR <morag@lifelinearts.co.uk> \r\nReply-To: non\r\nContent-type: text/html; charset=ISO-8859-1\r\nMIME-Version: 1.0";
-        wp_mail('benjamin.cerigo@gmail.com', 'LLA Too any attempts', 'There are too many email attempts', $email_headers);
-        //status_header( 404 );
-        //include __DIR__ . '/404.php';
+        wp_mail('benjamin.cerigo@gmail.com', 'LLA Too any attempts '. $_SERVER['HTTP_HOST'] , 'There are too many email attempts', $email_headers);
+        status_header( 404 );
+        include __DIR__ . '/404.php';
         die();
     }
     $allowed = array( 'nl', 'gb');
@@ -16,7 +16,7 @@ function  lla_custom_authenticate_country($username) {
         lla_addcount( $username , $ip);
     }
     if( in_array($ip,$allowedIp )){
-     //   error_log( print_r( $monitor_array , true ));
+        error_log( print_r( $monitor_array , true ));
         return;
     }
     if (strlen($ip) !== 2) {
@@ -43,15 +43,15 @@ function  lla_custom_authenticate_country($username) {
         } else {
             $countryFound = 'xx';
         }
-    //    error_log( print_r( $monitor_array , true ));
+        error_log( print_r( $monitor_array , true ));
         if (in_array( $countryFound,  $allowed) ) {
             // This means that it is not found so dont use dutch
             return;
         } 
     } 
-    //error_log( print_r( $monitor_array , true ));
-    //status_header( 404 );
-    //include __DIR__ . '/404.php';
+    error_log( print_r( $monitor_array , true ));
+    status_header( 404 );
+    include __DIR__ . '/404.php';
     die();
 }
 function lla_counttest(){
@@ -124,7 +124,7 @@ function lla_login_notify( $user_login, $user ){
                          . "Time: $time<br />";
     $email_headers = "From:LLA ERROR <morag@lifelinearts.co.uk> \r\nReply-To: non\r\nContent-type: text/html; charset=ISO-8859-1\r\nMIME-Version: 1.0";
     error_log( 'LOGGED IN USER: '. $user->ID );
-    if(!wp_mail('benjamin.cerigo@gmail.com', 'LLA Login', $email_headers, $email_headers)){
+    if(!wp_mail('benjamin.cerigo@gmail.com', 'LLA Login '. $_SERVER['HTTP_HOST'], $email_content, $email_headers)){
         //error_log( 'unsuccessful email');
     }
 }

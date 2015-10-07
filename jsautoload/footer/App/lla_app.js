@@ -66,6 +66,17 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 			controller: ['$scope',   'lla_wp', function($scope,   lla_wp ){
 				$scope.model = {};
 				$scope.model.sense = lla_wp.sense;
+				$scope.model.blog_title = lla_wp.blog_title;
+				$scope.model.template_dir = lla_wp.template_dir;
+                $scope.$on('$llagalleryLoadedImages', function(event, args) {
+                    setTimeout(function(){
+                        console.log('anigmate');
+                        $scope.$apply( function(){
+                            $scope.model.doneloading = 'out';
+                        });
+                    }, 1500);
+                    // do what you want to do
+                });
 			}]
 		})
 		.state('sense.gallery', {

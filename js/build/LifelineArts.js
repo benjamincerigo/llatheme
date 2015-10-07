@@ -483,6 +483,17 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 			controller: ['$scope',   'lla_wp', function($scope,   lla_wp ){
 				$scope.model = {};
 				$scope.model.sense = lla_wp.sense;
+				$scope.model.blog_title = lla_wp.blog_title;
+				$scope.model.template_dir = lla_wp.template_dir;
+                $scope.$on('$llagalleryLoadedImages', function(event, args) {
+                    setTimeout(function(){
+                        console.log('anigmate');
+                        $scope.$apply( function(){
+                            $scope.model.doneloading = 'out';
+                        });
+                    }, 1500);
+                    // do what you want to do
+                });
 			}]
 		})
 		.state('sense.gallery', {
@@ -826,6 +837,7 @@ window.angular.module('llaapp.util', [
 			llaanimateon: '=',
 			llaanimatein: '@',
 			llaanimateout: '@',
+			llaanimateouthide: '@',
 		},
 		restrict: 'A',
 		link: function (scope, element, attr){
@@ -848,7 +860,8 @@ window.angular.module('llaapp.util', [
 			});
 			// On the end of the animate clean up
 			$(element).one(ani, function(event){
-				var scroll = $(element).find('[scrollable]');
+				var scroll = $(element).find('[scrollable]'), 
+                    that = this;
 				// check for the scroll inside is so then will resize of the
 				// animation complete
 				if( scroll.length !== 0){
@@ -857,12 +870,18 @@ window.angular.module('llaapp.util', [
 						$(el).getNiceScroll().hide();
 					});
 				}
-				$(this).removeClass('animated');
-				$(this).removeClass(scope.llaanimatein);
-				$(this).removeClass(scope.llaanimateout);
-				scope.$apply(function(){
-					scope.llaanimateon = false;
-				});
+                setTimeout(function(){
+                    $(this).removeClass('animated');
+                    $(this).removeClass(scope.llaanimatein);
+                    $(this).removeClass(scope.llaanimateout);
+
+                    scope.$apply(function(){
+                        scope.llaanimateon = false;
+                        if( scope.llaanimateouthide === 'true' ){
+                            $(that).animate({width:'0px'}, 1000);
+                        }
+                    });
+                }, 1000);
 				if(scroll.length !== 0){
 					scroll.each(function(i, el){
 						$(el).getNiceScroll().resize();
@@ -917,7 +936,6 @@ window.angular.module('llaapp.util', [
 }])
 .directive('galleryway', ['$state', 'galleryCurId', function($state, galleryCurId, galleryLoadResolve){
 	'use strict';
-	console.log(galleryCurId);
 	return{
 		link: function(scope, el, attr){
 			var type = attr.galleryway;
@@ -928,10 +946,8 @@ window.angular.module('llaapp.util', [
 						  element: el,
 						  handler: function(direction) {
 								 var id = $(el).attr('id');
-								 console.log(galleryCurId);
 								 if(galleryCurId.motion !== true){
 								 galleryCurId.curId = id;
-								 console.log(galleryCurId);
 								  }
 							},
 						  horizontal: true
@@ -939,25 +955,17 @@ window.angular.module('llaapp.util', [
 				});
 				break;
 			case ('next'):
-				console.log('nextbind');
-				console.log(el);
 			scope.$on('$llagalleryLoadedImages', function(){
-				console.log('nextbind');
-				console.log(el);
 				el.bind('click', function(){
 					var picturetest = false;
-					console.log('click');
-					console.log(galleryCurId);
 					if( galleryCurId.curId !== 'undefined' && galleryCurId.curId !== false){
 						var next = $('#' + galleryCurId.curId).next();
 					}else{
 						var next = $('.gallery').children()[0]; 
 					}
 					picturetest = $(next).attr('galleryway');
-					console.log(picturetest);
 					if(picturetest){
 						next = $(next).attr('id');
-						console.log(next);
 						$state.go('sense.gallery', {picture: next});
 						galleryCurId.curId = next;
 					}

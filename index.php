@@ -17,7 +17,10 @@ $sense = new lla\lla_sections_object('sense', false);
 <div id='llainitial' class='animated' style='height:100%'>
     <div class='section' >
         <div  class='part part-top-padding part-lg-f part-lg--h part-noptop text-center'>
-            <h1 class='website-title animated fadeIn' quotes='toggle'>Lifeline Arts</h1>
+            <h1 class='website-title animated fadeIn' quotes='toggle'><?php echo  get_bloginfo('name'); ?></h1>
+        </div>
+        <div  class='part part-top-padding part-lg-f part-lg--h part-noptop text-center'>
+            <img class='animated fadeIn loadinghome' ng-src="{{model.template_dir}}/img/loadinghome.gif"/>
         </div>
         <div style='height:100%'></div> 
             <?php

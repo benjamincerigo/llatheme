@@ -57,7 +57,6 @@ window.angular.module('llaapp.gallery', [
 		return r;
 	};
     this.notLoading = function(){
-        console.log('notloading');
         this.model.doneload = true;
     }
     
@@ -84,14 +83,10 @@ window.angular.module('llaapp.gallery', [
 				data: getData,
 				dataType: 'json'
 			}).fail(function(response){
-				console.log(response);
-				console.log(response.responseText);
 				r.fail = {};
 				r.fail.message = response.message;
 				deferred.resolve(r);
 			}).done(function(response){
-				console.log('done');
-				console.log(response);
 				r.model = response;
 				deferred.resolve(r);
 			});

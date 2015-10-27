@@ -70,7 +70,6 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 				$scope.model.template_dir = lla_wp.template_dir;
                 $scope.$on('$llagalleryLoadedImages', function(event, args) {
                     setTimeout(function(){
-                        console.log('anigmate');
                         $scope.$apply( function(){
                             $scope.model.doneloading = 'out';
                         });
@@ -98,7 +97,6 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
                         galleryPageModel.notLoading();
 					});
 				}else{
-					console.log('else from ');
 					moveOnUrl.execute($stateParams);
 				}
 			}],

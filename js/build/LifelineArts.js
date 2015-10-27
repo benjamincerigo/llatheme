@@ -7,8 +7,6 @@ window.angular.module('llaapp.calender', ['llaapp.util'])
 		var	callback = {}, 
 			id = parseInt(attr.sectionSelectCal);
  
-		console.log('loaded the thing');
-		console.log(id);
 		callback.scope = scope;
 		callback.element = element;
 		callback.attr = attr;
@@ -29,7 +27,6 @@ window.angular.module('llaapp.calender', ['llaapp.util'])
 		if( id >= 0 ){
 			callback.callback = function(  ){
 				var par = this.scope.$parent;
-				console.log(this.selectIndex);
 				if(!par.selected.last){
 					par.selected.last.anevent.selectedbool = false;	
 				}
@@ -44,8 +41,6 @@ window.angular.module('llaapp.calender', ['llaapp.util'])
 			partOb.subscribe('calender', scope.anevent.lla_part_slug , callback);
 		}else if( id < 0 ){
 			callback.callback = function(  ){
-				console.log('called callback 2');
-				console.log(this.selectIndex);
 				if(this.scope.selected.hasOwnProperty('last') && !this.scope.selected.last){
 						this.scope.selected.last.anevent.selectedbool = false;	
 				}
@@ -195,7 +190,6 @@ window.angular.module('llaapp.gallery', [
 		return r;
 	};
     this.notLoading = function(){
-        console.log('notloading');
         this.model.doneload = true;
     }
     
@@ -222,14 +216,10 @@ window.angular.module('llaapp.gallery', [
 				data: getData,
 				dataType: 'json'
 			}).fail(function(response){
-				console.log(response);
-				console.log(response.responseText);
 				r.fail = {};
 				r.fail.message = response.message;
 				deferred.resolve(r);
 			}).done(function(response){
-				console.log('done');
-				console.log(response);
 				r.model = response;
 				deferred.resolve(r);
 			});
@@ -487,7 +477,6 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 				$scope.model.template_dir = lla_wp.template_dir;
                 $scope.$on('$llagalleryLoadedImages', function(event, args) {
                     setTimeout(function(){
-                        console.log('anigmate');
                         $scope.$apply( function(){
                             $scope.model.doneloading = 'out';
                         });
@@ -515,7 +504,6 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
                         galleryPageModel.notLoading();
 					});
 				}else{
-					console.log('else from ');
 					moveOnUrl.execute($stateParams);
 				}
 			}],
@@ -852,6 +840,9 @@ window.angular.module('llaapp.util', [
 							$(element).addClass(scope.llaanimatein);
 							break;
 						case 'out':
+                            if( scope.llaanimateout === 'jsOut'){
+                                $(element).animate({opacity:0}, 1000);
+                            }
 							$(element).addClass(scope.llaanimateout);
 							break;
 					}

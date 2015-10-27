@@ -74,6 +74,9 @@ window.angular.module('llaapp.util', [
 							$(element).addClass(scope.llaanimatein);
 							break;
 						case 'out':
+                            if( scope.llaanimateout === 'jsOut'){
+                                $(element).animate({opacity:0}, 1000);
+                            }
 							$(element).addClass(scope.llaanimateout);
 							break;
 					}

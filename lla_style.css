@@ -244,7 +244,7 @@ img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 .alignright { float: right; }
 .alignleft { float: left; }
 .aligncenter { display: block; margin-left: auto; margin-right: auto; }
-img.loadinghome{ padding-top: 10%; }
+img.loadinghome{ padding-top: 10%; width:80px}
 /**************************************************** Paper   *********************/
 .paper-effect-background{
 	background-image: url( ./img/paper-white.png);

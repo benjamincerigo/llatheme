@@ -5,8 +5,6 @@ window.angular.module('llaapp.calender', ['llaapp.util'])
 		var	callback = {}, 
 			id = parseInt(attr.sectionSelectCal);
  
-		console.log('loaded the thing');
-		console.log(id);
 		callback.scope = scope;
 		callback.element = element;
 		callback.attr = attr;
@@ -27,7 +25,6 @@ window.angular.module('llaapp.calender', ['llaapp.util'])
 		if( id >= 0 ){
 			callback.callback = function(  ){
 				var par = this.scope.$parent;
-				console.log(this.selectIndex);
 				if(!par.selected.last){
 					par.selected.last.anevent.selectedbool = false;	
 				}
@@ -42,8 +39,6 @@ window.angular.module('llaapp.calender', ['llaapp.util'])
 			partOb.subscribe('calender', scope.anevent.lla_part_slug , callback);
 		}else if( id < 0 ){
 			callback.callback = function(  ){
-				console.log('called callback 2');
-				console.log(this.selectIndex);
 				if(this.scope.selected.hasOwnProperty('last') && !this.scope.selected.last){
 						this.scope.selected.last.anevent.selectedbool = false;	
 				}

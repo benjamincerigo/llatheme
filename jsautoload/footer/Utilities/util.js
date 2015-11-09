@@ -67,51 +67,68 @@ window.angular.module('llaapp.util', [
 				ani;
 			// ani is the events that the animation will end
 			ani = whichAnimationEvents.animationEvents;
-			scope.$watch('llaanimateon', function(newValue, oldValue){
-				if(newValue !==false && newValue !== 'undefined'){
+			// On the end of the animate clean up
+            scope.$watch('llaanimateon', function(newValue, oldValue){
+
+				if(newValue !==false && typeof newValue !== 'undefined'){
+                    consolehelp( 'watch animi' , element.context.id);
+                    consolehelp(newValue , element.context.id);
+                    consolehelp( element.context.classList , element.context.id);
+                    consolehelp( 'added one' , element.context.id);
+                    $(element).one(ani, function(event){
+                        consolehelp( 'start of one' , element.context.id);
+                        consolehelp( element.context.classList , element.context.id);
+                        var scroll = $(element).find('[scrollable]'), 
+                            that = this;
+                            if(newValue ===false && typeof newValue === 'undefined'){
+                                consolehelp( 'newValue: ' + newValue, element.context.id);
+                                return null;
+                            }
+                        // check for the scroll inside is so then will resize of the
+                        // animation complete
+                        if( scroll.length !== 0){
+                            scroll = $(element).find('[scrollable]');
+                            scroll.each(function(i,el){
+                                $(el).getNiceScroll().hide();
+                            });
+                        }
+                        setTimeout(function(){
+                            $(this).removeClass('animated');
+                            $(this).removeClass(scope.llaanimatein);
+                            $(this).removeClass(scope.llaanimateout);
+
+                            scope.$apply(function(){
+                                scope.llaanimateon = false;
+                                if( scope.llaanimateouthide === 'true' ){
+                                    consolehelp('did the slide' , element.context.id);
+                                    $(that).animate({width:'0px'}, 1000);
+                                }
+                            });
+                        }, 1000);
+                        if(scroll.length !== 0){
+                            scroll.each(function(i, el){
+                                $(el).getNiceScroll().resize();
+                                $(el).getNiceScroll().show();
+                            });
+                        }
+                        consolehelp( 'End of one' , element.context.id);
+                    });
+
+
 					switch(newValue){
 						case 'in':
 							$(element).addClass(scope.llaanimatein);
 							break;
 						case 'out':
                             if( scope.llaanimateout === 'jsOut'){
-                                $(element).animate({opacity:0}, 1000);
+                                consolehelp('started ani' , element.context.id);
+                                //$(element).animate({opacity:0}, 1000);
                             }
 							$(element).addClass(scope.llaanimateout);
 							break;
 					}
-					$(element).addClass('animated');
-				}
-			});
-			// On the end of the animate clean up
-			$(element).one(ani, function(event){
-				var scroll = $(element).find('[scrollable]'), 
-                    that = this;
-				// check for the scroll inside is so then will resize of the
-				// animation complete
-				if( scroll.length !== 0){
-					scroll = $(element).find('[scrollable]');
-					scroll.each(function(i,el){
-						$(el).getNiceScroll().hide();
-					});
-				}
-                setTimeout(function(){
-                    $(this).removeClass('animated');
-                    $(this).removeClass(scope.llaanimatein);
-                    $(this).removeClass(scope.llaanimateout);
-
-                    scope.$apply(function(){
-                        scope.llaanimateon = false;
-                        if( scope.llaanimateouthide === 'true' ){
-                            $(that).animate({width:'0px'}, 1000);
-                        }
-                    });
-                }, 1000);
-				if(scroll.length !== 0){
-					scroll.each(function(i, el){
-						$(el).getNiceScroll().resize();
-						$(el).getNiceScroll().show();
-					});
+                    $(element).addClass('animated');
+                    consolehelp( 'end of watch animi' , element.context.id);
 				}
 			});
 		}
@@ -236,14 +253,16 @@ window.angular.module('llaapp.util', [
 				var complete = true;
 				addFun(attr.ngSrc, true);
 				var keys = Object.keys(imgwait);
+                console.log( 'Load of the image');
+                console.log( attr.ngSrc );
 				for (var i = 0; i < keys.length; i++) {
 					var val = imgwait[keys[i]];
 					if( val === false){
 						complete = false;
 					}
-					// else the complete will be true
 				 }
 				if( complete === true ){
+                    console.log( 'complete' );
 					scope.$emit('$llagalleryLoadComplete', imgwait); 
 				}
 			});
@@ -251,3 +270,11 @@ window.angular.module('llaapp.util', [
 	};
 }])
 ;
+
+var consolehelp = function( message, id ){
+    if( id == 'galleryloadingdiv' ){
+        var d = new Date();
+        var n = d.getTime(); 
+        console.log(id + ',' + n + ': ' + message );
+    }
+};

@@ -57,7 +57,6 @@ angular.module('llaapp.services', [
         var jQ = window.jQuery,
         picture =  $stateParams.picture, 
         offset = 0;
-        console.log($stateParams);
         galleryCurId.motion = true;
         if( !(picture) || jQ('#'+picture).length === 0 ){
             galleryCurId.curId = false;
@@ -66,8 +65,7 @@ angular.module('llaapp.services', [
             galleryCurId.curId = picture;
             offset = jQ('#'+ picture).offset().left; 
         }
-        jQ('html,body').animate({scrollLeft: offset},{duration: 800, complete: function(){ console.log('finshedmove');galleryCurId.motion = false;}});
-        console.log(galleryCurId);
+        jQ('html,body').animate({scrollLeft: offset},{duration: 800, complete: function(){ galleryCurId.motion = false;}});
     };
     return {
         'execute': execute

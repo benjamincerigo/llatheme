@@ -173,7 +173,7 @@ class lla_term_object
 		);
 		$this->content['events'] = array();
 		$size = sizeof($cal_content);
-		if($size > 1){
+		if($size > 0){
 			for($i = 0; $i < $size; $i++ ){
 				$slug = $cal_content[$i]->lla_part_slug;
 				if( $slug === '' || $slug === null){

@@ -141,8 +141,7 @@ class lla_term_object
 	}
 //-----------------Get Calender------------------//
 	private function get_calender(){
-			$limit = 4;
-			$offset_query = 1;
+    $limit = 4;
 		global $wpdb;
 		//Make the query for the ordered lla_calender post types
 		$cal_content = $wpdb->get_results( $wpdb->prepare(  "SELECT 
@@ -167,9 +166,8 @@ class lla_term_object
 					WHERE wp_posts.post_type = 'lla_calender'
 					AND wp_posts.post_status = 'publish'
 					ORDER BY date_value
-					LIMIT %d , %d;
+					LIMIT %d;
 			",
-			$offset_query,
 			$limit
 			)
 		);

@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 
-<!--Bootstrap css Must be first -->
+<!--Bootstrap css Must be first
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <!--Custom Css -->
 <link href='http://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>

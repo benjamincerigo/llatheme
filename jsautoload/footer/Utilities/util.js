@@ -164,9 +164,14 @@ window.angular.module('llaapp.util', [
 				var waypoint = new Waypoint({
 					  element: el,
 					  handler: function(direction) {
+                            if(!scope.$$phase) {
 							 scope.$apply(function(){
-									 homepagemodel.selectQuote();
+                                 homepagemodel.selectQuote();
 							 });
+                            } else {
+                                 homepagemodel.selectQuote();
+                            }
+
 						},
 					  horizontal: true
 				})
@@ -253,8 +258,6 @@ window.angular.module('llaapp.util', [
 				var complete = true;
 				addFun(attr.ngSrc, true);
 				var keys = Object.keys(imgwait);
-                console.log( 'Load of the image');
-                console.log( attr.ngSrc );
 				for (var i = 0; i < keys.length; i++) {
 					var val = imgwait[keys[i]];
 					if( val === false){
@@ -262,7 +265,6 @@ window.angular.module('llaapp.util', [
 					}
 				 }
 				if( complete === true ){
-                    console.log( 'complete' );
 					scope.$emit('$llagalleryLoadComplete', imgwait); 
 				}
 			});
@@ -275,6 +277,6 @@ var consolehelp = function( message, id ){
     if( id == 'galleryloadingdiv' ){
         var d = new Date();
         var n = d.getTime(); 
-        console.log(id + ',' + n + ': ' + message );
+        //console.log(id + ',' + n + ': ' + message );
     }
 };

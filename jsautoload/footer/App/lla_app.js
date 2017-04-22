@@ -168,6 +168,7 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 				'contact':{ templateUrl: lla_wpProvider.t + '/inc/html/contact.html', 
 					controller: ['$scope',  'homepagemodel', '$sce',  function( $scope , homepagemodel, $sce){ 
 						$scope.model = homepagemodel.getSection('contact');
+						$scope.model.showcontact = false;
 						$scope.trustAsHtml = function(string) {
 							    return $sce.trustAsHtml(string);
 						};

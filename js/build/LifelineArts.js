@@ -234,18 +234,6 @@ window.angular.module('llaapp.gallery', [
 });
 
 window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
-/*.directive('quotes', [ '$interval', function($interval){
-	'use strict';
-	
-
-	function link(scope, element, attrs) {
-	//	var i;
-	}
-	return {
-		restrict: 'AC',
-		link: link
-	};
-}])*/
 .provider('homepagemodel', function(InitialModelProvider){
 	'use strict';
 	if(!this.hasOwnProperty('model')){
@@ -279,23 +267,23 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 	}
 	this.initAbout = function(){
 		var a = this.getSection('about'),
-				s = this.lla_search(a.content, 'main');
+            s = this.lla_search(a.content, 'main');
 		if(s === false){
 			a.content.main = {};
 		}
 		a.content.main.selectedbool = false;
 	};
 	this.initCalender = function(){
-		var m = this.model.content.Calender,
-			k = Object.keys(m.content.events)[0] ,
-			i = m.content.events[k];
-		m.fullbool = false;
-		this.deselectAll(m.content.events);
-		m.content.main = i;
-		i.selectedbool = true;
+		var a = this.getSection('calender'),
+            s = this.lla_search(a.content, 'main');
+		if(s === false){
+			a.content.main = {};
+		}
+		a.content.main.selectedbool = false;
 	};
 	this.initContact = function (){
-
+		var a = this.getSection('contact');
+        a.content.showcontact = false;
 	};
 	this.getSection = function(section){
 		var r;
@@ -337,6 +325,9 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			case 'calender':
 				this.calenderState(this.getSection('calender'), p, f);
 				break;
+			case 'contact':
+				this.contactState(this.getSection('contact'), p, f);
+				break;
 			default:
 				return null;
 		}
@@ -363,6 +354,7 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 		if( p === '~' ){
 			this.initCalender();
 		}else if(f === 'full'){
+			c.content.main.selectedbool = false;
 			c.animate = 'in';
 			c.fullbool = true;
 		}else{
@@ -375,6 +367,20 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			this.deselectAll(c.content.events);
 			s.selectedbool = true;
 			c.content.main = s;
+			c.content.main.animate = 'in';
+			c.content.main.selectedbool = true;
+		}
+	};
+    this.contactState = function(c,p,f){
+        console.log( c );
+        console.log( p );
+		if( p === '~' ){
+			this.initContact();
+		}else{
+			if( p === 'mail' ){
+                c.content.showcontact = true;
+                c.content.contactanimate= 'in';
+            }
 		}
 	};
 	this.deselectAll = function(ob){
@@ -391,9 +397,11 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			lla_search: this.lla_search,
 			initHome: this.initHome,
 			initAbout: this.initAbout,
+			initContact: this.initContact,
 			aboutState: this.aboutState,
 			initCalender: this.initCalender,
 			calenderState: this.calenderState,
+			contactState: this.contactState,
 				//Quotes
 			selectQuote: this.selectQuote,
 			toggleQuote: this.toggleQuote,
@@ -575,6 +583,7 @@ llaapp.config( ['$urlRouterProvider', '$stateProvider', '$urlMatcherFactoryProvi
 				'contact':{ templateUrl: lla_wpProvider.t + '/inc/html/contact.html', 
 					controller: ['$scope',  'homepagemodel', '$sce',  function( $scope , homepagemodel, $sce){ 
 						$scope.model = homepagemodel.getSection('contact');
+						$scope.model.showcontact = false;
 						$scope.trustAsHtml = function(string) {
 							    return $sce.trustAsHtml(string);
 						};
@@ -651,7 +660,6 @@ angular.module('llaapp.services', [
         var jQ = window.jQuery,
         picture =  $stateParams.picture, 
         offset = 0;
-        console.log($stateParams);
         galleryCurId.motion = true;
         if( !(picture) || jQ('#'+picture).length === 0 ){
             galleryCurId.curId = false;
@@ -660,8 +668,7 @@ angular.module('llaapp.services', [
             galleryCurId.curId = picture;
             offset = jQ('#'+ picture).offset().left; 
         }
-        jQ('html,body').animate({scrollLeft: offset},{duration: 800, complete: function(){ console.log('finshedmove');galleryCurId.motion = false;}});
-        console.log(galleryCurId);
+        jQ('html,body').animate({scrollLeft: offset},{duration: 800, complete: function(){ galleryCurId.motion = false;}});
     };
     return {
         'execute': execute
@@ -833,51 +840,68 @@ window.angular.module('llaapp.util', [
 				ani;
 			// ani is the events that the animation will end
 			ani = whichAnimationEvents.animationEvents;
-			scope.$watch('llaanimateon', function(newValue, oldValue){
-				if(newValue !==false && newValue !== 'undefined'){
+			// On the end of the animate clean up
+            scope.$watch('llaanimateon', function(newValue, oldValue){
+
+				if(newValue !==false && typeof newValue !== 'undefined'){
+                    consolehelp( 'watch animi' , element.context.id);
+                    consolehelp(newValue , element.context.id);
+                    consolehelp( element.context.classList , element.context.id);
+                    consolehelp( 'added one' , element.context.id);
+                    $(element).one(ani, function(event){
+                        consolehelp( 'start of one' , element.context.id);
+                        consolehelp( element.context.classList , element.context.id);
+                        var scroll = $(element).find('[scrollable]'), 
+                            that = this;
+                            if(newValue ===false && typeof newValue === 'undefined'){
+                                consolehelp( 'newValue: ' + newValue, element.context.id);
+                                return null;
+                            }
+                        // check for the scroll inside is so then will resize of the
+                        // animation complete
+                        if( scroll.length !== 0){
+                            scroll = $(element).find('[scrollable]');
+                            scroll.each(function(i,el){
+                                $(el).getNiceScroll().hide();
+                            });
+                        }
+                        setTimeout(function(){
+                            $(this).removeClass('animated');
+                            $(this).removeClass(scope.llaanimatein);
+                            $(this).removeClass(scope.llaanimateout);
+
+                            scope.$apply(function(){
+                                scope.llaanimateon = false;
+                                if( scope.llaanimateouthide === 'true' ){
+                                    consolehelp('did the slide' , element.context.id);
+                                    $(that).animate({width:'0px'}, 1000);
+                                }
+                            });
+                        }, 1000);
+                        if(scroll.length !== 0){
+                            scroll.each(function(i, el){
+                                $(el).getNiceScroll().resize();
+                                $(el).getNiceScroll().show();
+                            });
+                        }
+                        consolehelp( 'End of one' , element.context.id);
+                    });
+
+
 					switch(newValue){
 						case 'in':
 							$(element).addClass(scope.llaanimatein);
 							break;
 						case 'out':
                             if( scope.llaanimateout === 'jsOut'){
-                                $(element).animate({opacity:0}, 1000);
+                                consolehelp('started ani' , element.context.id);
+                                //$(element).animate({opacity:0}, 1000);
                             }
 							$(element).addClass(scope.llaanimateout);
 							break;
 					}
-					$(element).addClass('animated');
-				}
-			});
-			// On the end of the animate clean up
-			$(element).one(ani, function(event){
-				var scroll = $(element).find('[scrollable]'), 
-                    that = this;
-				// check for the scroll inside is so then will resize of the
-				// animation complete
-				if( scroll.length !== 0){
-					scroll = $(element).find('[scrollable]');
-					scroll.each(function(i,el){
-						$(el).getNiceScroll().hide();
-					});
-				}
-                setTimeout(function(){
-                    $(this).removeClass('animated');
-                    $(this).removeClass(scope.llaanimatein);
-                    $(this).removeClass(scope.llaanimateout);
-
-                    scope.$apply(function(){
-                        scope.llaanimateon = false;
-                        if( scope.llaanimateouthide === 'true' ){
-                            $(that).animate({width:'0px'}, 1000);
-                        }
-                    });
-                }, 1000);
-				if(scroll.length !== 0){
-					scroll.each(function(i, el){
-						$(el).getNiceScroll().resize();
-						$(el).getNiceScroll().show();
-					});
+                    $(element).addClass('animated');
+                    consolehelp( 'end of watch animi' , element.context.id);
 				}
 			});
 		}
@@ -913,9 +937,14 @@ window.angular.module('llaapp.util', [
 				var waypoint = new Waypoint({
 					  element: el,
 					  handler: function(direction) {
+                            if(!scope.$$phase) {
 							 scope.$apply(function(){
-									 homepagemodel.selectQuote();
+                                 homepagemodel.selectQuote();
 							 });
+                            } else {
+                                 homepagemodel.selectQuote();
+                            }
+
 						},
 					  horizontal: true
 				})
@@ -1007,7 +1036,6 @@ window.angular.module('llaapp.util', [
 					if( val === false){
 						complete = false;
 					}
-					// else the complete will be true
 				 }
 				if( complete === true ){
 					scope.$emit('$llagalleryLoadComplete', imgwait); 
@@ -1017,3 +1045,11 @@ window.angular.module('llaapp.util', [
 	};
 }])
 ;
+
+var consolehelp = function( message, id ){
+    if( id == 'galleryloadingdiv' ){
+        var d = new Date();
+        var n = d.getTime(); 
+        //console.log(id + ',' + n + ': ' + message );
+    }
+};

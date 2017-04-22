@@ -1,16 +1,4 @@
 window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
-/*.directive('quotes', [ '$interval', function($interval){
-	'use strict';
-	
-
-	function link(scope, element, attrs) {
-	//	var i;
-	}
-	return {
-		restrict: 'AC',
-		link: link
-	};
-}])*/
 .provider('homepagemodel', function(InitialModelProvider){
 	'use strict';
 	if(!this.hasOwnProperty('model')){
@@ -44,23 +32,23 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 	}
 	this.initAbout = function(){
 		var a = this.getSection('about'),
-				s = this.lla_search(a.content, 'main');
+            s = this.lla_search(a.content, 'main');
 		if(s === false){
 			a.content.main = {};
 		}
 		a.content.main.selectedbool = false;
 	};
 	this.initCalender = function(){
-		var m = this.model.content.Calender,
-			k = Object.keys(m.content.events)[0] ,
-			i = m.content.events[k];
-		m.fullbool = false;
-		this.deselectAll(m.content.events);
-		m.content.main = i;
-		i.selectedbool = true;
+		var a = this.getSection('calender'),
+            s = this.lla_search(a.content, 'main');
+		if(s === false){
+			a.content.main = {};
+		}
+		a.content.main.selectedbool = false;
 	};
 	this.initContact = function (){
-
+		var a = this.getSection('contact');
+        a.content.showcontact = false;
 	};
 	this.getSection = function(section){
 		var r;
@@ -102,6 +90,9 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			case 'calender':
 				this.calenderState(this.getSection('calender'), p, f);
 				break;
+			case 'contact':
+				this.contactState(this.getSection('contact'), p, f);
+				break;
 			default:
 				return null;
 		}
@@ -128,6 +119,7 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 		if( p === '~' ){
 			this.initCalender();
 		}else if(f === 'full'){
+			c.content.main.selectedbool = false;
 			c.animate = 'in';
 			c.fullbool = true;
 		}else{
@@ -140,6 +132,20 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			this.deselectAll(c.content.events);
 			s.selectedbool = true;
 			c.content.main = s;
+			c.content.main.animate = 'in';
+			c.content.main.selectedbool = true;
+		}
+	};
+    this.contactState = function(c,p,f){
+        console.log( c );
+        console.log( p );
+		if( p === '~' ){
+			this.initContact();
+		}else{
+			if( p === 'mail' ){
+                c.content.showcontact = true;
+                c.content.contactanimate= 'in';
+            }
 		}
 	};
 	this.deselectAll = function(ob){
@@ -156,9 +162,11 @@ window.angular.module('llaapp.home', [	'llaapp.inlineservices'])
 			lla_search: this.lla_search,
 			initHome: this.initHome,
 			initAbout: this.initAbout,
+			initContact: this.initContact,
 			aboutState: this.aboutState,
 			initCalender: this.initCalender,
 			calenderState: this.calenderState,
+			contactState: this.contactState,
 				//Quotes
 			selectQuote: this.selectQuote,
 			toggleQuote: this.toggleQuote,

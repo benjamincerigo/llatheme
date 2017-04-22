@@ -1,5 +1,5 @@
 <!-- About top -->
-<div class = 'part part-lg-a part-lg--h paper-effect-border' llaanimate llaanimateon='model.content.main.animate' llaanimatein='stretchRight' llaanimateout='fadeOut' ng-show="model.content.main.selectedbool" >
+<div class = 'part part-lg-a part-lg--70 ' llaanimate llaanimateon='model.content.main.animate' llaanimatein='stretchRight' llaanimateout='fadeOut' ng-show="model.content.main.selectedbool" >
 	<div class='part part-lg-h part-lg--f paper-inner text-center' ng-show="model.content.main.selectedbool">
 		<span  llaanimate llaanimateon='model.content.main.animate' llaanimatein='fadeIn' llaanimateout='fadeOut' >
 			<a ng-href='#/about/~' >
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 </div>
-<div class='part part-top-padding part-lg-h part-lg--h' ng-class="{' part-lg-33 ': model.content.main.selectedbool}"ng-hide="post.selectedbool" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" > 
+<div class='part part-top-padding part-lg-h part-lg--h' ng-class="{' part-lg-33 part-lg--10 part-padding-sm': model.content.main.selectedbool}"ng-hide="post.selectedbool" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" > 
 	<a class='image-hover' ng-href='#/about/{{post.lla_part_slug}}'> 
 		<div class='overlay'>
 			<h3>{{post.post_title}}</h3>

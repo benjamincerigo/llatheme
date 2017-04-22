@@ -10,21 +10,22 @@
 <div class='part part-lg-h part-lg--40'>
 	<span class="helper"></span>
 	<div class="inline-block verticalmiddle">
-		<ul class='no-padding'>
+		<ul class='no-padding font-mid'>
 			<li>{{model.content.contact[0].Email}}</li>
 			<li>{{model.content.contact[0].Post}}</li>
 			<li>{{model.content.contact[0].Telephone}}</li>
 		</ul>
 	</div>
 </div>
+<div class='part part-lg-f part-lg-h' ng-show='model.content.showcontact' llaanimate llaanimateon='model.content.contactanimate' llaanimatein='stretchRight' llaanimateout='fadeOut' >
 	<!-- contact form -->
-		<div class='part part-lg-f part-lg--2t'ng-show="mailrequest.showdialog">
+		<div class='part part-lg-f part-lg--2t part-top-padding' ng-show="mailrequest.showdialog">
 			<div class="alert alert-info" ng-show='mailrequest.loading'>
 					<button type="button" class="close" ng-click="mailrequest.showdialog=false" aria-hidden="true">&times;</button>
 					<strong>Your Request is being Processed...</strong>
 			</div>
 			<div class="alert alert-success" ng-show='mailrequest.success'>
-					<button type="button" class="close" ng-click="mailrequest.showdialog=false" aria-hidden="true">&times;</button>
+                <a ng-href='#/contact/~'><button type="button" class="close" ng-click="mailrequest.showdialog=false" aria-hidden="true">&times;</button></a>
 					<strong>{{mailrequest.returnmessage}}</strong>
 			</div>
 			<div class="alert alert-danger" ng-show='mailrequest.fail'>
@@ -64,6 +65,9 @@
 			<button type="submit" ng-disabled="registerForm.$invalid" class="btn btn-primary">Submit Mail</button>
 		</div>
 	<form>
+</div>
+<div class='part part-lg-f part-lg-h part-top-padding text-center' ng-hide='model.content.showcontact'>
+    <a ng-href='#/contact/mail'><h4>Message Morag Now</h4></a>
 </div>
 
 

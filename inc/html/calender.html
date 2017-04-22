@@ -1,29 +1,31 @@
 
-<div class='part part-lg-h part-lg--h' ng-hide='model.fullbool' > 
-	<!-- Viewed event -->
-	<h3>{{model.content.main.post_title}}</h3>
-	<img class='thumbnail-lg' ng-src="{{model.content.main.thumbnail}}" ng-show="{{model.content.main.thumbnailset}}" />	
-</div>
-<div scrollable class='part part-lg-45 part-lg--h part-top-bot-padding-sm'ng-hide='model.fullbool' >
-	<div class='outercontent'>
-		<div class='innercontent'>
-			<ul class='no-padding'>
-				<li>Start: {{model.content.main.date_value}} - {{model.content.main.start_time_value}}</li>
-				<li>End: {{model.content.main.end_date_value}} - {{model.content.main.end_time_value}}</li>
-				<li>Addres: {{model.content.main.address_value}}</li>
-			</ul>
-			<p>{{model.content.main.event_desc_value}}</p>
-			<a class='actiontext'  ng-href="#/calender/{{model.content.main.lla_part_slug}}/full">Read More</a>
-		</div>
-	</div>
+<div class = 'part part-lg-a part-lg--70 ' llaanimate llaanimateon='model.content.main.animate' llaanimatein='stretchRight' llaanimateout='fadeOut' ng-show="model.content.main.selectedbool" >
+    <div class='part part-lg-h part-lg--f  paper-inner text-center' ng-hide='model.fullbool' > 
+        <!-- Viewed event -->
+        <h3>{{model.content.main.post_title}}</h3>
+        <img class='thumbnail-lg' ng-src="{{model.content.main.thumbnail}}" ng-show="{{model.content.main.thumbnailset}}" />	
+    </div>
+    <div scrollable class='part part-lg-h part-lg--f paper-inner'ng-hide='model.fullbool' >
+        <div class='outercontent'>
+            <div class='innercontent'>
+                <ul class='no-padding'>
+                    <li>Start: {{model.content.main.date_value}} - {{model.content.main.start_time_value}}</li>
+                    <li>End: {{model.content.main.end_date_value}} - {{model.content.main.end_time_value}}</li>
+                    <li>Addres: {{model.content.main.address_value}}</li>
+                </ul>
+                <p>{{model.content.main.event_desc_value}}</p>
+                <a class='actiontext'  ng-href="#/calender/{{model.content.main.lla_part_slug}}/full">Read More</a>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class='part part-top-padding part-lg-q part-lg--h' ng-hide='anevent.selectedbool || model.fullbool ' ng-repeat='anevent in model.content.events' >
+<div class='part part-top-padding part-lg--h part-lg-h' ng-class="{' part-lg-33 part-lg--10 part-padding-sm': model.content.main.selectedbool }" ng-hide='anevent.selectedbool || model.fullbool ' ng-repeat='anevent in model.content.events' >
 	<a ng-href='#/calender/{{anevent.lla_part_slug}}'> 
 	<h3>{{anevent.post_title}}</h3>
 	<p>{{anevent.date_value}}</p>
 </div>
-<div class = 'part part-lg-a part-lg--a paper-effect-border '  llaanimate llaanimateon='model.animate' llaanimatein='fadeIn' llaanimateout='fadeOut' ng-show="model.fullbool">
+<div class = 'part part-lg-a part-lg--a '  llaanimate llaanimateon='model.animate' llaanimatein='fadeIn' llaanimateout='fadeOut' ng-show="model.fullbool">
 	<div class='part part-lg-f part-lg--f paper-inner text-center content-padding' ng-show='model.fullbool' scrollable >
 		<a ng-href="#/calender/{{model.content.main.lla_part_slug}}/~">
 			<button class='close'>x</button>

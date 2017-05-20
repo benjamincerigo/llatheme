@@ -36,7 +36,7 @@
 			<li>End: {{model.content.main.end_date_value}} - {{model.content.main.end_time_value}}</li>
 			<li>Addres: {{model.content.main.address_value}}</li>
 		</ul>
-		<img ng-src="{{model.content.main.thumbnail}}" ng-show="model.content.main.thumbnailset" />
+		<img class="thumbnail-lg" ng-src="{{model.content.main.thumbnail}}" ng-show="model.content.main.thumbnailset" />
 		<div class='llasetcontent '  ng-bind-html='trustAsHtml(model.content.main.post_content)'></div>
 	</div>
 </div>

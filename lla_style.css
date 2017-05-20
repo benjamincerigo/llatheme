@@ -28,6 +28,16 @@ orange
 /**********************************************************************/
 						/* General*/
 		/**********************************************/
+html{
+	height: 100%;
+}
+body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	background-image: url('./img/BrownOp_pink.jpg');
+}
 * {
 	box-sizing: initial;
 }
@@ -53,16 +63,6 @@ h4{
 }
 h2,h3,h4{
 	text-transform: lowercase;
-}
-html{
-	height: 100%;
-}
-body{
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	overflow-x: hidden;
-	background-image: url('./img/BrownOp_pink.jpg');
 }
 .y-overflow {
 	overflow-y: hidden;
@@ -254,6 +254,7 @@ a.actiontext:focus, a.actiontext:active{
 /************************* ING SIZE **********/
 .thumbnail-lg{
 	height:75%;
+  max-width: 100%;
 }
 /*** For wordpress ****/
 img.alignright { float: right; margin: 0 0 1em 1em; }
@@ -773,4 +774,9 @@ form button{
 }
 .llasetcontent  * {
 	white-space: normal;
+}
+
+.llasetcontent img{
+	max-width: 100%;
+	height: auto;
 }

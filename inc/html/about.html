@@ -1,27 +1,27 @@
 <!-- About top -->
-<div class = 'part part-lg-a part-lg--70 ' llaanimate llaanimateon='model.content.main.animate' llaanimatein='stretchRight' llaanimateout='fadeOut' ng-show="model.content.main.selectedbool" >
-	<div class='part part-lg-h part-lg--f paper-inner text-center' ng-show="model.content.main.selectedbool">
+<div class = 'part part-lg-a part-lg--70 about-container' llaanimate llaanimateon='model.content.main.animate' llaanimatein='stretchRight' llaanimateout='fadeOut' ng-show="model.content.main.selectedbool" scrollable >
+	<div class='part part-lg-h part-lg--f paper-inner text-center part-sm-f part-sm--70' ng-show="model.content.main.selectedbool">
 		<span  llaanimate llaanimateon='model.content.main.animate' llaanimatein='fadeIn' llaanimateout='fadeOut' >
 			<a ng-href='#/about/~' >
 				<h3>{{model.content.main.post_title}}</h3>
 			</a>
-			<img class='thumbnail-lg' ng-src="{{model.content.main.thumbnail}}" ng-show="{{model.content.main.thumbnailset}}" />	
+			<img class='thumbnail-lg' ng-src="{{model.content.main.thumbnail}}" ng-show="{{model.content.main.thumbnailset}}" />
 		</span>
 	</div>
 
-	<div scrollable class='part part-lg-h part-lg--f paper-inner ' ng-show="model.content.main.selectedbool">
+	<div scrollable class='part part-lg-h part-lg--f paper-inner part-sm-f part-sm--au' ng-show="model.content.main.selectedbool">
 		<div class='outercontent'>
-			<div class='innercontent'> 
+			<div class='innercontent'>
 				<div  llaanimate llaanimateon='model.content.main.animate' llaanimatein='fadeIn' llaanimateout='fadeOut' ng-bind-html='trustAsHtml(model.content.main.post_content)'>
 
-					
+
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class='part part-top-padding part-lg-h part-lg--h' ng-class="{' part-lg-33 part-lg--10 part-padding-sm': model.content.main.selectedbool}"ng-hide="post.selectedbool" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" > 
-	<a class='image-hover' ng-href='#/about/{{post.lla_part_slug}}'> 
+<div class='part part-top-padding part-lg-h part-lg--h' ng-class="{' part-lg-33 part-lg--10 part-padding-sm': model.content.main.selectedbool}"ng-hide="post.selectedbool" ng-repeat="post in model.content.posts | orderBy : 'lla_post_order' : false" >
+	<a class='image-hover' ng-href='#/about/{{post.lla_part_slug}}'>
 		<div class='overlay'>
 			<h3>{{post.post_title}}</h3>
 		</div>

@@ -2,7 +2,7 @@
 Theme Name: lla
 Theme URI: www.lifelinearts.com
 Author: benjamin.cerigo@gmail.com
-Author URI: benjamin.cerigo.wordpresss.com 
+Author URI: benjamin.cerigo.wordpresss.com
 Description: Horizontial Theme Developed for Lifeline Arts
 Version: 1.0-wpcom
 License: GNU General Public License v2 or later
@@ -12,15 +12,15 @@ Domain Path: /languages/
 Tags:
 
 This theme, like WordPress, is licensed under the GPL.
-Color Codes 
+Color Codes
 Brown Text: #A53300;
 Mint text: #2A4754
 orange
 	color: #BF4324;
 	morag: #9C4020;
-	from line:#853C3D; 
+	from line:#853C3D;
 
-	color try outs 
+	color try outs
 	blu: #0072A5
 	brown: #8A2B00 or #A53300
 */
@@ -38,6 +38,13 @@ body{
 	overflow-x: hidden;
 	background-image: url('./img/BrownOp_pink.jpg');
 }
+
+@media screen and (max-width: 600px){
+	body {
+		font-size: 1em;
+	}
+}
+
 * {
 	box-sizing: initial;
 }
@@ -68,11 +75,11 @@ h2,h3,h4{
 	overflow-y: hidden;
 }
 p{
-	font-size: 16px;
+	font-size: 1em;
 	color: #494250;
 }
 li{
-	font-size: 16px;
+	font-size: 1em;
 	list-style-type: none;
 	color: #494250;
 }
@@ -145,13 +152,13 @@ b, strong{
 	color:#8D8D8D;
 }
 
-/****** util ******/ 
+/****** util ******/
 
 .nullfont{
     font-size: 0;
 }
 ul.font-mid > li{
-    font-size: 23px;
+    font-size: 2rem;
 }
 .normalfont{
     font-size: 1rem;
@@ -221,8 +228,8 @@ button.close {
 }
 .part .innercontent {
 	height: 100%;
-	display: table-cell; 
-	vertical-align: middle; 
+	display: table-cell;
+	vertical-align: middle;
 	white-space: normal;
 	overflow-y:hidden;
 	padding-top: 2%;
@@ -230,7 +237,7 @@ button.close {
 .part .outercontent {
 	width: 95%;
 	height: 100%;
-	display: table; 
+	display: table;
 }
 ul.nomargin {
 	padding: 0;
@@ -306,14 +313,14 @@ transition: 725ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
 position: relative;
 display: block;
 }
- 
+
 .animate-enter.animate-enter-active,
 .animate-leave {
 opacity: 1;
 top: 0;
 height: 30px;
 }
- 
+
 .animate-leave.animate-leave-active,
 .animate-enter {
 opacity: 0;
@@ -332,13 +339,13 @@ height: 0px;
 	height: 100%;
 	width:100%;
 	display: inline-block;
-	
+
 
 }
 /****** Part ******/
 
 .section > .part{
-	margin-top: 1%;
+	margin-top: 30px;
 }
 .part{
 	box-sizing: border-box;
@@ -428,6 +435,37 @@ height: 0px;
 	height: 70%
 }
 
+@media screen and (max-width: 600px){
+	.part-sm-f {
+		width: 100%;
+	}
+
+	.part-sm--q {
+		height: 25%;
+	}
+
+	.part-sm--au {
+		height: auto;
+		padding: 10%;
+	}
+
+	.part-sm--70 {
+		height: 70%;
+	}
+
+	.part-sm---center {
+		text-align: center;
+	}
+
+
+	.about-container {
+		overflow-y:hidden
+
+	}
+
+
+}
+
 .part-noptop{
 	padding-top:0;
 }
@@ -478,7 +516,7 @@ height: 0px;
 .top_nav div > ul > li{
 	display: table-cell;
 	width: auto;
-	text-align: center;	
+	text-align: center;
 	border: 0;
 }
 
@@ -532,7 +570,7 @@ height: 0px;
 
 #about_top{
 	width: 100%;
-	
+
 
 
 }
@@ -540,7 +578,7 @@ height: 0px;
 
 #about_top{
 	vertical-align: top;
-	
+
 
 }
 
@@ -558,7 +596,7 @@ height: 0px;
 
 #calender_top{
 	width: 100%;
-	
+
 }
 
 #calender_top tr td{
@@ -589,7 +627,7 @@ height: 0px;
 
 #contact_top{
 	width: 100%;
-	
+
 }
 .contact-info{
 	position: relative;
@@ -728,10 +766,10 @@ form button{
 
 .stretchRight{
 	animation-name: stretchRight;
-	-webkit-animation-name: stretchRight;	
+	-webkit-animation-name: stretchRight;
 	transform-origin: 0% 0%;
 	-ms-transform-origin: 0% 0%;
-	-webkit-transform-origin: 0% 0%; 		
+	-webkit-transform-origin: 0% 0%;
 }
 
 @keyframes stretchRight {
@@ -740,7 +778,7 @@ form button{
 	}
 	100% {
 		transform: scaleX(1);
-	}							
+	}
 }
 
 @-webkit-keyframes stretchRight {
@@ -749,7 +787,7 @@ form button{
 	}
 	100% {
 		-webkit-transform: scaleX(1);
-	}		
+	}
 }
 .hover-image > img{
 	width: auto;

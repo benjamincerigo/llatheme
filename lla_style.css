@@ -515,6 +515,9 @@ height: 0px;
 
 
 @media screen and (max-width: 600px){
+	.top_nav{
+		position: static;
+	}
 	.top_nav > div > ul{
 		position: fixed;
 	}

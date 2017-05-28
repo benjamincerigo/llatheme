@@ -350,6 +350,7 @@ height: 0px;
 .part{
 	box-sizing: border-box;
 	float:left;
+	white-space: normal;
 }
 
 .part-top-padding{
@@ -457,7 +458,6 @@ height: 0px;
 		text-align: center;
 	}
 
-
 	.about-container {
 		overflow-y:hidden
 
@@ -473,6 +473,7 @@ height: 0px;
 .part img{
 	opacity: 1;
 }
+
 
 /************* LIne ******/
 

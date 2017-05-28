@@ -15,6 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, user-scalable=no">
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="icon" href="/wp-content/themes/lla/img/Lifelinearts.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="/wp-content/themes/lla/img/Lifelinearts.ico" type="image/x-icon"/>
 
 <!--Bootstrap css Must be first
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">

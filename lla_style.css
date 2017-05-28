@@ -510,9 +510,16 @@ height: 0px;
 	margin-top: 20px;
 	width: 100%;
 	display: table;
-	table-layout: fixed;
 	padding-left: 0;
 }
+
+
+@media screen and (max-width: 600px){
+	.top_nav > div > ul{
+		position: fixed;
+	}
+}
+
 
 .top_nav div > ul > li{
 	display: table-cell;
